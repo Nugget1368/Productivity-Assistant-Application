@@ -1,3 +1,5 @@
+const ACTIVITIES_KEY = "activities";
+
 const saveToStorage = (storageName, obj) =>{
     // If there is localstorage with key-string 'storageName'
     if(localStorage.getItem(storageName)){
@@ -15,4 +17,4 @@ const saveToStorage = (storageName, obj) =>{
     }   
 }
 
-export {saveToStorage}
+export {saveToStorage, ACTIVITIES_KEY}
