@@ -1,6 +1,6 @@
 const createTodo = () =>{
     let todo = {
-        id: 2,
+        id: Date.now(),
         title: "Hello World",
         description: "lorem",
         status: true,
