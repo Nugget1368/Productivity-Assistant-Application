@@ -1,16 +1,3 @@
-const createTodo = () =>{
-    let todo = {
-        id: Date.now(),
-        title: "Hello World",
-        description: "lorem",
-        status: true,
-        time: 1,
-        category: "",
-        deadline: "",
-    }
-    return todo;
-}
-
 const saveToStorage = (storageName, obj) =>{
     // If there is localstorage with key-string 'storageName'
     if(localStorage.getItem(storageName)){
@@ -27,5 +14,5 @@ const saveToStorage = (storageName, obj) =>{
         localStorage.setItem(storageName, JSON.stringify(arr));
     }   
 }
-let todo = createTodo()
-saveToStorage("activies", todo);
+
+export {saveToStorage}
