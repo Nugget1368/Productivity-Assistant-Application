@@ -17,4 +17,6 @@ const saveToStorage = (storageName, obj) =>{
     }   
 }
 
+const getStorageAsJSON = (storageName)=> JSON.parse(localStorage.getItem(storageName));
+
 export {saveToStorage, ACTIVITIES_KEY}
