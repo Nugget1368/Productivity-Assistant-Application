@@ -1,5 +1,6 @@
 @import "./partials-scss/_coloring.scss";
 @import "./partials-scss/_mixins.scss";
+@import "./layout/sidebar";
 
 * {
   margin: 0;
@@ -9,57 +10,4 @@
 body {
   height: 200vh;
   background-color: $background;
-
-  aside {
-    height: 100vh;
-    width: 300px;
-    position: sticky;
-    top: 0;
-  }
-}
-
-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  border-right: 1px solid rgb(161, 161, 161);
-
-  .wrap-nav {
-    padding: 3rem 0 3rem 3rem;
-  }
-}
-
-h2 {
-  margin-bottom: 30px;
-  text-transform: uppercase;
-}
-
-.list-items-styling {
-  list-style: none;
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-}
-
-i {
-  padding-right: 20px;
-  width: 25px;
-}
-
-ul {
-  padding: 0;
-
-  li {
-    list-style: none;
-    margin-bottom: 20px;
-  }
-}
-
-.log-out {
-  border-top: 1px solid black;
-  padding: 2rem 1rem 2rem 1rem;
-  text-align: center;
 }
