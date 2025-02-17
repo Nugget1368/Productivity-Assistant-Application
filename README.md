@@ -8,7 +8,6 @@ I denna mapp finner vi alla logiska metoder som hanterar något form av data **m
 I denna fil lagras alla funktioner förknippade med Local-storage.
 
 
-#### getStorageAsJSON( )
 Returnerar den angivna localstorage-nyckelns värden som objekt **konverterade ifrån JSON**.
 
 ```js
@@ -64,7 +63,27 @@ För att **minska storleken** på datan som lagras i localstorage är det **vikt
 >
 >När vi sedan hämtar datan behöver vi då även konvertera tillbaka datan från JSON till objekten vi hämtat (JSON.parse).
 
+#### editStorage( )
+För att redigera ett objekt hämtar vi först alla objekt från localstorage. Därefter använder vi Array-metoden _Map()_ för att söka efter ett objekt i den hämtade arrayen som har ett matchande id med objektet vi tagit in i parametern.
 
+>Vi använder oss av ett _shorthand if-else state_, ett s.k [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator), för att utföra filtreringen i Map()-Metoden. Syftet med det är att minimera mängden kodrader och få renare kod.
+>
+>**Om** vi hittar ett objekt, ska objektet från localstorage bli lika med det objektet vi tagit in i arrayen.
+**Annars** ska objektet från localstorage bli lika med sig själv, dvs. **ingen förändring ska ske i objektet**.
+
+```js
+const editStorage = (storageName, obj) => {
+    if(localStorage.getItem(ACTIVITIES_KEY)){
+        let storage = getStorageAsJSON(ACTIVITIES_KEY);
+        // Search for similiar id, in that case EDIT that object
+        storage = storage.map((element) => (element.id === obj.id ? obj : element));
+        localStorage.setItem(storageName, JSON.stringify(storage));
+    }
+}
+
+//Example
+editStorage(ACTIVITIES_KEY, {id:2, title: "Say Hello", description: "Say Hello to World"});
+```
 
 #### deleteFromStorage( )
 Tar bort det objekt i den lagrade arrayen som mathcar med det angivna id i parametern. I denna metod hämtar vi först de värden som finns i localstorage med hjälp av **_getStorageAsJSON_**, därefter filtrerar vi arrayen vi fått. I filtreringen vill vi ha alla de objekt som **inte** matchar med det id som angivits.
