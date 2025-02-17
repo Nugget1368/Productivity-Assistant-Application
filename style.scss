@@ -1,2 +1,13 @@
 @import "./partials-scss/_coloring.scss";
 @import "./partials-scss/_mixins.scss";
+@import "./layout/sidebar";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 200vh;
+  background-color: $background;
+}
