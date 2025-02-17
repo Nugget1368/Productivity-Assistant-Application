@@ -21,8 +21,11 @@ const saveToStorage = (storageName, obj) => {
 };
 
 const deleteFromStorage = (storageName, id) => {
+  //Get from localstorage
   let storage = getStorageAsJSON(storageName);
+  //Filter out the values that don't have the id we'd like to delete
   storage = storage.filter((element) => element.id !== id);
+  //save the new storage-array
   localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
 };
 
