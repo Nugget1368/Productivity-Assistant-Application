@@ -4,21 +4,26 @@ const getStorageAsJSON = (storageName) =>
   JSON.parse(localStorage.getItem(storageName));
 
 const saveToStorage = (storageName, obj) => {
-  // If there is localstorage with key-string 'storageName'
-  if (localStorage.getItem(storageName)) {
-    // Get value from localstorage and convert from JSON to array-object
-    let storage = getStorageAsJSON(storageName);
+  if (localStorage.getItem(storageName)) { // If there is localstorage with key-string 'storageName'
+    let storage = getStorageAsJSON(storageName); // Get value from localstorage and convert from JSON to array-object
     storage.push(obj);
     localStorage.setItem(storageName, JSON.stringify(storage));
   }
-  // If there is no localstorage with the key-string
+// If there is no localstorage with the key-string
   else {
     let arr = [];
     arr.push(obj);
-    //Convert object to JSON and save in localstorage
-    localStorage.setItem(storageName, JSON.stringify(arr));
+    localStorage.setItem(storageName, JSON.stringify(arr)); //Convert object to JSON and save in localstorage
   }
 };
+
+const editStorage = (storageName, obj) => {
+    if(localStorage.getItem(ACTIVITIES_KEY)){
+        let storage = getStorageAsJSON(ACTIVITIES_KEY);
+        storage = storage.map((element) => (element.id === obj.id ? obj : element));     // Search for similiar id, in that case EDIT that object
+        localStorage.setItem(storageName, JSON.stringify(storage));
+    }
+}
 
 const deleteFromStorage = (storageName, id) => {
   //Get from localstorage
@@ -29,4 +34,4 @@ const deleteFromStorage = (storageName, id) => {
   localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
 };
 
-export { saveToStorage, deleteFromStorage, getStorageAsJSON, ACTIVITIES_KEY };
+export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY };
