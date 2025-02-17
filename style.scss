@@ -1,6 +1,8 @@
 @import "./partials-scss/_coloring.scss";
 @import "./partials-scss/_mixins.scss";
-@import "./layout/sidebar";
+@import "./layout/_sidebar.scss";
+@import "./layout/_header.scss";
+@import "./layout/_cards-index.scss";
 
 * {
   margin: 0;
@@ -8,6 +10,17 @@
 }
 
 body {
-  height: 200vh;
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
   background-color: $background;
+}
+
+main {
+  width: 100vw;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
 }
