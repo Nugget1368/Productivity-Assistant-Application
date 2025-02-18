@@ -7,6 +7,19 @@ I denna mapp finner vi alla logiska metoder som hanterar något form av data **m
 ### localstorage.js
 I denna fil lagras alla funktioner förknippade med Local-storage.
 
+
+Returnerar den angivna localstorage-nyckelns värden som objekt **konverterade ifrån JSON**.
+
+```js
+const getStorageAsJSON = (storageName) =>
+  JSON.parse(localStorage.getItem(storageName));
+
+  //Example
+let activities = getStorageAsJSON(ACTIVITIES_KEY);
+console.log(activities); //Output: En array av objekt från Localstorage sparningen "activities"
+```
+
+
 #### Save To Storage
 Denna metod är tänkt att användas för att spara till Localstorage.
 
@@ -50,6 +63,48 @@ För att **minska storleken** på datan som lagras i localstorage är det **vikt
 >
 >När vi sedan hämtar datan behöver vi då även konvertera tillbaka datan från JSON till objekten vi hämtat (JSON.parse).
 
+#### editStorage( )
+För att redigera ett objekt hämtar vi först alla objekt från localstorage. Därefter använder vi Array-metoden _Map()_ för att söka efter ett objekt i den hämtade arrayen som har ett matchande id med objektet vi tagit in i parametern.
+
+>Vi använder oss av ett _shorthand if-else state_, ett s.k [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator), för att utföra filtreringen i Map()-Metoden. Syftet med det är att minimera mängden kodrader och få renare kod.
+>
+>**Om** vi hittar ett objekt, ska objektet från localstorage bli lika med det objektet vi tagit in i arrayen.
+**Annars** ska objektet från localstorage bli lika med sig själv, dvs. **ingen förändring ska ske i objektet**.
+
+```js
+const editStorage = (storageName, obj) => {
+    if(localStorage.getItem(ACTIVITIES_KEY)){
+        let storage = getStorageAsJSON(ACTIVITIES_KEY);
+        // Search for similiar id, in that case EDIT that object
+        storage = storage.map((element) => (element.id === obj.id ? obj : element));
+        localStorage.setItem(storageName, JSON.stringify(storage));
+    }
+}
+
+//Example
+editStorage(ACTIVITIES_KEY, {id:2, title: "Say Hello", description: "Say Hello to World"});
+```
+
+#### deleteFromStorage( )
+Tar bort det objekt i den lagrade arrayen som mathcar med det angivna id i parametern. I denna metod hämtar vi först de värden som finns i localstorage med hjälp av **_getStorageAsJSON_**, därefter filtrerar vi arrayen vi fått. I filtreringen vill vi ha alla de objekt som **inte** matchar med det id som angivits.
+
+Efter filtreringen har vi nu en ny array **utan** objektet med det id:et som angivits i parametern. Vi skriver nu över localstorage med den **nya** arrayen.
+
+```js
+const deleteFromStorage = (storageName, id) => {
+  //Get from localstorage
+  let storage = getStorageAsJSON(storageName);
+  //Filter out the values that don't have the id we'd like to delete
+  storage = storage.filter((element) => element.id !== id);
+  //save the new storage-array
+  localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
+};
+
+//Example
+deleteFromStorage(ACTIVITY_KEY, 2);
+```
+
+****
 
 #### Sträng-Konstanter
 På första raden finns en strängkonstant deklarerad, **_ACTIVITIES_KEY_**, denna konstant är tänkt att användas varje gång ett anrop görs till _activities-nyckeln_ i Localstorage. Denna konstant finns för att undvika eventuella felstavningar som kan uppstå när man som utvecklare vill nå nyckelns värden i Localstorage.
@@ -84,3 +139,14 @@ const createTodo = (title, description, status, time, category, deadline) => {
     return todo;
 }
 ```
+****
+
+## Builders
+Ett **[Design Pattern](https://refactoring.guru/design-patterns)** i form av **[Builder Pattern](https://refactoring.guru/design-patterns/builder)** som har till syfte att på ett strukturerat vis bygga upp delar av DOM:en ifrån backend.
+
+I detta projekt följs nödväntigtvis inte Builder Pattern till exakthet, men det finns här för att bidra till struktur. 
+
+>De Builders som finns:
+>- **todoBuilder.js**, ansvarar för allt som har med **Ärenden och Aktiviteter**
+
+****
