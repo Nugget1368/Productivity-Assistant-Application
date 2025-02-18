@@ -1,4 +1,5 @@
 const ACTIVITIES_KEY = "activities";
+const HABITS_KEY = "habits";
 
 const getStorageAsJSON = (storageName) =>
   JSON.parse(localStorage.getItem(storageName));
