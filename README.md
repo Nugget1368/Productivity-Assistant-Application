@@ -139,6 +139,9 @@ const createTodo = (title, description, status, time, category, deadline) => {
     return todo;
 }
 ```
+
+### jsonHandler
+Här hanteras alla funktioner som berör lokalt lagrad json-data. Huvudmetoden är **loadFromJSONAsync**, som hämtar data med hjälp av _fetch_ med hjälp av den url-nyckel som angivits i anropet. Metoden returnerar datat konverterat från JSON.
 ****
 
 ## Builders
