@@ -1,6 +1,8 @@
-const loadFromJSONAsync = async () => {
+const CATEGORIES_KEY = "./JSON-storage/categories.json";
+
+const loadFromJSONAsync = async (key) => {
     try{
-        let response = await fetch("./JSON-storage/categories.json");
+        let response = await fetch(key);
         let json = response.json();
         return json;
     }
@@ -9,4 +11,4 @@ const loadFromJSONAsync = async () => {
     }
 }
 
-export {loadFromJSONAsync}
+export {loadFromJSONAsync, CATEGORIES_KEY}
