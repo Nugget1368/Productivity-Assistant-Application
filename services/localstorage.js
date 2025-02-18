@@ -35,4 +35,4 @@ const deleteFromStorage = (storageName, id) => {
   localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
 };
 
-export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY };
+export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY, HABITS_KEY };
