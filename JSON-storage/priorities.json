@@ -1,14 +1,17 @@
 [
     {
         "id": 1,
-        "title": "Låg"
+        "title": "Låg",
+        "color": "green"
     },
     {
         "id": 2,
-        "title": "Mellan"
+        "title": "Mellan",
+        "color": "yellow"
     },
     {
         "id": 3,
-        "title": "Hög"
+        "title": "Hög",
+        "color": "red"
     }
 ]
