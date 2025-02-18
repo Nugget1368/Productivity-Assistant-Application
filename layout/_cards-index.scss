@@ -1,0 +1,55 @@
+h1 {
+  font-size: 2rem;
+  font-style: normal;
+  margin: 20px 0px 10px 0px;
+}
+
+.card-container {
+  @include flex(space-between);
+  gap: 20px;
+
+  .card {
+    background-color: $startpage-cards;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1;
+    text-align: left;
+
+    hr {
+      border: none;
+      margin-bottom: 10px;
+      margin-top: 5px;
+      border-top: 1px solid rgb(64, 163, 73);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    > a {
+      display: block;
+      margin-top: 15px;
+      color: $startpage-cards-links-show-all;
+      text-align: right;
+    }
+
+    ul {
+      padding: 0 0.5rem;
+
+      li {
+        list-style: none;
+        padding-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        a {
+          margin-right: 15px;
+          text-decoration: none;
+          color: $startpage-cards-links;
+        }
+      }
+    }
+  }
+}
