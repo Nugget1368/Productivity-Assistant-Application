@@ -17,3 +17,5 @@ const buildHabit = (habits) => {
         section.append(card);
     });
 }
+
+export {buildHabit}
