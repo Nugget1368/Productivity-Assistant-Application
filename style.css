@@ -7,7 +7,8 @@ aside {
 
 nav {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  align-items: stretch;
   justify-content: space-between;
   height: 100%;
   border-right: 1px solid rgb(161, 161, 161);
@@ -46,8 +47,9 @@ i {
 
 header {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   background-color: #f3ddd0;
   padding: 30px;
   border-radius: 15px;
@@ -61,10 +63,11 @@ header .h2-startpage {
   margin-bottom: 30px;
 }
 header .wrapper {
-  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
+  align-items: stretch;
   justify-content: space-between;
+  width: 100%;
 }
 header .welcome-box {
   flex: 2;
@@ -92,7 +95,9 @@ h1 {
 
 .card-container {
   display: flex;
-  justify-content: space-between;
+  flex-flow: space-between;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 20px;
 }
 .card-container .card {
@@ -147,10 +152,11 @@ body {
 }
 
 main {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
   width: 100vw;
   padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: left;
 }/*# sourceMappingURL=style.css.map */

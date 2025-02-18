@@ -5,8 +5,7 @@ h1 {
 }
 
 .card-container {
-  display: flex;
-  justify-content: space-between;
+  @include flex(space-between);
   gap: 20px;
 
   .card {
