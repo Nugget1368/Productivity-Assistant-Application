@@ -140,3 +140,13 @@ const createTodo = (title, description, status, time, category, deadline) => {
 }
 ```
 ****
+
+## Builders
+Ett **[Design Pattern](https://refactoring.guru/design-patterns)** i form av **[Builder Pattern](https://refactoring.guru/design-patterns/builder)** som har till syfte att på ett strukturerat vis bygga upp delar av DOM:en ifrån backend.
+
+I detta projekt följs nödväntigtvis inte Builder Pattern till exakthet, men det finns här för att bidra till struktur. 
+
+>De Builders som finns:
+>- **todoBuilder.js**, ansvarar för allt som har med **Ärenden och Aktiviteter**
+
+****
