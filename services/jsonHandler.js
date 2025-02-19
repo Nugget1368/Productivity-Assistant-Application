@@ -1,4 +1,5 @@
 const CATEGORIES_KEY = "./JSON-storage/categories.json";
+const PRIORITIES_KEY = "./JSON-storage/priorities.json";
 
 const loadFromJSONAsync = async (key) => {
     try{
@@ -11,4 +12,4 @@ const loadFromJSONAsync = async (key) => {
     }
 }
 
-export {loadFromJSONAsync, CATEGORIES_KEY}
+export {loadFromJSONAsync, CATEGORIES_KEY, PRIORITIES_KEY}
