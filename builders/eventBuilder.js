@@ -5,15 +5,13 @@ const buildEvent = (events) => {
         card.classList.add("card");
         let title = document.createElement("h3");
         title.textContent = event.title;
-        let priority = document.createElement("label");
-        priority.textContent = `Prioritet: ${event.priority}`;
         let div = document.createElement("div");
-        let repetitionTitle = document.createElement("label");
-        repetitionTitle.textContent = "Repitition:";
-        let repetition = document.createElement("label");
-        repetition.textContent = event.repetition;
-        div.append(repetitionTitle, repetition);
-        card.append(title, priority, div);
+        let startDate = document.createElement("label");
+        startDate.textContent = "Startdatum: " + event.start;
+        let endDate = document.createElement("label");
+        endDate.textContent = "Slutdatum: " + event.end;
+        div.append(startDate, endDate);
+        card.append(title, div);
         section.append(card);
     });
 }
