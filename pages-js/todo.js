@@ -2,6 +2,6 @@ import {saveToStorage, deleteFromStorage, ACTIVITIES_KEY, getStorageAsJSON, edit
 import {createTodo} from "../services/todoActivities.js"
 import {buildTodos} from '../builders/todoBuilder.js';
 
+//Create Todos in DOM
 let storage = getStorageAsJSON(ACTIVITIES_KEY);
-console.log(storage);
 buildTodos(storage);
