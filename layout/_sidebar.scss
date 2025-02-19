@@ -3,53 +3,54 @@
 
 aside {
   height: 100vh;
-  width: 300px;
+  min-width: 270px;
   position: sticky;
   top: 0;
 }
 
 nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  @include flex($direction:column, $justify:space-between);
   height: 100%;
   border-right: 1px solid rgb(161, 161, 161);
 
   .wrap-nav {
-    padding: 3rem 0 3rem 3rem;
+    padding: 3rem 0 3rem 2rem;
   }
-}
 
-h2 {
-  margin-bottom: 30px;
-  text-transform: uppercase;
-}
+  .h2-sidebar {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
 
-.list-items-styling {
-  list-style: none;
+  .list-items-styling {
+    list-style: none;
 
-  a {
-    text-decoration: none;
-    color: black;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+  }
+
+  .log-out {
+    border-top: 1px solid black;
+    padding: 2rem 1rem;
+    text-align: center;
   }
 }
 
 i {
   padding-right: 20px;
   width: 25px;
-}
-
-ul {
-  padding: 0;
-
-  li {
-    list-style: none;
-    margin-bottom: 20px;
-  }
-}
-
-.log-out {
-  border-top: 1px solid black;
-  padding: 2rem 1rem 2rem 1rem;
-  text-align: center;
 }
