@@ -1,5 +1,7 @@
 const ACTIVITIES_KEY = "activities";
 const HABITS_KEY = "habits";
+const EVENT_KEY = "events";
+
 
 const getStorageAsJSON = (storageName) =>
   JSON.parse(localStorage.getItem(storageName));
@@ -35,4 +37,4 @@ const deleteFromStorage = (storageName, id) => {
   localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
 };
 
-export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY, HABITS_KEY };
+export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY, HABITS_KEY, EVENT_KEY };
