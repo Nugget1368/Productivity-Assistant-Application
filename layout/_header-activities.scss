@@ -1,0 +1,23 @@
+@import "../partials-scss/_coloring.scss";
+@import "../partials-scss/_mixins.scss";
+
+.page-header {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 14px;
+  }
+}

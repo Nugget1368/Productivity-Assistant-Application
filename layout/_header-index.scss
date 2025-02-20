@@ -2,7 +2,7 @@
 @import "../partials-scss/_mixins.scss";
 
 header {
-  @include flex($direction:column, $align:flex-start);
+  @include flex($direction: column, $align: flex-start);
   background-color: $startpage-header;
   padding: 30px;
   border-radius: 15px;
@@ -17,7 +17,7 @@ header {
   }
 
   .wrapper {
-    @include flex($direction:row, $justify:space-between);
+    @include flex($direction: row, $justify: space-between);
     width: 100%;
   }
   .welcome-box {
