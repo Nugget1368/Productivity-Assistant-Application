@@ -3,7 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+
+    <script src="/pages-js/main.js" type="module"></script>
+    <title>Rubber Ducks - it's going down</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <aside>
+      <nav>
+        <div class="wrap-nav">
+          <h2 class="h2-sidebar">Project Name</h2>
+
+          <ul>
+            <li class="list-items-styling">
+              <i class="fa-solid fa-house"></i>
+              <a href="/index.html">Hem</a>
+            </li>
+            <li class="list-items-styling">
+              <i class="fa-solid fa-pen"></i>
+              <a href="habits.html">Rutiner</a>
+            </li>
+            <li class="list-items-styling">
+              <i class="fa-solid fa-star"></i>
+              <a href="event-planner.html">Aktiviteter</a>
+            </li>
+            <li class="list-items-styling">
+              <i class="fa-regular fa-calendar"></i>
+              <a href="todo.html">Händelser</a>
+            </li>
+          </ul>
+        </div>
+        <div class="log-out">
+          <li class="list-items-styling">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <a href="/index.html">Logga ut</a>
+          </li>
+        </div>
+      </nav>
+    </aside>
+    <main>
+      <header>
+        <h2 class="h2-startpage">Måndag 22 april</h2>
+
+        <div class="wrapper">
+          <div class="welcome-box">
+            <p>Välkommen<span id="user-name"> användare</span> 🌞</p>
+          </div>
+          <div class="quote-box">
+            <p>
+              "Lorem ipsum dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque velit id et enimit amet
+              consectetur adipisicing elit. Eaque velit id et enim vitae corrupti omnis"
+            </p>
+          </div>
+        </div>
+      </header>
+      <section>
+        <h1>Rubrik</h1>
+
+        <div class="card-container">
+          <div class="card">
+            <h3>Senast tillagda aktiviteter</h3>
+            <hr />
+            <ul>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Aktivitet</a>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Aktivitet</a>
+              </li>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+            </ul>
+            <a href="/todo.html">Visa alla</a>
+          </div>
+          <div class="card">
+            <h3>Senast tillagda vanor</h3>
+            <hr />
+            <ul>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+            </ul>
+            <a href="/habits.html">Visa alla</a>
+          </div>
+          <div class="card">
+            <h3>Senast tillagda events</h3>
+            <hr />
+            <ul>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+              <li><input type="checkbox" /> <a href="#">Aktivitet</a></li>
+            </ul>
+            <a href="/event-planner.html">Visa alla</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

@@ -1,1 +1,162 @@
-/*# sourceMappingURL=style.css.map */
+aside {
+  height: 100vh;
+  min-width: 270px;
+  position: sticky;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100%;
+  border-right: 1px solid rgb(161, 161, 161);
+}
+nav .wrap-nav {
+  padding: 3rem 0 3rem 2rem;
+}
+nav .h2-sidebar {
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+nav .list-items-styling {
+  list-style: none;
+}
+nav .list-items-styling a {
+  text-decoration: none;
+  color: black;
+}
+nav ul {
+  padding: 0;
+}
+nav ul li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+nav .log-out {
+  border-top: 1px solid black;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+i {
+  padding-right: 20px;
+  width: 25px;
+}
+
+header {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f3ddd0;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgb(35, 35, 38);
+  width: 100%;
+  height: 200px;
+  margin: 10px auto;
+}
+header .h2-startpage {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+header .wrapper {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+header .welcome-box {
+  flex: 2;
+}
+header .welcome-box p {
+  font-size: 1rem;
+}
+header .welcome-box #user-name {
+  font-style: italic;
+}
+header .quote-box {
+  flex: 1;
+  text-align: right;
+}
+header .quote-box p {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2rem;
+  font-style: normal;
+  margin: 20px 0px 10px 0px;
+}
+
+.card-container {
+  display: flex;
+  flex-flow: space-between;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.card-container .card {
+  background-color: #bee7d9;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1;
+  text-align: left;
+}
+.card-container .card hr {
+  border: none;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-top: 1px solid rgb(64, 163, 73);
+}
+.card-container .card h3 {
+  font-size: 1.2rem;
+}
+.card-container .card > a {
+  display: block;
+  margin-top: 15px;
+  color: #a52a2a;
+  text-align: right;
+}
+.card-container .card ul {
+  padding: 0 0.5rem;
+}
+.card-container .card ul li {
+  list-style: none;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-container .card ul li a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #8a2be2;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100vw;
+  padding: 1rem 2rem;
+  align-items: left;
+}/*# sourceMappingURL=style.css.map */
