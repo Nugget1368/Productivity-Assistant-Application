@@ -19,8 +19,8 @@ const buildTodos = (todos) => {
 
 const buildTodosForm = () => {
   let modal = document.querySelector("dialog[modal] article");
-  let h2 = document.querySelector("dialog[modal] h2");
-  h2.textContent = "Lägg Till Aktivitet";
+  let h3 = document.querySelector("dialog[modal] h3");
+  h3.textContent = "Lägg Till Aktivitet";
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
