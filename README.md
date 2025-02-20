@@ -119,7 +119,7 @@ saveToStorage(ACTIVITIES_KEY, todo);
 
 Det är tänkt att liknande ska ske för nycklarna hos **Habits, Event-planner och User**.
 ****
-### todoActivities.js
+### todoHandler.js
 
 Här är tänkt att alla metoder som berör todo/aktiviteter ska lagras.
 
@@ -142,6 +142,14 @@ const createTodo = (title, description, status, time, category, deadline) => {
 
 ### jsonHandler
 Här hanteras alla funktioner som berör lokalt lagrad json-data. Huvudmetoden är **loadFromJSONAsync**, som hämtar data med hjälp av _fetch_ med hjälp av den url-nyckel som angivits i anropet. Metoden returnerar datat konverterat från JSON.
+
+### Constructors
+För att få en stabil mall när man ska spara ett aóbjekt som Todo, Habit eller Event används en [_Simplifierad Konstruktor_](https://www.w3schools.com/js/js_object_constructors.asp). Dessa finns för att vi under projektets gång lätt ska kunna spara undan ett objekt utan att råka glömma bort viktiga delar av objektet som bör finnas med.
+
+>**Nuvarande Konstruktorer**:
+>- **createTodo**, Finns i todoHandler.js
+>- **createHabit**, Finns i habitHandler.js
+>- **createEvent**, finns i eventHandler.js
 ****
 
 ## Builders
