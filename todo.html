@@ -72,9 +72,13 @@
   const validateForm = () => {
     let inputs = document.querySelectorAll("form#create-todo input");
     let errors = [];
+    let values = [];
     inputs.forEach((element) => {
       if (element.value.trim() === "" || element.value.trim() === null) {
         errors.push(element);
+      }
+      else{
+        values.push(element.value.trim());
       }
     })
     if(errors.length > 0){
@@ -86,7 +90,12 @@
       article.append(label);
       return false
     }
-    return true;
+    else{
+      let todo = {Title: values[0], Description: values[1], Category: values[2],}
+      console.log(todo);
+    }
+    return false;
+    
   }
 </script>
 
