@@ -167,7 +167,7 @@ dialog {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-dialog div {
+dialog article > * {
   display: flex;
   flex-flow: column;
   align-items: stretch;

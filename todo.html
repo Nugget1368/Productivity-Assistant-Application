@@ -51,69 +51,26 @@
   <dialog modal>
     <header>
       <h3>Hello World</h3>
-      <button close-modal>X</button>
+      <span close-modal>X</span>
     </header>
     <article>
-      <form id="create-todo" onsubmit="return validateForm();" submit="submitForm()">
+      <form id="create-todo">
         <label for="title">Titel</label>
-        <input id="title" name="title" type="text">
+        <input id="title" name="title" type="text"required >
+        <label for="time">Tidsestimering</label>
+        <input id="time" name="time" type="number"required >
         <label for="description">Beskrivning</label>
-        <input id="description" name="description" type="text">
+        <input id="description" name="description" type="text"required >
         <label for="category">Kategori</label>
-        <input id="category" name="category" type="text">
-        <button class="primary-btn">Submit</button>
+        <input id="category" name="category" type="text" required >
+        <label for="deadline">Deadline</label>
+        <input id="deadline" name="deadline" type="text" placeholder="ÅÅÅÅ-MM-DD" required >
+        <button class="primary-btn" type="submit">Submit</button>
       </form>
     </article>
     <footer>
     </footer>
   </dialog>
 </body>
-<script>
-  const validateForm = () => {
-    let inputs = document.querySelectorAll("form#create-todo input");
-    let errors = [];
-    let values = [];
-    inputs.forEach((element) => {
-      if (element.value.trim() === "" || element.value.trim() === null) {
-        errors.push(element);
-      }
-      else {
-        values.push(element.value.trim());
-      }
-    })
-    if (errors.length > 0) {
-      let article = document.querySelector("dialog article");
-      let label = document.createElement("label");
-      label.textContent = "Alla fält måste vara ifyllda";
-      label.style.color = "Red";
-      label.style.fontWeight = 700;
-      article.append(label);
-      return false;
-    }
-    return true;
-  }
-
-
-  //SUBMIT - WORK WITH THIS - YOU ARE HERE
-  let form = document.querySelector("form");
-  form.addEventListener("submit", (event) =>{
-    event.preventDefault();
-
-    let todo = { title: "values[0]", description: "values[1]", category: "values[2]" }
-    //Method - SavetoStorage, in localstorage.js
-    if (localStorage.getItem("activities")) { // If there is localstorage with key-string 'storageName'
-      let storage = localStorage.getItem("activities"); // Get value from localstorage and convert from JSON to array-object
-      storage = JSON.parse(storage);
-      storage.push(todo);
-      localStorage.setItem("activities", JSON.stringify(storage));
-    }
-    // If there is no localstorage with the key-string
-    else {
-      let arr = [];
-      arr.push(todo);
-      localStorage.setItem("activities", JSON.stringify(arr)); //Convert object to JSON and save in localstorage
-    }
-  })
-</script>
 
 </html>
