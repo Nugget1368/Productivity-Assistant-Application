@@ -11,7 +11,7 @@ const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
 openModalBtn.addEventListener("click", () => {
-  buildTodosForm();
+  // buildTodosForm();
   modal.showModal();
 });
 

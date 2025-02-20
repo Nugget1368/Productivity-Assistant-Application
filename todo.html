@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rubber Ducks - it's going down</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="/pages-js/todo.js" type="module"></script>
-  </head>
-  <body>
-    <aside>
-      <nav>
-        <div class="wrap-nav">
-          <h2 class="h2-sidebar">Project Name</h2>
-          <ul>
-            <li class="list-items-styling">
-              <i class="fa-solid fa-house"></i>
-              <a href="/index.html">Hem</a>
-            </li>
-            <li class="list-items-styling">
-              <i class="fa-solid fa-pen"></i>
-              <a href="habits.html">Rutiner</a>
-            </li>
-            <li class="list-items-styling">
-              <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Aktiviteter</a>
-            </li>
-            <li class="list-items-styling">
-              <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Händelser</a>
-            </li>
-          </ul>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rubber Ducks - it's going down</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="/pages-js/todo.js" type="module"></script>
+</head>
+
+<body>
+  <aside>
+    <nav>
+      <div class="wrap-nav">
+        <h2 class="h2-sidebar">Project Name</h2>
+        <ul>
+          <li class="list-items-styling">
+            <i class="fa-solid fa-house"></i>
+            <a href="/index.html">Hem</a>
+          </li>
+          <li class="list-items-styling">
+            <i class="fa-solid fa-pen"></i>
+            <a href="habits.html">Rutiner</a>
+          </li>
+          <li class="list-items-styling">
+            <i class="fa-solid fa-star"></i>
+            <a href="event-planner.html">Aktiviteter</a>
+          </li>
+          <li class="list-items-styling">
+            <i class="fa-regular fa-calendar"></i>
+            <a href="todo.html">Händelser</a>
+          </li>
+        </ul>
+      </div>
       <div class="log-out">
         <li class="list-items-styling">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -51,10 +53,41 @@
       <h3>Hello World</h3>
       <button close-modal>X</button>
     </header>
-    <article></article>
+    <article>
+      <form id="create-todo" onsubmit="return validateForm();">
+        <label for="title">Titel</label>
+        <input id="title" name="title" type="text" >
+        <label for="description" >Beskrivning</label>
+        <input id="description" name="description" type="text">
+        <label for="category">Kategori</label>
+        <input id="category" name="category" type="text" >
+        <button class="primary-btn">Submit</button>
+      </form>
+    </article>
     <footer>
     </footer>
   </dialog>
 </body>
+<script>
+  const validateForm = () => {
+    let inputs = document.querySelectorAll("form#create-todo input");
+    let errors = [];
+    inputs.forEach((element) => {
+      if (element.value.trim() === "" || element.value.trim() === null) {
+        errors.push(element);
+      }
+    })
+    if(errors.length > 0){
+      let article = document.querySelector("dialog article");
+      let label = document.createElement("label");
+      label.textContent = "Alla fält måste vara ifyllda";
+      label.style.color = "Red";
+      label.style.fontWeight = 700;
+      article.append(label);
+      return false
+    }
+    return true;
+  }
+</script>
 
 </html>
