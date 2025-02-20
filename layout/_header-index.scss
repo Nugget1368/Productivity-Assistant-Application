@@ -1,0 +1,48 @@
+@import "../partials-scss/_coloring.scss";
+@import "../partials-scss/_mixins.scss";
+
+header {
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid rgb(35, 35, 38);
+  border-radius: 15px;
+  padding: 30px;
+  background-color: $startpage-header;
+}
+
+.index-page-header {
+  @include flex($direction: column, $align: flex-start);
+  height: 200px;
+
+  .h2-startpage {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .wrapper {
+    @include flex($direction: row, $justify: space-between);
+    width: 100%;
+
+    .welcome-box {
+      flex: 2;
+
+      p {
+        font-size: 1rem;
+      }
+
+      #user-name {
+        font-style: italic;
+      }
+    }
+
+    .quote-box {
+      flex: 1;
+      text-align: right;
+
+      p {
+        font-size: 1rem;
+        font-style: italic;
+      }
+    }
+  }
+}
