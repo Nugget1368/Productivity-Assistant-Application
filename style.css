@@ -46,43 +46,46 @@ i {
 }
 
 header {
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid rgb(35, 35, 38);
+  border-radius: 15px;
+  padding: 30px;
+  background-color: #f3ddd0;
+}
+
+.index-page-header {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: #f3ddd0;
-  padding: 30px;
-  border-radius: 15px;
-  border: 1px solid rgb(35, 35, 38);
-  width: 100%;
   height: 200px;
-  margin: 10px auto;
 }
-header .h2-startpage {
+.index-page-header .h2-startpage {
   font-size: 2rem;
   margin-bottom: 30px;
 }
-header .wrapper {
+.index-page-header .wrapper {
   display: flex;
   flex-flow: row;
   align-items: stretch;
   justify-content: space-between;
   width: 100%;
 }
-header .welcome-box {
+.index-page-header .wrapper .welcome-box {
   flex: 2;
 }
-header .welcome-box p {
+.index-page-header .wrapper .welcome-box p {
   font-size: 1rem;
 }
-header .welcome-box #user-name {
+.index-page-header .wrapper .welcome-box #user-name {
   font-style: italic;
 }
-header .quote-box {
+.index-page-header .wrapper .quote-box {
   flex: 1;
   text-align: right;
 }
-header .quote-box p {
+.index-page-header .wrapper .quote-box p {
   font-size: 1rem;
   font-style: italic;
 }
@@ -139,7 +142,7 @@ h1 {
   color: #8a2be2;
 }
 
-.page-header {
+.under-page-header {
   background: #f9f9f9;
   padding: 20px;
   border-radius: 15px;
@@ -147,12 +150,12 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
-.page-header h1 {
+.under-page-header h1 {
   margin: 0;
   font-size: 24px;
   font-weight: bold;
 }
-.page-header p {
+.under-page-header p {
   margin: 5px 0 0;
   color: #555;
   font-size: 14px;
