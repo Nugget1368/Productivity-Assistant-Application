@@ -54,13 +54,13 @@
       <button close-modal>X</button>
     </header>
     <article>
-      <form id="create-todo" onsubmit="return validateForm();">
+      <form id="create-todo" onsubmit="return validateForm();" submit="submitForm()">
         <label for="title">Titel</label>
-        <input id="title" name="title" type="text" >
-        <label for="description" >Beskrivning</label>
+        <input id="title" name="title" type="text">
+        <label for="description">Beskrivning</label>
         <input id="description" name="description" type="text">
         <label for="category">Kategori</label>
-        <input id="category" name="category" type="text" >
+        <input id="category" name="category" type="text">
         <button class="primary-btn">Submit</button>
       </form>
     </article>
@@ -77,26 +77,41 @@
       if (element.value.trim() === "" || element.value.trim() === null) {
         errors.push(element);
       }
-      else{
+      else {
         values.push(element.value.trim());
       }
     })
-    if(errors.length > 0){
+    if (errors.length > 0) {
       let article = document.querySelector("dialog article");
       let label = document.createElement("label");
       label.textContent = "Alla fält måste vara ifyllda";
       label.style.color = "Red";
       label.style.fontWeight = 700;
       article.append(label);
-      return false
+      return false;
     }
-    else{
-      let todo = {Title: values[0], Description: values[1], Category: values[2],}
-      console.log(todo);
-    }
-    return false;
-    
+    return true;
   }
+
+  let form = document.querySelector("form");
+  form.addEventListener("submit", (event) =>{
+    event.preventDefault();
+
+    let todo = { title: "values[0]", description: "values[1]", category: "values[2]" }
+    //Method - SavetoStorage, in localstorage.js
+    if (localStorage.getItem("activities")) { // If there is localstorage with key-string 'storageName'
+      let storage = localStorage.getItem("activities"); // Get value from localstorage and convert from JSON to array-object
+      storage = JSON.parse(storage);
+      storage.push(todo);
+      localStorage.setItem("activities", JSON.stringify(storage));
+    }
+    // If there is no localstorage with the key-string
+    else {
+      let arr = [];
+      arr.push(todo);
+      localStorage.setItem("activities", JSON.stringify(arr)); //Convert object to JSON and save in localstorage
+    }
+  })
 </script>
 
 </html>
