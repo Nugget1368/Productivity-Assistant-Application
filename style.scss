@@ -1,8 +1,9 @@
 @import "./partials-scss/_coloring.scss";
 @import "./partials-scss/_mixins.scss";
 @import "./layout/_sidebar.scss";
-@import "./layout/_header.scss";
+@import "./layout/_header-index.scss";
 @import "./layout/_cards-index.scss";
+@import "./layout/_header-underpages.scss";
 
 * {
   margin: 0;
