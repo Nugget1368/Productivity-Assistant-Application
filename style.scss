@@ -32,4 +32,13 @@ dialog{
   article >*{
     @include flex(column);
   }
+  header{
+    @include flex();
+    background-color: transparent;
+    border: none;
+    height: fit-content;
+  }
+  span{
+    cursor: pointer;
+  }
 }

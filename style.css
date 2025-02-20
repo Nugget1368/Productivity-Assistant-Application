@@ -172,4 +172,17 @@ dialog article > * {
   flex-flow: column;
   align-items: stretch;
   justify-content: flex-start;
+}
+dialog header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  background-color: transparent;
+  border: none;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+dialog span {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
