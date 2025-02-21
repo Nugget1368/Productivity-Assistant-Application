@@ -1,0 +1,59 @@
+@import "../partials-scss/_coloring.scss";
+@import "../partials-scss/_mixins.scss";
+
+.filter-container {
+  @include flex($direction: row, $justify: space-between);
+  padding: 25px;
+  background: $section-underpages;
+  border-radius: 12px;
+  box-shadow: $shadow-container;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-options {
+  @include flex($direction: row, $justify: space-between);
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-title {
+  font-size: 1.2rem;
+  color: #615f5f;
+  margin-left: 4px;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 30px;
+  @include flex($direction: column, $justify: space-between);
+  gap: 5px;
+}
+
+.add-button {
+  background-color: $add-btn;
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $add-btn-hover;
+  }
+}

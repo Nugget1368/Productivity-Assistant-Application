@@ -45,6 +45,34 @@
         <h1>Händelser</h1>
         <p>Hantera dina händelser</p>
       </header>
+      <section class="filter-container">
+        <div class="filter-options">
+          <div class="filter-group">
+            <h3 class="filter-title">Sortering</h3>
+            <label for="sortering"></label>
+            <select class="dropdown">
+              <option value="">Välj sortering</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-title">Kategorier</h3>
+            <label for="kategori"></label>
+            <select class="dropdown">
+              <option value="">Välj kategori</option>
+            </select>
+          </div>
+
+          <div class="checkbox-group">
+            <label for="showCompleted">
+              <input type="checkbox" id="showCompleted" name="showCompleted" />
+              Slutförda aktiviteter
+            </label>
+          </div>
+        </div>
+
+        <button class="add-button">+ Ny aktivitet</button>
+      </section>
     </main>
   </body>
 </html>
