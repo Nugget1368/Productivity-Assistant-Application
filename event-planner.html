@@ -45,7 +45,26 @@
         <h1>Aktiviteter</h1>
         <p>Hantera dina aktiviteter</p>
       </header>
+      <button open-modal>Lägg till Event</button>
       <section class="card-container"></section>
     </main>
+    
+  <dialog modal>
+    <span close-modal>X</span>
+    <header>
+      <h3>Lägg Till Event</h3>
+    </header>
+    <article>
+      <form id="create-event">
+        <label for="title">Titel</label>
+        <input id="title" name="title" type="text"required >
+        <label for="start">Startdatum</label>
+        <input id="start" name="start" type="text" placeholder="ÅÅÅÅ-MM-DD" required>
+        <label for="end">Slutdatum</label>
+        <input id="end" name="end" type="text"  placeholder="ÅÅÅÅ-MM-DD" required >
+        <button class="primary-btn" type="submit">Submit</button>
+      </form>
+    </article>
+  </dialog>
   </body>
 </html>

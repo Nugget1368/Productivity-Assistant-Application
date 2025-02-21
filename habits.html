@@ -45,7 +45,23 @@
         <h1>Vanor</h1>
         <p>Hantera dina vanor</p>
       </header>
-      <section class="card-container"></section>
+      <button open-modal>Lägg till Rutin</button>
+        <section class="card-container"></section>
     </main>
-  </body>
+    <dialog modal>
+      <span close-modal>X</span>
+      <header>
+        <h3>Lägg Till Rutin</h3>
+      </header>
+      <article>
+        <form id="create-habit">
+          <label for="title">Titel</label>
+          <input id="title" name="title" type="text"required >
+          <label for="priority">Prioritet</label>
+          <input id="priority" name="priority" type="text" >
+          <button class="primary-btn" type="submit">Submit</button>
+        </form>
+      </article>
+    </dialog>
+</body>
 </html>
