@@ -53,10 +53,7 @@ header {
   border-radius: 15px;
   padding: 30px;
   background-color: #f3ddd0;
-<<<<<<< HEAD
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
-=======
->>>>>>> c774462cc97689814e8401629ea967671faccade
 }
 
 .index-page-header {
@@ -150,10 +147,7 @@ h1 {
 
 .under-page-header {
   background: #af7f9f;
-<<<<<<< HEAD
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
-=======
->>>>>>> c774462cc97689814e8401629ea967671faccade
   padding: 30px;
   border-radius: 15px;
   border: 1px solid #ccc;
@@ -171,7 +165,6 @@ h1 {
   font-size: 18px;
 }
 
-<<<<<<< HEAD
 .filter-container {
   display: flex;
   flex-flow: row;
@@ -237,8 +230,6 @@ h1 {
   background-color: #8b5cf6;
 }
 
-=======
->>>>>>> c774462cc97689814e8401629ea967671faccade
 * {
   margin: 0;
   box-sizing: border-box;
