@@ -1,8 +1,10 @@
 @import "./partials-scss/_coloring.scss";
 @import "./partials-scss/_mixins.scss";
 @import "./layout/_sidebar.scss";
-@import "./layout/_header.scss";
+@import "./layout/_header-index.scss";
 @import "./layout/_cards-index.scss";
+@import "./layout/_header-underpages.scss";
+@import "./layout/_section-todo.scss";
 
 * {
   margin: 0;
@@ -21,4 +23,24 @@ main {
   width: 100vw;
   padding: 1rem 2rem;
   align-items: left;
+}
+
+dialog{
+  // @include flex(column);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  article >*{
+    @include flex(column);
+  }
+  header{
+    @include flex();
+    background-color: transparent;
+    border: none;
+    height: fit-content;
+  }
+  span{
+    cursor: pointer;
+  }
 }

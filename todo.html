@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="/pages-js/todo.js" type="module"></script>
   </head>
+
   <body>
     <aside>
       <nav>
@@ -41,9 +42,61 @@
       </nav>
     </aside>
     <main>
+      <header class="under-page-header">
+        <h1>Händelser</h1>
+        <p>Hantera dina händelser</p>
+      </header>
+      <section class="filter-container">
+        <div class="filter-options">
+          <div class="filter-group">
+            <h3 class="filter-title">Sortering</h3>
+            <label for="sortering"></label>
+            <select class="dropdown">
+              <option value="">Välj sortering</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-title">Kategorier</h3>
+            <label for="kategori"></label>
+            <select class="dropdown">
+              <option value="">Välj kategori</option>
+            </select>
+          </div>
+
+          <div class="checkbox-group">
+            <label for="showCompleted">
+              <input type="checkbox" id="showCompleted" name="showCompleted" />
+              Slutförda aktiviteter
+            </label>
+          </div>
+        </div>
+        <button open-modal class="add-button">+ Ny aktivitet</button>
+      </section>
       <article id="todos">
-        <ul id=""></ul>
+        <ul></ul>
       </article>
     </main>
+    <dialog modal>
+      <span close-modal>X</span>
+      <header>
+        <h3>Lägg Till Aktivitet</h3>
+      </header>
+      <article>
+        <form id="create-todo">
+          <label for="title">Titel</label>
+          <input id="title" name="title" type="text" required />
+          <label for="time">Tidsestimering</label>
+          <input id="time" name="time" type="number" required />
+          <label for="description">Beskrivning</label>
+          <input id="description" name="description" type="text" required />
+          <label for="category">Kategori</label>
+          <input id="category" name="category" type="text" required />
+          <label for="deadline">Deadline</label>
+          <input id="deadline" name="deadline" type="text" placeholder="ÅÅÅÅ-MM-DD" required />
+          <button class="primary-btn" type="submit">Submit</button>
+        </form>
+      </article>
+    </dialog>
   </body>
 </html>

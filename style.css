@@ -19,6 +19,7 @@ nav .wrap-nav {
 nav .h2-sidebar {
   margin-bottom: 30px;
   text-transform: uppercase;
+  font-size: 20px;
 }
 nav .list-items-styling {
   list-style: none;
@@ -46,43 +47,47 @@ i {
 }
 
 header {
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid rgb(35, 35, 38);
+  border-radius: 15px;
+  padding: 30px;
+  background-color: #f3ddd0;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
+}
+
+.index-page-header {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: #f3ddd0;
-  padding: 30px;
-  border-radius: 15px;
-  border: 1px solid rgb(35, 35, 38);
-  width: 100%;
   height: 200px;
-  margin: 10px auto;
 }
-header .h2-startpage {
+.index-page-header .h2-startpage {
   font-size: 2rem;
   margin-bottom: 30px;
 }
-header .wrapper {
+.index-page-header .wrapper {
   display: flex;
   flex-flow: row;
   align-items: stretch;
   justify-content: space-between;
   width: 100%;
 }
-header .welcome-box {
+.index-page-header .wrapper .welcome-box {
   flex: 2;
 }
-header .welcome-box p {
+.index-page-header .wrapper .welcome-box p {
   font-size: 1rem;
 }
-header .welcome-box #user-name {
+.index-page-header .wrapper .welcome-box #user-name {
   font-style: italic;
 }
-header .quote-box {
+.index-page-header .wrapper .quote-box {
   flex: 1;
   text-align: right;
 }
-header .quote-box p {
+.index-page-header .wrapper .quote-box p {
   font-size: 1rem;
   font-style: italic;
 }
@@ -102,6 +107,7 @@ h1 {
 }
 .card-container .card {
   background-color: #bee7d9;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   border: 0.5px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -139,6 +145,91 @@ h1 {
   color: #8a2be2;
 }
 
+.under-page-header {
+  background: #af7f9f;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  height: 150px;
+}
+.under-page-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+.under-page-header p {
+  margin: 15px 0px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 25px;
+  background: #f1e7e7;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-options {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-title {
+  font-size: 1.2rem;
+  color: #615f5f;
+  margin-left: 4px;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.add-button {
+  background-color: #a685e2;
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #8b5cf6;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -159,4 +250,30 @@ main {
   width: 100vw;
   padding: 1rem 2rem;
   align-items: left;
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+dialog article > * {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+dialog header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  background-color: transparent;
+  border: none;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+dialog span {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
