@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="/pages-js/todo.js" type="module"></script>
   </head>
+
   <body>
     <aside>
       <nav>
@@ -18,25 +19,7 @@
               <i class="fa-solid fa-house"></i>
               <a href="/index.html">Hem</a>
             </li>
-            <li class="list-items-styling">
-              <i class="fa-solid fa-pen"></i>
-              <a href="habits.html">Rutiner</a>
-            </li>
-            <li class="list-items-styling">
-              <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Aktiviteter</a>
-            </li>
-            <li class="list-items-styling">
-              <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Händelser</a>
-            </li>
           </ul>
-        </div>
-        <div class="log-out">
-          <li class="list-items-styling">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <a href="/index.html">Logga ut</a>
-          </li>
         </div>
       </nav>
     </aside>
@@ -70,12 +53,32 @@
             </label>
           </div>
         </div>
-
-        <button class="add-button">+ Ny aktivitet</button>
+        <button open-modal class="add-button">+ Ny aktivitet</button>
       </section>
       <article id="todos">
-        <ul id=""></ul>
+        <ul></ul>
       </article>
     </main>
+    <dialog modal>
+      <span close-modal>X</span>
+      <header>
+        <h3>Lägg Till Aktivitet</h3>
+      </header>
+      <article>
+        <form id="create-todo">
+          <label for="title">Titel</label>
+          <input id="title" name="title" type="text" required />
+          <label for="time">Tidsestimering</label>
+          <input id="time" name="time" type="number" required />
+          <label for="description">Beskrivning</label>
+          <input id="description" name="description" type="text" required />
+          <label for="category">Kategori</label>
+          <input id="category" name="category" type="text" required />
+          <label for="deadline">Deadline</label>
+          <input id="deadline" name="deadline" type="text" placeholder="ÅÅÅÅ-MM-DD" required />
+          <button class="primary-btn" type="submit">Submit</button>
+        </form>
+      </article>
+    </dialog>
   </body>
 </html>

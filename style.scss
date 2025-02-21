@@ -24,3 +24,23 @@ main {
   padding: 1rem 2rem;
   align-items: left;
 }
+
+dialog{
+  // @include flex(column);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  article >*{
+    @include flex(column);
+  }
+  header{
+    @include flex();
+    background-color: transparent;
+    border: none;
+    height: fit-content;
+  }
+  span{
+    cursor: pointer;
+  }
+}
