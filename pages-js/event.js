@@ -10,7 +10,9 @@ import { createEvent } from "../services/eventHandler.js";
 
 //Create Habits in DOM
 let storage = getStorageAsJSON(EVENT_KEY);
-buildEvent(storage);
+if(storage){
+  buildEvent(storage);
+}
 
 const submitForm = () => {
   let inputs = document.querySelectorAll("form#create-event input");

@@ -10,7 +10,9 @@ import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 
 //Create Todos in DOM
 let storage = getStorageAsJSON(ACTIVITIES_KEY);
-buildTodos(storage);
+if(storage){
+  buildTodos(storage);
+}
 
 const submitForm = () => {
   let inputs = document.querySelectorAll("form#create-todo input");

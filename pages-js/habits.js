@@ -5,7 +5,9 @@ import { buildHabit } from "../builders/habitBuilder.js";
 
 //Create Habits in DOM
 let storage = getStorageAsJSON(HABITS_KEY);
-buildHabit(storage);
+if(storage){
+  buildHabit(storage);
+}
 
 
 const submitForm = () => {
