@@ -53,6 +53,7 @@ header {
   border-radius: 15px;
   padding: 30px;
   background-color: #f3ddd0;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
 }
 
 .index-page-header {
@@ -106,6 +107,7 @@ h1 {
 }
 .card-container .card {
   background-color: #bee7d9;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   border: 0.5px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -145,6 +147,7 @@ h1 {
 
 .under-page-header {
   background: #af7f9f;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   padding: 30px;
   border-radius: 15px;
   border: 1px solid #ccc;
@@ -160,6 +163,71 @@ h1 {
   margin: 15px 0px;
   color: #ffffff;
   font-size: 18px;
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 25px;
+  background: #f1e7e7;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-options {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-title {
+  font-size: 1.2rem;
+  color: #615f5f;
+  margin-left: 4px;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-top: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.add-button {
+  background-color: #a685e2;
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #8b5cf6;
 }
 
 * {
