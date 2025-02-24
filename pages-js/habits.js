@@ -3,6 +3,7 @@ import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../services/habitsHandler.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import {formBuilder} from "../builders/builder.js";
+import { getInputValues } from "../services/inputHandler.js";
 
 
 let habitFormIsBuilt = false;
@@ -15,11 +16,7 @@ if (storage) {
 
 
 const submitForm = () => {
-  let inputs = document.querySelectorAll("form#create-habit input, form#create-habit select");
-  let values = [];
-  inputs.forEach((input) => {
-    values.push(input.value);
-  });
+  let values = getInputValues("form#create-habit");
   let habit = createHabit(values[0], values[1]);
   saveToStorage(HABITS_KEY, habit);
 };

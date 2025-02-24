@@ -8,6 +8,7 @@ import {
 import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../services/eventHandler.js";
 import { formBuilder } from "../builders/builder.js";
+import { getInputValues } from "../services/inputHandler.js";
 
 let eventFormIsBuilt = false;
 
@@ -18,11 +19,7 @@ if (storage) {
 }
 
 const submitForm = () => {
-  let inputs = document.querySelectorAll("form#create-event input");
-  let values = [];
-  inputs.forEach((input) => {
-    values.push(input.value);
-  });
+  let values = getInputValues("form#create-event");
   let event = createEvent(values[0], values[1], values[2]);
   saveToStorage(EVENT_KEY, event);
 };

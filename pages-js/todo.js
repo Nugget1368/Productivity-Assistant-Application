@@ -9,6 +9,7 @@ import { createTodo } from "../services/todoHandler.js";
 import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import {formBuilder} from "../builders/builder.js";
+import { getInputValues } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
 
@@ -19,11 +20,7 @@ if (storage) {
 }
 
 const submitForm = () => {
-  let inputs = document.querySelectorAll("form#create-todo input, form#create-todo select");
-  let values = [];
-  inputs.forEach((input) => {
-    values.push(input.value);
-  });
+  let values = getInputValues("form#create-todo");
   let todo = createTodo(values[0], values[1], values[2], values[3], values[4]);
   saveToStorage(ACTIVITIES_KEY, todo);
 };
