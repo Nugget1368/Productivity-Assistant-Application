@@ -16,4 +16,38 @@ const buildEvent = (events) => {
     });
 }
 
-export {buildEvent}
+
+const buildEventForm = (destionation ="") => {
+    let titleDiv = document.createElement("div");
+    let titleLabel = document.createElement("label");
+    titleLabel.textContent = "Titel";
+    let title = document.createElement("input");
+    title.setAttribute("id", "title");
+    title.required = true;
+    titleDiv.append(titleLabel, title);
+    
+    let startDiv = document.createElement("div");
+    let startLabel = document.createElement("label");
+    startLabel.textContent = "Startdatum";
+    let start = document.createElement("input");
+    start.setAttribute("type", "date");
+    start.setAttribute("value", new Date().toLocaleDateString());
+    start.setAttribute("min", new Date().toLocaleDateString());
+    start.setAttribute("id", "start");
+    startDiv.append(startLabel, start);
+  
+    let endDiv = document.createElement("div");
+    let endLabel = document.createElement("label");
+    endLabel.textContent = "Slutdatum";
+    let end = document.createElement("input");
+    end.setAttribute("type", "date");
+    end.setAttribute("value", new Date().toLocaleDateString());
+    end.setAttribute("min", new Date().toLocaleDateString());
+    end.setAttribute("id", "end");
+    endDiv.append(endLabel, end);
+  
+    let form = document.querySelector(destionation);
+    form.prepend(titleDiv, startDiv, endDiv);
+  };
+
+export {buildEvent, buildEventForm}
