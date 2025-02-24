@@ -8,6 +8,7 @@ import {
 import { createTodo } from "../services/todoHandler.js";
 import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
+import {formBuilder} from "../builders/builder.js";
 
 let todoFormIsBuilt = false;
 
@@ -34,7 +35,8 @@ const modal = document.querySelector("[modal]");
 openModalBtn.addEventListener("click", async() => {
   if(!todoFormIsBuilt){
     let categories = await loadFromJSONAsync(CATEGORIES_KEY);
-    buildTodosForm(categories);
+    formBuilder("dialog[modal] article", "create-todo");
+    buildTodosForm("form#create-todo",categories);
     let submitBtn = document.querySelector("form#create-todo");
     submitBtn.addEventListener("submit", () => submitForm());
     let cancelBtn = document.querySelector("#cancel-btn");

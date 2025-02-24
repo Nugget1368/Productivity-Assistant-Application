@@ -17,13 +17,7 @@ const buildTodos = (todos) => {
   });
 };
 
-const buildTodosForm = (categories = []) => {
-  let modal = document.querySelector("dialog[modal] article");
-  let form = document.createElement("form");
-  form.setAttribute("id", "create-todo")
-  modal.append(form);
-  let h3 = document.querySelector("dialog[modal] h3");
-  h3.textContent = "Lägg Till Aktivitet";
+const buildTodosForm = (destionation ="", categories = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -67,17 +61,8 @@ const buildTodosForm = (categories = []) => {
   deadline.setAttribute("id", "deadline");
   deadlineDiv.append(deadlineLabel, deadline);
 
-  let submitBtn = document.createElement("button");
-  submitBtn.setAttribute("type", "submit");
-  submitBtn.textContent = "Lägg till";
-  let cancelBtn = document.createElement("button");
-  cancelBtn.setAttribute("id", "cancel-btn");
-  cancelBtn.customAttribute = "close-modal"
-  cancelBtn.textContent = "Avbryt";
-  let footer = document.createElement("footer");
-  footer.append(submitBtn, cancelBtn);
-
-  form.append(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv, footer);
+  let form = document.querySelector(destionation);
+  form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
 export { buildTodos, buildTodosForm };
