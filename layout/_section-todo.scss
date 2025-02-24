@@ -88,3 +88,11 @@
   border-radius: 2px;
   box-shadow: $shadow-container;
 }
+
+.container {
+  height: 150px;
+  width: 150px;
+  margin-top: 20px;
+  border: 0.5px solid rgb(218, 215, 215);
+  width: 50%;
+}
