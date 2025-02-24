@@ -28,11 +28,11 @@ const submitForm = () => {
   saveToStorage(ACTIVITIES_KEY, todo);
 };
 
-const openModalBtn = document.querySelector("[open-modal]");
+const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-openModalBtn.addEventListener("click", async() => {
+createBtn.addEventListener("click", async() => {
   if(!todoFormIsBuilt){
     let categories = await loadFromJSONAsync(CATEGORIES_KEY);
     formBuilder("dialog[modal] article", "create-todo");

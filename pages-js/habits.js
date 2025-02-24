@@ -24,11 +24,11 @@ const submitForm = () => {
   saveToStorage(HABITS_KEY, habit);
 };
 
-const openModalBtn = document.querySelector("[open-modal]");
+const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-openModalBtn.addEventListener("click", async() => {
+createBtn.addEventListener("click", async() => {
   if(!habitFormIsBuilt){
     let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
     formBuilder("dialog[modal] article", "create-habit");
