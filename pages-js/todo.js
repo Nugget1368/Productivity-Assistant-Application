@@ -30,6 +30,8 @@ const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
 createBtn.addEventListener("click", async() => {
+  let h3 = document.querySelector("dialog[modal] h3");
+  h3.textContent = "Lägg till ny Aktivitet";
   if(!todoFormIsBuilt){
     let categories = await loadFromJSONAsync(CATEGORIES_KEY);
     formBuilder("dialog[modal] article", "create-todo");
