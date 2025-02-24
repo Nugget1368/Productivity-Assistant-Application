@@ -14,7 +14,6 @@ if (storage) {
   buildHabit(storage);
 }
 
-
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
   let habit = createHabit(values[0], values[1]);
