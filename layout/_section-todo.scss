@@ -9,6 +9,7 @@
   box-shadow: $shadow-container;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .filter-options {
@@ -56,4 +57,34 @@
   &:hover {
     background-color: $add-btn-hover;
   }
+}
+
+//Styling for the modal
+
+#todos ul {
+  max-width: 50%;
+  padding-left: 0;
+
+  li:hover {
+    background-color: plum;
+    cursor: pointer;
+  }
+}
+#todos ul li.selected {
+  background-color: plum;
+}
+.todo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#todos ul li {
+  @include flex($direction: row, $align: flex-start);
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding: 1rem 2rem;
+  border: 0.5px solid rgb(218, 215, 215);
+  border-radius: 2px;
+  box-shadow: $shadow-container;
 }

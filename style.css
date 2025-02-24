@@ -176,6 +176,7 @@ h1 {
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .filter-options {
@@ -228,6 +229,38 @@ h1 {
 }
 .add-button:hover {
   background-color: #8b5cf6;
+}
+
+#todos ul {
+  max-width: 50%;
+  padding-left: 0;
+}
+#todos ul li:hover {
+  background-color: plum;
+  cursor: pointer;
+}
+
+#todos ul li.selected {
+  background-color: plum;
+}
+
+.todo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#todos ul li {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding: 1rem 2rem;
+  border: 0.5px solid rgb(218, 215, 215);
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
 }
 
 * {
