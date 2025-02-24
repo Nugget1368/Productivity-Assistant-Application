@@ -7,15 +7,18 @@ import {
 } from "../services/localstorage.js";
 import { createTodo } from "../services/todoHandler.js";
 import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
+import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
+
+let todoFormIsBuilt = false;
 
 //Create Todos in DOM
 let storage = getStorageAsJSON(ACTIVITIES_KEY);
-if(storage){
+if (storage) {
   buildTodos(storage);
 }
 
 const submitForm = () => {
-  let inputs = document.querySelectorAll("form#create-todo input");
+  let inputs = document.querySelectorAll("form#create-todo input, form#create-todo select");
   let values = [];
   inputs.forEach((input) => {
     values.push(input.value);
@@ -24,15 +27,23 @@ const submitForm = () => {
   saveToStorage(ACTIVITIES_KEY, todo);
 };
 
-let form = document.querySelector("form#create-todo");
-form.addEventListener("submit", () => submitForm());
-
 const openModalBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-openModalBtn.addEventListener("click", () => {
-  // buildTodosForm();
+openModalBtn.addEventListener("click", async() => {
+  if(!todoFormIsBuilt){
+    let categories = await loadFromJSONAsync(CATEGORIES_KEY);
+    buildTodosForm(categories);
+    let submitBtn = document.querySelector("form#create-todo");
+    submitBtn.addEventListener("submit", () => submitForm());
+    let cancelBtn = document.querySelector("#cancel-btn");
+    cancelBtn.addEventListener("click", (event) =>{
+      event.preventDefault();
+      modal.close();
+    });
+    todoFormIsBuilt = true;
+  }
   modal.showModal();
 });
 
