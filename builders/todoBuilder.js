@@ -58,6 +58,9 @@ const buildTodosForm = (destionation ="", categories = []) => {
   let deadlineLabel = document.createElement("label");
   deadlineLabel.textContent = "Deadline";
   let deadline = document.createElement("input");
+  deadline.setAttribute("type", "date");
+  deadline.setAttribute("value", new Date().toLocaleDateString());
+  deadline.setAttribute("min", new Date().toLocaleDateString());
   deadline.setAttribute("id", "deadline");
   deadlineDiv.append(deadlineLabel, deadline);
 
