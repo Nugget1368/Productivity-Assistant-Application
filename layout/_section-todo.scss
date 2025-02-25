@@ -1,7 +1,6 @@
 @import "../partials-scss/_coloring.scss";
 @import "../partials-scss/_mixins.scss";
 
-
 .filter-container {
   @include flex($direction: row, $justify: space-between);
   padding: 25px;
@@ -57,70 +56,63 @@
   }
 }
 
-#todos {
-  @include flex($direction: row, $justify: space-between);
-  gap: 70px;
-  
-  .container {
-    height: 450px;
-    width: 50%;
-    margin-top: 0.5rem;
-    padding: 1rem 2rem;
-    border: 1px solid rgb(218, 215, 215);
-    position: relative;
-    
-    header {
-      all: unset;
-      font-size: 2rem;
-    }
-
-    #todo-popup-info {
-      max-height: 100px;
-      margin: 1rem 0 2rem 0;
-    }
-
-    #todo-popup-status ul {
-        all: revert;
-        @include flex($direction: column);
-        padding: 0;
-
-        li {
-          all: revert;
-          list-style: none;
-          margin-bottom: 0.5rem;
-        }
-      }
-    
-    #todo-popup-btns {
-      @include flex($direction: row, $justify: space-around);
-      position: absolute;
-      bottom: 3rem;
-      right: 0;
-      left: 0;
-    }
-  }
+//pop-up höger del
+.container-wrapper {
+  @include flex($direction: row, $justify: space-between, $align: flex-start);
+  gap: 50px;
+  margin-top: 1.5rem;
 }
 
-#todos ul {
+.todos-right {
+  box-shadow: $shadow-container;
+  height: 450px;
   width: 50%;
-  padding-left: 0;
+  padding: 1rem 2rem;
+  border: 1px solid rgb(218, 215, 215);
+  position: relative;
+}
 
-  li:hover {
-    background-color: plum;
-    cursor: pointer;
+.todos-right header {
+  all: unset;
+  font-size: 2rem;
+}
+
+#todo-popup-info {
+  max-height: 100px;
+  margin: 1rem 0 2rem 0;
+}
+
+#todo-popup-status {
+  ul {
+    all: revert;
+    @include flex($direction: column);
+    padding: 0;
+  }
+
+  li {
+    all: revert;
+    list-style: none;
+    margin-bottom: 0.5rem;
   }
 }
 
-#todos ul li.selected {
-  background-color: plum;
+#todo-popup-btns {
+  @include flex($direction: row, $justify: space-around);
+  position: absolute;
+  bottom: 3rem;
+  right: 0;
+  left: 0;
 }
 
-.todo-wrapper {
-  @include flex($direction: row, $align: center);
-  gap: 10px;
+#todos {
+  width: 50%;
 }
 
-#todos ul li {
+#todos > ul {
+  padding-left: 0;
+}
+
+#todos li {
   @include flex($direction: row, $align: flex-start);
   justify-content: space-between;
   margin-top: 0.5rem;
@@ -129,4 +121,18 @@
   border-radius: 2px;
   box-shadow: $shadow-container;
   text-transform: capitalize;
+}
+
+#todos li:hover {
+  background-color: plum;
+  cursor: pointer;
+}
+
+#todos li.selected {
+  background-color: plum;
+}
+
+.todo-wrapper {
+  @include flex($direction: row, $align: center);
+  gap: 10px;
 }

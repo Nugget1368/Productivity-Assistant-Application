@@ -228,30 +228,35 @@ h1 {
   background-color: #8b5cf6;
 }
 
-#todos {
+.container-wrapper {
   display: flex;
   flex-flow: row;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 70px;
+  gap: 50px;
+  margin-top: 1.5rem;
 }
-#todos .container {
+
+.todos-right {
+  box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   height: 450px;
   width: 50%;
-  margin-top: 0.5rem;
   padding: 1rem 2rem;
   border: 1px solid rgb(218, 215, 215);
   position: relative;
 }
-#todos .container header {
+
+.todos-right header {
   all: unset;
   font-size: 2rem;
 }
-#todos .container #todo-popup-info {
+
+#todo-popup-info {
   max-height: 100px;
   margin: 1rem 0 2rem 0;
 }
-#todos .container #todo-popup-status ul {
+
+#todo-popup-status ul {
   all: revert;
   display: flex;
   flex-flow: column;
@@ -259,12 +264,13 @@ h1 {
   justify-content: flex-start;
   padding: 0;
 }
-#todos .container #todo-popup-status ul li {
+#todo-popup-status li {
   all: revert;
   list-style: none;
   margin-bottom: 0.5rem;
 }
-#todos .container #todo-popup-btns {
+
+#todo-popup-btns {
   display: flex;
   flex-flow: row;
   align-items: stretch;
@@ -275,28 +281,15 @@ h1 {
   left: 0;
 }
 
-#todos ul {
+#todos {
   width: 50%;
+}
+
+#todos > ul {
   padding-left: 0;
 }
-#todos ul li:hover {
-  background-color: plum;
-  cursor: pointer;
-}
 
-#todos ul li.selected {
-  background-color: plum;
-}
-
-.todo-wrapper {
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-#todos ul li {
+#todos li {
   display: flex;
   flex-flow: row;
   align-items: flex-start;
@@ -308,6 +301,23 @@ h1 {
   border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   text-transform: capitalize;
+}
+
+#todos li:hover {
+  background-color: plum;
+  cursor: pointer;
+}
+
+#todos li.selected {
+  background-color: plum;
+}
+
+.todo-wrapper {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 * {
