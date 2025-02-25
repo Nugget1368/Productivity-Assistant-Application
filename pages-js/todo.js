@@ -58,14 +58,22 @@ closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
 
+//If checkbox valuse is changed
 let checkboxes = document.querySelectorAll("ul input[type=checkbox]");
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-      let listItemId = event.currentTarget.parentElement.parentElement.id;
-      alert('checked ' + listItemId);
-    } else {
-      alert('not checked');
+    if (event.currentTarget.checked) {    //If checbox is checked
+      let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
+      let storage = getStorageAsJSON(ACTIVITIES_KEY);
+      let newObj = storage.find((element) => element.id == listItemId);
+      newObj.status = true;
+      editStorage(ACTIVITIES_KEY, newObj);
+    } else {     //If checbox is NOT checked
+      let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
+      let storage = getStorageAsJSON(ACTIVITIES_KEY);
+      let newObj = storage.find((element) => element.id == listItemId);
+      newObj.status = false;
+      editStorage(ACTIVITIES_KEY, newObj);
     }
   })
 });

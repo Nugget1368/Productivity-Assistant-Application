@@ -13,7 +13,6 @@ const buildTodos = (todos) => {
     checkbox.value = todo.status;
     checkbox.checked = todo.status;
     title.textContent = todo.title;
-    title.setAttribute("for", todo.id);
     deadline.textContent = "Deadline: " + todo.deadline;
     li.append(wrapperDiv, deadline);
     wrapperDiv.append(checkbox, title);
