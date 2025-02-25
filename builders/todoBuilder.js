@@ -28,7 +28,7 @@ const buildTodos = (todos) => {
   });
 };
 
-const buildTodosForm = (destionation ="", categories = []) => {
+const buildTodosForm = (destionation = "", categories = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -56,7 +56,7 @@ const buildTodosForm = (destionation ="", categories = []) => {
   let categoryLabel = document.createElement("label");
   categoryLabel.textContent = "Kategori";
   let category = document.createElement("select");
-  categories.forEach((c) =>{
+  categories.forEach((c) => {
     let option = document.createElement("option");
     option.setAttribute("id", `category-${c.id}`);
     option.textContent = c.title;
