@@ -6,7 +6,7 @@ import {
   editStorage,
 } from "../services/localstorage.js";
 import { createTodo } from "../services/todoHandler.js";
-import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
+import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import {formBuilder} from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
@@ -69,3 +69,7 @@ checkboxes.forEach(checkbox => {
     editStorage(ACTIVITIES_KEY, newObj);
   })
 });
+
+//Categories Dropdown
+let categories = await loadFromJSONAsync(CATEGORIES_KEY);
+buildCategoriesDropdownAsync("#categories-dropdown", categories);

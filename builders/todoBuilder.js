@@ -78,4 +78,14 @@ const buildTodosForm = (destionation = "", categories = []) => {
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
-export { buildTodos, buildTodosForm };
+const buildCategoriesDropdownAsync = async(destination ="", categories = []) => {
+  let categoriesDropdown = document.querySelector(`select${destination}`);
+  categories.forEach(category => {
+    let option = document.createElement("option")
+    option.textContent = category.title;
+    option.setAttribute("id", `category-${category.id}`);
+    categoriesDropdown.append(option);
+  });
+}
+
+export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync };
