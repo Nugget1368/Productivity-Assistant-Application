@@ -121,6 +121,11 @@
   border-radius: 2px;
   box-shadow: $shadow-container;
   text-transform: capitalize;
+  
+   &.done-todo {
+    text-decoration: line-through;
+    background-color: $marked-as-done-gray;
+  }
 }
 
 #todos li:hover {

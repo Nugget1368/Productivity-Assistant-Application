@@ -302,6 +302,10 @@ h1 {
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   text-transform: capitalize;
 }
+#todos li.done-todo {
+  text-decoration: line-through;
+  background-color: rgb(211, 211, 211);
+}
 
 #todos li:hover {
   background-color: plum;
