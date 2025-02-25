@@ -25,8 +25,7 @@ const submitForm = () => {
   saveToStorage(ACTIVITIES_KEY, todo);
 };
 
-const createBtn = document.querySelector("[open-modal].create-btn");
-const editBtn = document.querySelector("[open-modal].edit-btn");
+const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
@@ -68,5 +67,34 @@ checkboxes.forEach((checkbox) => {
     let newObj = storage.find((element) => element.id == listItemId);
     newObj.status = event.currentTarget.checked;
     editStorage(ACTIVITIES_KEY, newObj);
+  });
+});
+
+let todos = document.querySelectorAll("article#todos ul li");
+todos.forEach((todo) => {
+  todo.addEventListener("click", (event) => {
+    let listItemId = event.currentTarget.id;
+    let storage = getStorageAsJSON(ACTIVITIES_KEY);
+    let newObj = storage.find((element) => element.id == listItemId);
+    console.log("Objekt i localStorage som matchar id: ");
+    console.log(newObj);
+
+    let h2 = document.querySelector("#todo-popup-h2");
+    h2.textContent = newObj.title;
+    let p = document.querySelector("#todo-popup-info p");
+    p.textContent = newObj.description;
+    let ul = document.querySelector("#todo-popup-status ul");
+    ul.innerHTML = "";
+    let status = document.createElement("li");
+    status.textContent = newObj.status ? "Slutförd" : "Ej slutförd";
+    let deadline = document.createElement("li");
+    deadline.textContent = newObj.deadline;
+
+    let time = document.createElement("li");
+    time.textContent = newObj.time + " timmar";
+
+    let category = document.createElement("li");
+    category.textContent = newObj.category;
+    ul.append(status, deadline, time, category);
   });
 });
