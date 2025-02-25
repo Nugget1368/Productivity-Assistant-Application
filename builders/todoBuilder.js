@@ -5,15 +5,14 @@ const buildTodos = (todos) => {
     wrapperDiv.classList.add("todo-wrapper");
 
     let li = document.createElement("li");
+    li.setAttribute("id", todo.id);
     let checkbox = document.createElement("input");
     let title = document.createElement("label");
     let deadline = document.createElement("label");
     checkbox.type = "checkbox";
-    checkbox.setAttribute("id", todo.id);
     checkbox.value = todo.status;
     checkbox.checked = todo.status;
     title.textContent = todo.title;
-    title.setAttribute("for", todo.id);
     deadline.textContent = "Deadline: " + todo.deadline;
     li.append(wrapperDiv, deadline);
     wrapperDiv.append(checkbox, title);
@@ -28,7 +27,7 @@ const buildTodos = (todos) => {
   });
 };
 
-const buildTodosForm = (destionation ="", categories = []) => {
+const buildTodosForm = (destionation = "", categories = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -56,7 +55,7 @@ const buildTodosForm = (destionation ="", categories = []) => {
   let categoryLabel = document.createElement("label");
   categoryLabel.textContent = "Kategori";
   let category = document.createElement("select");
-  categories.forEach((c) =>{
+  categories.forEach((c) => {
     let option = document.createElement("option");
     option.setAttribute("id", `category-${c.id}`);
     option.textContent = c.title;

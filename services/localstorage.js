@@ -21,8 +21,8 @@ const saveToStorage = (storageName, obj) => {
 };
 
 const editStorage = (storageName, obj) => {
-    if(localStorage.getItem(ACTIVITIES_KEY)){
-        let storage = getStorageAsJSON(ACTIVITIES_KEY);
+    if(localStorage.getItem(storageName)){
+        let storage = getStorageAsJSON(storageName);
         storage = storage.map((element) => (element.id === obj.id ? obj : element));     // Search for similiar id, in that case EDIT that object
         localStorage.setItem(storageName, JSON.stringify(storage));
     }
@@ -34,7 +34,7 @@ const deleteFromStorage = (storageName, id) => {
   //Filter out the values that don't have the id we'd like to delete
   storage = storage.filter((element) => element.id !== id);
   //save the new storage-array
-  localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(storage));
+  localStorage.setItem(storageName, JSON.stringify(storage));
 };
 
 export { saveToStorage, deleteFromStorage, getStorageAsJSON, editStorage, ACTIVITIES_KEY, HABITS_KEY, EVENT_KEY };
