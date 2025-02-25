@@ -62,18 +62,10 @@ closeModalBtn.addEventListener("click", () => {
 let checkboxes = document.querySelectorAll("ul input[type=checkbox]");
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {    //If checbox is checked
-      let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
-      let storage = getStorageAsJSON(ACTIVITIES_KEY);
-      let newObj = storage.find((element) => element.id == listItemId);
-      newObj.status = true;
-      editStorage(ACTIVITIES_KEY, newObj);
-    } else {     //If checbox is NOT checked
-      let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
-      let storage = getStorageAsJSON(ACTIVITIES_KEY);
-      let newObj = storage.find((element) => element.id == listItemId);
-      newObj.status = false;
-      editStorage(ACTIVITIES_KEY, newObj);
-    }
+    let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
+    let storage = getStorageAsJSON(ACTIVITIES_KEY);
+    let newObj = storage.find((element) => element.id == listItemId);
+    newObj.status = event.currentTarget.checked;
+    editStorage(ACTIVITIES_KEY, newObj);
   })
 });
