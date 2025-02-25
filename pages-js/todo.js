@@ -59,7 +59,7 @@ closeModalBtn.addEventListener("click", () => {
 });
 
 //If checkbox valuse is changed
-let checkboxes = document.querySelectorAll("ul input[type=checkbox]");
+let checkboxes = document.querySelectorAll("article#todos ul input[type=checkbox]");
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', (event) => {
     let listItemId = event.currentTarget.parentElement.parentElement.id;  //Reach grandparent (llist-item) id
