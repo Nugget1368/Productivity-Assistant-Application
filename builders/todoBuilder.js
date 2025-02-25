@@ -5,11 +5,11 @@ const buildTodos = (todos) => {
     wrapperDiv.classList.add("todo-wrapper");
 
     let li = document.createElement("li");
+    li.setAttribute("id", todo.id);
     let checkbox = document.createElement("input");
     let title = document.createElement("label");
     let deadline = document.createElement("label");
     checkbox.type = "checkbox";
-    checkbox.setAttribute("id", todo.id);
     checkbox.value = todo.status;
     checkbox.checked = todo.status;
     title.textContent = todo.title;
