@@ -133,7 +133,7 @@ sortDropdown.addEventListener("change", () => {
   let li = document.querySelector("#todos ul").childNodes;
   let run = true;
   //Sort on deadline
-  //NEEDS IMPROVEMENT
+  //NEEDS IMPROVEMENT - Måste kanske hämta listan från storage ändå? - kommer inte sortera på tidsestimat
   while(run){
     run = false;
     for (let x = 0; x < li.length - 1; x++) {
