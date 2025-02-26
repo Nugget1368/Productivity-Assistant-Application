@@ -81,4 +81,8 @@ const buildTodosForm = (destionation = "", categories = []) => {
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
+const buildSortDropdown = () =>{
+  let sortOptions = ["Datum", "Tidsestimat (lägst)", "Tidsestimat (högst)", "Slutförda", "Ej Slutförda"];
+}
+
 export { buildTodos, buildTodosForm };
