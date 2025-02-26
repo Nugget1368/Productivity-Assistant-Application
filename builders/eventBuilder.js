@@ -1,5 +1,5 @@
 const buildEvent = (events) => {
-  let ul = document.querySelector("article#todos ul");
+  let ul = document.querySelector("article#event-planner-todos ul");
   events.forEach((event) => {
     let li = document.createElement("li");
     let card = document.createElement("article");
