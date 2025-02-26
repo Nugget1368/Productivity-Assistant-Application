@@ -81,20 +81,24 @@ todos.forEach((todo) => {
 
     let h2 = document.querySelector("#todo-popup-h2");
     h2.textContent = newObj.title;
+
     let p = document.querySelector("#todo-popup-info p");
-    p.textContent = newObj.description;
+    p.textContent = "Beskrivning: " + newObj.description;
+
     let ul = document.querySelector("#todo-popup-status ul");
     ul.innerHTML = "";
+
     let status = document.createElement("li");
-    status.textContent = newObj.status ? "Slutförd" : "Ej slutförd";
+    status.textContent = newObj.status ? "Status: Slutförd" : "Status: Ej slutförd";
+
     let deadline = document.createElement("li");
-    deadline.textContent = newObj.deadline;
+    deadline.textContent = "Deadline: " + newObj.deadline;
 
     let time = document.createElement("li");
-    time.textContent = newObj.time + " timmar";
+    time.textContent = "Tidsestimering: " + newObj.time + " timmar";
 
     let category = document.createElement("li");
-    category.textContent = newObj.category;
+    category.textContent = "Kategori: " + newObj.category;
     ul.append(status, deadline, time, category);
   });
 });
