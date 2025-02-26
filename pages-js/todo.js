@@ -8,7 +8,7 @@ import {
 import { createTodo } from "../services/todoHandler.js";
 import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import {formBuilder, emptyField} from "../builders/builder.js";
+import {formBuilder} from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
@@ -79,7 +79,6 @@ categoryDrop.addEventListener("change", () =>{
   let storage = getStorageAsJSON(ACTIVITIES_KEY);
   storage = storage.filter((element) => element.category === value);
   console.log(storage);
-  // emptyField("#todos ul");
   let ul = document.querySelector("#todos ul");
   console.log(ul);
   ul.innerHTML = "";
