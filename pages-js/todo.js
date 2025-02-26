@@ -8,7 +8,7 @@ import {
 import { createTodo } from "../services/todoHandler.js";
 import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import {formBuilder} from "../builders/builder.js";
+import {formBuilder, emptyField} from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
@@ -73,3 +73,15 @@ checkboxes.forEach(checkbox => {
 //Categories Dropdown
 let categories = await loadFromJSONAsync(CATEGORIES_KEY);
 buildCategoriesDropdownAsync("#categories-dropdown", categories);
+let categoryDrop = document.querySelector("select#categories-dropdown");
+categoryDrop.addEventListener("change", () =>{
+  let value = categoryDrop.value;
+  let storage = getStorageAsJSON(ACTIVITIES_KEY);
+  storage = storage.filter((element) => element.category === value);
+  console.log(storage);
+  // emptyField("#todos ul");
+  let ul = document.querySelector("#todos ul");
+  console.log(ul);
+  ul.innerHTML = "";
+  buildTodos(storage);
+})
