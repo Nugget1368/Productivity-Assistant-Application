@@ -152,12 +152,17 @@
 #todos li {
   @include flex($direction: row, $align: flex-start);
   justify-content: space-between;
-  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding: 1rem 2rem;
   border: 0.5px solid rgb(218, 215, 215);
   border-radius: 2px;
   box-shadow: $shadow-container;
   text-transform: capitalize;
+  
+   &.done-todo {
+    text-decoration: line-through;
+    background-color: $marked-as-done-gray;
+  }
 }
 
 #todos li:hover {

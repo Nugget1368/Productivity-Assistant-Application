@@ -11,6 +11,9 @@ const buildTodos = (todos) => {
     let deadline = document.createElement("label");
     checkbox.type = "checkbox";
     checkbox.value = todo.status;
+    if (todo.status) {
+      li.classList.add("done-todo");
+    }
     checkbox.checked = todo.status;
     title.textContent = todo.title;
     deadline.textContent = "Deadline: " + todo.deadline;
