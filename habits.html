@@ -13,6 +13,7 @@
       <nav>
         <div class="wrap-nav">
           <h2 class="h2-sidebar">Project Name</h2>
+
           <ul>
             <li class="list-items-styling">
               <i class="fa-solid fa-house"></i>
@@ -23,12 +24,12 @@
               <a href="habits.html">Rutiner</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Aktiviteter</a>
+              <i class="fa-regular fa-calendar"></i>
+              <a href="todo.html">Aktiviteter</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Händelser</a>
+              <i class="fa-solid fa-star"></i>
+              <a href="event-planner.html">Event Planner</a>
             </li>
           </ul>
         </div>
@@ -42,19 +43,39 @@
     </aside>
     <main>
       <header class="under-page-header">
-        <h1>Vanor</h1>
-        <p>Hantera dina vanor</p>
+        <h1>Rutiner</h1>
+        <p>Hantera dina rutiner</p>
       </header>
-      <button open-modal>Lägg till Rutin</button>
-        <section class="card-container"></section>
+
+      <section class="filter-container">
+        <div class="filter-options">
+          <div class="filter-group">
+            <h3 class="filter-title">Sortera</h3>
+            <label for="sortering"></label>
+            <select class="dropdown">
+              <option value="">Välj sortering</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h3 class="filter-title">Prioritera</h3>
+            <label for="kategori"></label>
+            <select class="dropdown">
+              <option value="">Välj prioritering</option>
+            </select>
+          </div>
+        </div>
+        <button open-modal class="add-button">+ Lägg till rutin</button>
+      </section>
+
+      <section class="card-container"></section>
     </main>
     <dialog modal>
       <span close-modal>X</span>
       <header>
         <h3></h3>
       </header>
-      <article>
-      </article>
+      <article></article>
     </dialog>
-</body>
+  </body>
 </html>
