@@ -85,4 +85,14 @@ const buildSortDropdown = () =>{
   let sortOptions = ["Datum", "Tidsestimat (lägst)", "Tidsestimat (högst)", "Slutförda", "Ej Slutförda"];
 }
 
-export { buildTodos, buildTodosForm };
+const buildCategoriesDropdownAsync = async(destination ="", categories = []) => {
+  let categoriesDropdown = document.querySelector(`select${destination}`);
+  categories.forEach(category => {
+    let option = document.createElement("option")
+    option.textContent = category.title;
+    option.setAttribute("id", `category-${category.id}`);
+    categoriesDropdown.append(option);
+  });
+}
+
+export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync };
