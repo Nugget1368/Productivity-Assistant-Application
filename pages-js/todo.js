@@ -73,6 +73,7 @@ checkboxes.forEach(checkbox => {
 //Categories Dropdown
 let categories = await loadFromJSONAsync(CATEGORIES_KEY);
 buildCategoriesDropdownAsync("#categories-dropdown", categories);
+//Event-handling
 let categoryDrop = document.querySelector("select#categories-dropdown");
 categoryDrop.addEventListener("change", () => {  //When category is changed
   let ul = document.querySelector("#todos ul");
