@@ -14,7 +14,7 @@
 
 .filter-options {
   @include flex($direction: row, $justify: space-between);
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -36,10 +36,28 @@
   cursor: pointer;
 }
 
+// Det här är checkboxar för todo-sidan
 .checkbox-group {
-  padding-top: 30px;
   @include flex($direction: column, $justify: space-between, $align: center);
+  padding-top: 30px;
   gap: 5px;
+}
+
+// Det här radio-btns för event-planner-sidan
+.radio-group {
+  @include flex($direction: column, $justify: space-between, $align: center);
+  gap: 75px;
+
+  label {
+    font-size: 1.2rem;
+    align-items: center;
+  }
+
+  input[type="radio"] {
+    align-items: center;
+    scale: (1.5);
+    margin-right: 8px;
+  }
 }
 
 .add-button {
@@ -157,8 +175,8 @@
   border-radius: 2px;
   box-shadow: $shadow-container;
   text-transform: capitalize;
-  
-   &.done-todo {
+
+  &.done-todo {
     text-decoration: line-through;
     background-color: $marked-as-done-gray;
   }
