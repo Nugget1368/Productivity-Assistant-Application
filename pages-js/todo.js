@@ -8,7 +8,7 @@ import {
 import { createTodo } from "../services/todoHandler.js";
 import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import {formBuilder} from "../builders/builder.js";
+import { formBuilder } from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
@@ -29,22 +29,22 @@ const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-createBtn.addEventListener("click", async() => {
+createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Lägg till ny Aktivitet";
-  if(!todoFormIsBuilt){
+  if (!todoFormIsBuilt) {
     //Get categories
     let categories = await loadFromJSONAsync(CATEGORIES_KEY);
     //Build Form in popup
     formBuilder("dialog[modal] article", "create-todo");
     //Build Todo-form inputfields
-    buildTodosForm("form#create-todo",categories);
+    buildTodosForm("form#create-todo", categories);
     //On submit in form
     let submitBtn = document.querySelector("form#create-todo");
     submitBtn.addEventListener("submit", () => submitForm());
     //Cancel submit
     let cancelBtn = document.querySelector("#cancel-btn");
-    cancelBtn.addEventListener("click", (event) =>{
+    cancelBtn.addEventListener("click", (event) => {
       event.preventDefault();
       modal.close();
     });
@@ -74,11 +74,16 @@ checkboxes.forEach(checkbox => {
 let categories = await loadFromJSONAsync(CATEGORIES_KEY);
 buildCategoriesDropdownAsync("#categories-dropdown", categories);
 let categoryDrop = document.querySelector("select#categories-dropdown");
-categoryDrop.addEventListener("change", () =>{
-  let value = categoryDrop.value;
-  let storage = getStorageAsJSON(ACTIVITIES_KEY);
-  storage = storage.filter((element) => element.category === value);
+categoryDrop.addEventListener("change", () => {  //When category is changed
   let ul = document.querySelector("#todos ul");
   ul.innerHTML = "";
+  if(categoryDrop.value === "Ingen vald..."){
+    storage = getStorageAsJSON(ACTIVITIES_KEY);
+  }
+  else{
+    let value = categoryDrop.value;
+    storage = getStorageAsJSON(ACTIVITIES_KEY);
+    storage = storage.filter((element) => element.category === value);
+  }
   buildTodos(storage);
 })
