@@ -78,9 +78,7 @@ categoryDrop.addEventListener("change", () =>{
   let value = categoryDrop.value;
   let storage = getStorageAsJSON(ACTIVITIES_KEY);
   storage = storage.filter((element) => element.category === value);
-  console.log(storage);
   let ul = document.querySelector("#todos ul");
-  console.log(ul);
   ul.innerHTML = "";
   buildTodos(storage);
 })
