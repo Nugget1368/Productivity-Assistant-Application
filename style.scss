@@ -12,18 +12,20 @@
   box-sizing: border-box;
 }
 
+body, main{
+  min-height: 100vh;
+}
+
 body {
   display: flex;
   flex-grow: 1;
-  height: 100vh;
   background-color: $background;
 }
 
 main {
   @include flex($direction: column);
-  width: 100vw;
+  width: 100%;
   padding: 1rem 2rem;
-  align-items: left;
 }
 
 dialog {
