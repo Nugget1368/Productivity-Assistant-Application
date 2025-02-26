@@ -6,10 +6,10 @@ import {
   editStorage,
 } from "../services/localstorage.js";
 import { createTodo } from "../services/todoHandler.js";
-import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
+import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
+import { getInputValues, filterCategoryList } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
 
@@ -113,3 +113,15 @@ todos.forEach((todo) => {
     status.textContent = checkbox.checked ? "Status: Slutförd" : "Status: Ej slutförd";
   });
 });
+
+//Categories Dropdown
+let categories = await loadFromJSONAsync(CATEGORIES_KEY);
+buildCategoriesDropdownAsync("#categories-dropdown", categories);
+//Event-handling
+let categoryDrop = document.querySelector("select#categories-dropdown");
+categoryDrop.addEventListener("change", () => {  //When category is changed
+  let ul = document.querySelector("#todos ul");
+  ul.innerHTML = "";
+  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY);
+  buildTodos(storage);
+})
