@@ -23,12 +23,12 @@
               <a href="habits.html">Rutiner</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Aktiviteter</a>
+              <i class="fa-regular fa-calendar"></i>
+              <a href="todo.html">Aktiviteter</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Händelser</a>
+              <i class="fa-solid fa-star"></i>
+              <a href="event-planner.html">Event Planner</a>
             </li>
           </ul>
         </div>
@@ -42,20 +42,41 @@
     </aside>
     <main>
       <header class="under-page-header">
-        <h1>Aktiviteter</h1>
-        <p>Hantera dina aktiviteter</p>
+        <h1>Event planerare</h1>
+        <p>Hantera dina event</p>
       </header>
-      <button open-modal>Lägg till Event</button>
+      <section class="filter-container">
+        <div class="filter-options">
+          <div class="radio-group">
+            <label for="showCompleted">
+              <input type="radio" id="showCompleted" name="showCompleted" />
+              Visa alla event
+            </label>
+          </div>
+          <div class="radio-group">
+            <label for="showCompleted">
+              <input type="radio" id="showCompleted" name="showCompleted" />
+              Kommande event
+            </label>
+          </div>
+          <div class="radio-group">
+            <label for="showCompleted">
+              <input type="radio" id="showCompleted" name="showCompleted" />
+              Tidigare event
+            </label>
+          </div>
+        </div>
+        <button open-modal class="add-button">+ Nytt event</button>
+      </section>
       <section class="card-container"></section>
     </main>
-    
-  <dialog modal>
-    <span close-modal>X</span>
-    <header>
-      <h3></h3>
-    </header>
-    <article>
-    </article>
-  </dialog>
+
+    <dialog modal>
+      <span close-modal>X</span>
+      <header>
+        <h3></h3>
+      </header>
+      <article></article>
+    </dialog>
   </body>
 </html>

@@ -184,7 +184,7 @@ h1 {
   flex-flow: row;
   align-items: stretch;
   justify-content: space-between;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -207,12 +207,29 @@ h1 {
 }
 
 .checkbox-group {
-  padding-top: 30px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
+  padding-top: 30px;
   gap: 5px;
+}
+
+.radio-group {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 75px;
+}
+.radio-group label {
+  font-size: 1.2rem;
+  align-items: center;
+}
+.radio-group input[type=radio] {
+  align-items: center;
+  scale: 1.5;
+  margin-right: 8px;
 }
 
 .add-button {

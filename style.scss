@@ -4,7 +4,7 @@
 @import "./layout/_header-index.scss";
 @import "./layout/_cards-index.scss";
 @import "./layout/_header-underpages.scss";
-@import "./layout/_section-todo.scss";
+@import "./layout/_section-underpages.scss";
 
 * {
   margin: 0;
@@ -25,22 +25,22 @@ main {
   align-items: left;
 }
 
-dialog{
+dialog {
   // @include flex(column);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  article >*{
+  article > * {
     @include flex(column);
   }
-  header{
+  header {
     @include flex();
     background-color: transparent;
     border: none;
     height: fit-content;
   }
-  span{
+  span {
     cursor: pointer;
   }
 }
