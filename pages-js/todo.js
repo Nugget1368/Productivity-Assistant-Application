@@ -9,7 +9,7 @@ import { createTodo } from "../services/todoHandler.js";
 import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
+import { getInputValues, filterCategoryList } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
 
@@ -77,13 +77,6 @@ let categoryDrop = document.querySelector("select#categories-dropdown");
 categoryDrop.addEventListener("change", () => {  //When category is changed
   let ul = document.querySelector("#todos ul");
   ul.innerHTML = "";
-  if(categoryDrop.value === "Ingen vald..."){
-    storage = getStorageAsJSON(ACTIVITIES_KEY);
-  }
-  else{
-    let value = categoryDrop.value;
-    storage = getStorageAsJSON(ACTIVITIES_KEY);
-    storage = storage.filter((element) => element.category === value);
-  }
+  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY);
   buildTodos(storage);
 })
