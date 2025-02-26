@@ -6,7 +6,7 @@ import {
   editStorage,
 } from "../services/localstorage.js";
 import { createTodo } from "../services/todoHandler.js";
-import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
+import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm, buildSortDropdown } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, filterCategoryList } from "../services/inputHandler.js";
@@ -107,7 +107,7 @@ todos.forEach((todo) => {
     category.textContent = "Kategori: " + newObj.category;
     ul.append(status, deadline, time, category);
   });
-  todo.addEventListener("change", (event) =>{
+  todo.addEventListener("change", (event) => {
     let checkbox = event.target;
     let status = document.querySelector("li.status")
     status.textContent = checkbox.checked ? "Status: Slutförd" : "Status: Ej slutförd";
@@ -125,3 +125,35 @@ categoryDrop.addEventListener("change", () => {  //When category is changed
   storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY);
   buildTodos(storage);
 })
+
+//Sort Dropdown
+buildSortDropdown("#sort-dropdown");
+let sortDropdown = document.querySelector("select#sort-dropdown");
+sortDropdown.addEventListener("change", () => {
+  let li = document.querySelector("#todos ul").childNodes;
+  let run = true;
+  //Sort on deadline
+  //NEEDS IMPROVEMENT
+  while(run){
+    run = false;
+    for (let x = 0; x < li.length - 1; x++) {
+      let current = li[x].childNodes[1].textContent.split(" ");
+      let next = li[x + 1].childNodes[1].textContent.split(" ");
+      if (current[current.length - 1] > next[next.length - 1]) {
+        li[x].parentNode.insertBefore(li[x + 1], li[x]);
+        run = true;
+        break;
+      }
+    }
+  }
+})
+
+/*
+let childnodes = document.querySelector("#todos ul").childNodes;
+  childnodes.forEach((node) => {
+    let text = node.childNodes[1].textContent.split(" ");
+    let dateString = text[text.length-1];
+    console.log(dateString);
+    //Sort
+  })
+*/
