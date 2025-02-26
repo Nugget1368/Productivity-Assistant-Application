@@ -83,8 +83,6 @@ todos.forEach((todo) => {
     let listItemId = event.currentTarget.id;
     let storage = getStorageAsJSON(ACTIVITIES_KEY);
     let newObj = storage.find((element) => element.id == listItemId);
-    console.log("Objekt i localStorage som matchar id: ");
-    console.log(newObj);
 
     let h2 = document.querySelector("#todo-popup-h2");
     h2.textContent = newObj.title;
@@ -96,6 +94,7 @@ todos.forEach((todo) => {
     ul.innerHTML = "";
 
     let status = document.createElement("li");
+    status.classList.add("status")
     status.textContent = newObj.status ? "Status: Slutförd" : "Status: Ej slutförd";
 
     let deadline = document.createElement("li");
@@ -107,5 +106,10 @@ todos.forEach((todo) => {
     let category = document.createElement("li");
     category.textContent = "Kategori: " + newObj.category;
     ul.append(status, deadline, time, category);
+  });
+  todo.addEventListener("change", (event) =>{
+    let checkbox = event.target;
+    let status = document.querySelector("li.status")
+    status.textContent = checkbox.checked ? "Status: Slutförd" : "Status: Ej slutförd";
   });
 });
