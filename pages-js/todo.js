@@ -129,31 +129,11 @@ categoryDrop.addEventListener("change", () => {  //When category is changed
 //Sort Dropdown
 buildSortDropdown("#sort-dropdown");
 let sortDropdown = document.querySelector("select#sort-dropdown");
-sortDropdown.addEventListener("change", () => {
-  let li = document.querySelector("#todos ul").childNodes;
-  let run = true;
-  //Sort on deadline
-  //NEEDS IMPROVEMENT - Måste kanske hämta listan från storage ändå? - kommer inte sortera på tidsestimat
-  while(run){
-    run = false;
-    for (let x = 0; x < li.length - 1; x++) {
-      let current = li[x].childNodes[1].textContent.split(" ");
-      let next = li[x + 1].childNodes[1].textContent.split(" ");
-      if (current[current.length - 1] > next[next.length - 1]) {
-        li[x].parentNode.insertBefore(li[x + 1], li[x]);
-        run = true;
-        break;
-      }
-    }
-  }
+sortDropdown.addEventListener("change", async () => {
+  let ul = document.querySelector("#todos ul");
+  ul.innerHTML = "";
+  //Method starts here
+  storage = storage.sort((a, b) => a.deadline.localeCompare(b.deadline));
+  console.log(storage);
+  buildTodos(storage);
 })
-
-/*
-let childnodes = document.querySelector("#todos ul").childNodes;
-  childnodes.forEach((node) => {
-    let text = node.childNodes[1].textContent.split(" ");
-    let dateString = text[text.length-1];
-    console.log(dateString);
-    //Sort
-  })
-*/

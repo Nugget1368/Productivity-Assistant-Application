@@ -18,10 +18,8 @@ const filterCategoryList = (destination, storageName) => {
   let storage = [];
   if (categoryDrop.value === "Ingen vald...") { //If no chosen
     storage = getStorageAsJSON(storageName);
-    console.log("ingen vald");
   }
   else { //Filter
-    console.log("Vald!");
     let value = categoryDrop.value;
     storage = getStorageAsJSON(storageName);
     storage = storage.filter((element) => element.category === value);
