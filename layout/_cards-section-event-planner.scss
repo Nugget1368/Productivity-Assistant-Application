@@ -16,7 +16,7 @@ section.container-wrapper {
   }
 
   #event-planner-todos {
-    width: 50%;
+    flex: 1;
 
     ul {
       padding: 0;
@@ -30,18 +30,28 @@ section.container-wrapper {
         border-radius: 2px;
         box-shadow: $shadow-container;
         text-transform: capitalize;
-        height: 100px;
+        height: 120px;
         border-radius: 16px;
 
         article {
           height: 100%;
           @include flex($direction: column, $justify: space-evenly);
 
-          div label {
+          div label:first-of-type {
             margin-right: 30px;
           }
         }
       }
+    }
+  }
+
+  .todos-right {
+    @include flex($direction: column);
+    flex: 1;
+
+    #todo-popup-btns {
+      margin-bottom: 0;
+      align-self: flex-end;
     }
   }
 }
