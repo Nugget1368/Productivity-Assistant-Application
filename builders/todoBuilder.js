@@ -1,5 +1,6 @@
 const buildTodos = (todos) => {
   let ul = document.querySelector("#todos ul");
+  
   todos.forEach((todo) => {
     let wrapperDiv = document.createElement("div");
     wrapperDiv.classList.add("todo-wrapper");
@@ -42,6 +43,7 @@ const buildTodosForm = (destionation = "", categories = []) => {
   let descriptionDiv = document.createElement("div");
   let descriptionLabel = document.createElement("label");
   descriptionLabel.textContent = "Beskrivning";
+  
   let description = document.createElement("input");
   description.setAttribute("id", "description");
   descriptionDiv.append(descriptionLabel, description);
@@ -49,6 +51,7 @@ const buildTodosForm = (destionation = "", categories = []) => {
   let timeDiv = document.createElement("div");
   let timeLabel = document.createElement("label");
   timeLabel.textContent = "Tidsestimering (h)";
+
   let time = document.createElement("input");
   time.setAttribute("type", "number");
   time.setAttribute("id", "time");
@@ -57,6 +60,7 @@ const buildTodosForm = (destionation = "", categories = []) => {
   let categoryDiv = document.createElement("div");
   let categoryLabel = document.createElement("label");
   categoryLabel.textContent = "Kategori";
+
   let category = document.createElement("select");
   categories.forEach((c) => {
     let option = document.createElement("option");

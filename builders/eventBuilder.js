@@ -1,10 +1,11 @@
 const buildEvent = (events) => {
   let ul = document.querySelector("article#event-planner-todos ul");
+
   events.forEach((event) => {
     let li = document.createElement("li");
+    li.setAttribute("id", event.id);
     let card = document.createElement("article");
     card.classList.add("card");
-
     let title = document.createElement("h3");
     title.textContent = event.title;
     let icon = document.createElement("i");
@@ -13,13 +14,23 @@ const buildEvent = (events) => {
     title.prepend(icon);
     let div = document.createElement("div");
     let startDate = document.createElement("label");
+
     startDate.textContent = "Startdatum: " + event.start;
     let endDate = document.createElement("label");
     endDate.textContent = "Slutdatum: " + event.end;
+
     div.append(startDate, endDate);
     card.append(title, div);
-    ul.append(li);
     li.append(card);
+
+    li.addEventListener("click", function () {
+      let selected = document.querySelector("#event-planner-todos ul li.selected");
+      if (selected && selected !== li) {
+        selected.classList.remove("selected");
+      }
+      li.classList.toggle("selected");
+    });
+    ul.append(li);
   });
 };
 
