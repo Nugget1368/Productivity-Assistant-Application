@@ -9,7 +9,7 @@ import { createTodo } from "../services/todoHandler.js";
 import { buildCategoriesDropdownAsync, buildTodos, buildTodosForm, buildSortDropdown } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues, filterCategoryList, sortTodosDropdown } from "../services/inputHandler.js";
+import { getInputValues, filterCategoryList, sortList } from "../services/inputHandler.js";
 
 let todoFormIsBuilt = false;
 
@@ -130,6 +130,6 @@ categoryDrop.addEventListener("change", () => {  //When category is changed
 buildSortDropdown("#sort-dropdown");
 let sortDropdown = document.querySelector("select#sort-dropdown");
 sortDropdown.addEventListener("change", async () => {
-  storage = sortTodosDropdown("#todos ul", storage)
+  storage = sortList("#todos ul", storage)
   buildTodos(storage);
 })

@@ -9,7 +9,7 @@ const getInputValues = (destination) => {
   return values;
 }
 
-const sortTodosDropdown = (destination = "", arr = []) =>{
+const sortList = (destination = "", arr = []) =>{
   let list = document.querySelector(destination);
   list.innerHTML = "";
   return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
@@ -29,4 +29,4 @@ const filterCategoryList = (destination, storageName) => {
   return storage;
 }
 
-export { getInputValues, filterCategoryList, sortTodosDropdown }
+export { getInputValues, filterCategoryList, sortList }
