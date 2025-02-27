@@ -1,3 +1,8 @@
+// When todo-list should build this is needed to get eventhandlers for each list-item
+const renderTodoList = (storage = []) => {
+
+  }
+
 const buildTodos = (todos) => {
   let ul = document.querySelector("#todos ul");
   
@@ -85,6 +90,19 @@ const buildTodosForm = (destionation = "", categories = []) => {
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
+const buildSortDropdown = (destination = "") =>{
+  let sortOptions = ["Senast tillagda", "Datum", "Tidsestimat (lägst)", "Tidsestimat (högst)", "Slutförda", "Ej Slutförda"];
+  let dropdown = document.querySelector(`select${destination}`);
+  let index = 0;
+  sortOptions.forEach((sortOption) =>{
+    let option = document.createElement("option");
+    option.textContent = sortOption;
+    option.setAttribute("id", `sort-option-${index}`);
+    dropdown.append(option);
+    index++;
+  })
+}
+
 const buildCategoriesDropdownAsync = async(destination ="", categories = []) => {
   let categoriesDropdown = document.querySelector(`select${destination}`);
   categories.forEach(category => {
@@ -95,4 +113,4 @@ const buildCategoriesDropdownAsync = async(destination ="", categories = []) => 
   });
 }
 
-export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync };
+export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync, buildSortDropdown, renderTodoList };
