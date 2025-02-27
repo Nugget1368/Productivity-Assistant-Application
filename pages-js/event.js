@@ -6,7 +6,7 @@ import {
   deleteFromStorage,
 } from "../services/localstorage.js";
 import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
-import { createEvent } from "../services/eventHandler.js";
+import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 
