@@ -1,3 +1,8 @@
+// When todo-list should build this is needed to get eventhandlers for each list-item
+const renderTodoList = (storage = []) => {
+
+  }
+
 const buildTodos = (todos) => {
   let ul = document.querySelector("#todos ul");
   todos.forEach((todo) => {
@@ -104,4 +109,4 @@ const buildCategoriesDropdownAsync = async(destination ="", categories = []) => 
   });
 }
 
-export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync, buildSortDropdown };
+export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync, buildSortDropdown, renderTodoList };
