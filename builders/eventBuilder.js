@@ -34,7 +34,7 @@ const buildEvent = (events) => {
   });
 };
 
-const buildEventForm = (destionation = "") => {
+const buildEventForm = (destination = "") => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -63,7 +63,7 @@ const buildEventForm = (destionation = "") => {
   end.setAttribute("id", "end");
   endDiv.append(endLabel, end);
 
-  let form = document.querySelector(destionation);
+  let form = document.querySelector(destination);
   form.prepend(titleDiv, startDiv, endDiv);
 };
 
