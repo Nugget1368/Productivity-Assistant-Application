@@ -1,6 +1,6 @@
 import { HABITS_KEY, saveToStorage, getStorageAsJSON, editStorage, deleteFromStorage } from "../services/localstorage.js";
 import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
-import { createHabit } from "../services/habitsHandler.js";
+import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import {formBuilder} from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";

@@ -5,7 +5,7 @@ import {
   getStorageAsJSON,
   editStorage,
 } from "../services/localstorage.js";
-import { createTodo } from "../services/todoHandler.js";
+import { createTodo } from "../helpers/todoHelper.js";
 import {
   buildCategoriesDropdownAsync,
   buildTodos,
