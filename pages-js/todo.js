@@ -17,7 +17,7 @@ const renderTodoList = (storage) =>{
   let list = document.querySelector("#todos ul");
   list.innerHTML = "";
   buildTodos(storage);
-  checkboxEventHandler(storage);
+  checkboxEventHandler(storage, ACTIVITIES_KEY);
   listItemHandler(storage);
 }
 

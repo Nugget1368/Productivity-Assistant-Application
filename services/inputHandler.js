@@ -12,7 +12,7 @@ const getInputValues = (destination) => {
 const sortList = (option = "", arr = []) => {
   if (option === "Datum") 
     return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
-  
+
   else if (option === "Tidsestimat (lägst)") 
     return arr.sort((a, b) => parseInt(a.time) - parseInt(b.time));
   
@@ -44,7 +44,7 @@ const filterCategoryList = (destination, storageName) => {
 }
 
 
-const checkboxEventHandler = (storage) => {
+const checkboxEventHandler = (storage = "", storagekey = "") => {
   //If checkbox value is changed
   let checkboxes = document.querySelectorAll("article#todos ul input[type=checkbox]");
   checkboxes.forEach((checkbox) => {
@@ -52,7 +52,7 @@ const checkboxEventHandler = (storage) => {
       let listItemId = event.currentTarget.parentElement.parentElement.id; //Reach grandparent (llist-item) id
       let newObj = storage.find((element) => element.id == listItemId);
       newObj.status = event.currentTarget.checked;
-      editStorage(ACTIVITIES_KEY, newObj);
+      editStorage(storagekey, newObj);
 
       let listItem = event.currentTarget.closest("li");
       if (event.currentTarget.checked) {
