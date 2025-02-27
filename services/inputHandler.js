@@ -9,10 +9,24 @@ const getInputValues = (destination) => {
   return values;
 }
 
-const sortList = (destination = "", arr = []) =>{
-  let list = document.querySelector(destination);
-  list.innerHTML = "";
-  return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
+const sortList = (option = "", arr = []) => {
+  if (option === "Datum") 
+    return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
+  
+  else if (option === "Tidsestimat (lägst)") 
+    return arr.sort((a, b) => a.time.toString().localeCompare(b.time.toString()));
+  
+  else if (option === "Tidsestimat (högst)") 
+    return arr.sort((a, b) => b.time.toString().localeCompare(a.time.toString()));
+  
+  else if (option === "Slutförda") 
+    return arr.sort((a, b) => b.status - a.status);
+  
+  else if (option === "Ej Slutförda") 
+    return arr.sort((a, b) => a.status - b.status);
+
+  else 
+    return arr.sort((a, b) => a.toString().localeCompare(b.toString()));
 }
 
 const filterCategoryList = (destination, storageName) => {

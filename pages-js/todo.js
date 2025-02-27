@@ -130,6 +130,8 @@ categoryDrop.addEventListener("change", () => {  //When category is changed
 buildSortDropdown("#sort-dropdown");
 let sortDropdown = document.querySelector("select#sort-dropdown");
 sortDropdown.addEventListener("change", async () => {
-  storage = sortList("#todos ul", storage)
+  let list = document.querySelector("#todos ul");
+  list.innerHTML = "";
+  storage = sortList(sortDropdown.value, storage)
   buildTodos(storage);
 })
