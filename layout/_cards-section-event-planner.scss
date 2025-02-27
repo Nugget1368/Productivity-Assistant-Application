@@ -2,35 +2,46 @@
 @import "../partials-scss/_mixins.scss";
 
 section.container-wrapper {
-    width: 100%;
-    
-    #event-planner-todos {
-        width: 50%;
-        
-        ul {
-            padding: 0;
-            
-            li {
-                @include flex($direction: row, $align: center);
-                justify-content: space-between;
-                margin-bottom: 0.5rem;
-                padding: 1rem 2rem;
-                border: 0.5px solid rgb(218, 215, 215);
-                border-radius: 2px;
-                box-shadow: $shadow-container;
-                text-transform: capitalize;
-                height: 100px;
-                border-radius: 16px;
-    
-                article {
-                    height: 100%;
-                    @include flex($direction: column, $justify: space-evenly);
-    
-                    div label {
-                        margin-right: 30px;
-                    }
-                }
-            }
+  width: 100%;
+
+  h3 i {
+    margin-right: 8px;
+    font-size: 1.2em;
+    color: #ae6540;
+  }
+  h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #event-planner-todos {
+    width: 50%;
+
+    ul {
+      padding: 0;
+
+      li {
+        @include flex($direction: row, $align: center);
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        padding: 1rem 2rem;
+        border: 0.5px solid rgb(218, 215, 215);
+        border-radius: 2px;
+        box-shadow: $shadow-container;
+        text-transform: capitalize;
+        height: 100px;
+        border-radius: 16px;
+
+        article {
+          height: 100%;
+          @include flex($direction: column, $justify: space-evenly);
+
+          div label {
+            margin-right: 30px;
+          }
         }
+      }
     }
+  }
 }

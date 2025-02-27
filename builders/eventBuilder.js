@@ -4,8 +4,13 @@ const buildEvent = (events) => {
     let li = document.createElement("li");
     let card = document.createElement("article");
     card.classList.add("card");
+
     let title = document.createElement("h3");
     title.textContent = event.title;
+    let icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-calendar-days");
+    title.textContent = event.title;
+    title.prepend(icon);
     let div = document.createElement("div");
     let startDate = document.createElement("label");
     startDate.textContent = "Startdatum: " + event.start;
