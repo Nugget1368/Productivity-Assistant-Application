@@ -82,8 +82,9 @@
 }
 
 .todos-right {
+  flex: 1;
+  min-height: 376px;
   box-shadow: $shadow-container;
-  width: 60%;
   padding: 1rem 1.5rem;
   border: 1px solid rgb(218, 215, 215);
   position: relative;
@@ -159,7 +160,7 @@
 }
 
 #todos {
-  width: 50%;
+  flex: 1;
 }
 
 #todos > ul {
