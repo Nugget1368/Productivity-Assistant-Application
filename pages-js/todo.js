@@ -18,7 +18,7 @@ const renderTodoList = (storage) =>{
   list.innerHTML = "";
   buildTodos(storage);
   checkboxEventHandler(storage, ACTIVITIES_KEY);
-  listItemHandler(storage);
+  listItemHandler("article#todos", storage, ["description","status","time", "category","deadline"]);
 }
 
 //Create Todos in DOM

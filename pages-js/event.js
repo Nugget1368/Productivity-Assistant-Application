@@ -8,14 +8,21 @@ import {
 import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../services/eventHandler.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
+import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 
 let eventFormIsBuilt = false;
+
+const renderEventList = (storage) => {
+  let list = document.querySelector("#event-planner-todos ul");
+  list.innerHTML = "";
+  buildEvent(storage);
+  listItemHandler("article#event-planner-todos", storage, ["start", "end"]);
+}
 
 //Create Habits in DOM
 let storage = getStorageAsJSON(EVENT_KEY);
 if (storage) {
-  buildEvent(storage);
+  renderEventList(storage);
 }
 
 const submitForm = () => {
@@ -48,28 +55,4 @@ createBtn.addEventListener("click", async () => {
 
 closeModalBtn.addEventListener("click", () => {
   modal.close();
-});
-
-// work in progress
-
-let events = document.querySelectorAll("article#event-planner-todos ul li");
-events.forEach((event) => {
-  event.addEventListener("click", (event) => {
-    let listItemId = event.currentTarget.id;
-    let storage = getStorageAsJSON(EVENT_KEY);
-    let newObj = storage.find((element) => element.id == listItemId);
-    let h2 = document.querySelector("#todo-popup-h2");
-    h2.textContent = newObj.title;
-
-    let allowedKeys = ["start", "end"];
-    let ul = document.querySelector("#todo-popup-status ul");
-    ul.innerHTML = "";
-    Object.entries(newObj)
-        .filter(([key, _]) => allowedKeys.includes(key))
-        .forEach(([key, value]) => {
-            let li = document.createElement("li");
-            ul.append(li);
-            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> ${value}`
-    });
-  });
 });

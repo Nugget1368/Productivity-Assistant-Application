@@ -10,22 +10,22 @@ const getInputValues = (destination) => {
 }
 
 const sortList = (option = "", arr = []) => {
-  if (option === "Datum") 
+  if (option === "Datum")
     return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
 
-  else if (option === "Tidsestimat (lägst)") 
+  else if (option === "Tidsestimat (lägst)")
     return arr.sort((a, b) => parseInt(a.time) - parseInt(b.time));
-  
-  else if (option === "Tidsestimat (högst)") 
+
+  else if (option === "Tidsestimat (högst)")
     return arr.sort((a, b) => parseInt(b.time) - parseInt(a.time));
-  
-  else if (option === "Slutförda") 
+
+  else if (option === "Slutförda")
     return arr.sort((a, b) => b.status - a.status);
-  
-  else if (option === "Ej Slutförda") 
+
+  else if (option === "Ej Slutförda")
     return arr.sort((a, b) => a.status - b.status);
 
-  else 
+  else
     return arr.sort((a, b) => a.toString().localeCompare(b.toString()));
 }
 
@@ -64,45 +64,36 @@ const checkboxEventHandler = (storage = "", storagekey = "") => {
   });
 }
 
-
-const listItemHandler = (storage) =>{
-  // Info popup for each todo
-  let todos = document.querySelectorAll("article#todos ul li");
-  todos.forEach((todo) => {
-    todo.addEventListener("click", (event) => {
+const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
+  let list = document.querySelectorAll(`${destination} ul li`);
+  list.forEach((item) => {
+    item.addEventListener("click", (event) => {
       let listItemId = event.currentTarget.id;
       let newObj = storage.find((element) => element.id == listItemId);
 
       let h2 = document.querySelector("#todo-popup-h2");
       h2.textContent = newObj.title;
 
-      let p = document.querySelector("#todo-popup-info p");
-      p.textContent = "Beskrivning: " + newObj.description;
-
       let ul = document.querySelector("#todo-popup-status ul");
       ul.innerHTML = "";
-
-      let status = document.createElement("li");
-      status.classList.add("status")
-      status.textContent = newObj.status ? "Status: Slutförd" : "Status: Ej slutförd";
-
-      let deadline = document.createElement("li");
-      deadline.textContent = "Deadline: " + newObj.deadline;
-
-      let time = document.createElement("li");
-      time.textContent = "Tidsestimering: " + newObj.time + " timmar";
-
-      let category = document.createElement("li");
-      category.textContent = "Kategori: " + newObj.category;
-      ul.append(status, deadline, time, category);
-    });
-    todo.addEventListener("change", (event) => {
-      let checkbox = event.target;
-      let status = document.querySelector("li.status")
-      status.textContent = checkbox.checked ? "Status: Slutförd" : "Status: Ej slutförd";
+      Object.entries(newObj)
+        .filter(([key, _]) => allowedKeys.includes(key))
+        .forEach(([key, value]) => {
+          if (key == "description" && value != "") {
+            let div = document.querySelector("#todo-popup-info")
+            div.innerHTML = "";
+            let p = document.createElement("p");
+            p.textContent = value;
+            div.append(p);
+          }
+          else {
+            let li = document.createElement("li");
+            ul.append(li);
+            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> ${value}`
+          }
+        });
     });
   });
 }
-
 
 export { getInputValues, filterCategoryList, sortList, checkboxEventHandler, listItemHandler }
