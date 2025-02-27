@@ -255,8 +255,9 @@ h1 {
 }
 
 .todos-right {
+  flex: 1;
+  min-height: 376px;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
-  width: 60%;
   padding: 1rem 1.5rem;
   border: 1px solid rgb(218, 215, 215);
   position: relative;
@@ -329,7 +330,7 @@ h1 {
 }
 
 #todos {
-  width: 50%;
+  flex: 1;
 }
 
 #todos > ul {
@@ -375,7 +376,7 @@ section.container-wrapper {
   width: 100%;
 }
 section.container-wrapper #event-planner-todos {
-  width: 50%;
+  flex: 1;
 }
 section.container-wrapper #event-planner-todos ul {
   padding: 0;
@@ -392,7 +393,7 @@ section.container-wrapper #event-planner-todos ul li {
   border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   text-transform: capitalize;
-  height: 100px;
+  height: 120px;
   border-radius: 16px;
 }
 section.container-wrapper #event-planner-todos ul li article {
@@ -402,8 +403,19 @@ section.container-wrapper #event-planner-todos ul li article {
   align-items: stretch;
   justify-content: space-evenly;
 }
-section.container-wrapper #event-planner-todos ul li article div label {
+section.container-wrapper #event-planner-todos ul li article div label:first-of-type {
   margin-right: 30px;
+}
+section.container-wrapper .todos-right {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 1;
+}
+section.container-wrapper .todos-right #todo-popup-btns {
+  margin-bottom: 0;
+  align-self: flex-end;
 }
 
 * {
