@@ -23,12 +23,12 @@
               <a href="habits.html">Rutiner</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Aktiviteter</a>
+              <i class="fa-regular fa-calendar"></i>
+              <a href="todo.html">Aktiviteter</a>
             </li>
             <li class="list-items-styling">
-              <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Händelser</a>
+              <i class="fa-solid fa-star"></i>
+              <a href="event-planner.html">Event Planner</a>
             </li>
           </ul>
         </div>
@@ -42,20 +42,66 @@
     </aside>
     <main>
       <header class="under-page-header">
-        <h1>Aktiviteter</h1>
-        <p>Hantera dina aktiviteter</p>
+        <h1>Event planerare</h1>
+        <p>Hantera dina event</p>
       </header>
-      <button open-modal>Lägg till Event</button>
-      <section class="card-container"></section>
+      <section class="filter-container">
+        <div class="filter-options">
+          <div class="radio-group">
+            <label for="showCompleted-all">
+              <input type="radio" id="showCompleted-all" name="showCompleted" />
+              Visa alla event
+            </label>
+          </div>
+          <div class="radio-group">
+            <label for="showCompleted-coming">
+              <input type="radio" id="showCompleted-coming" name="showCompleted" />
+              Kommande event
+            </label>
+          </div>
+          <div class="radio-group">
+            <label for="showCompleted-previous">
+              <input type="radio" id="showCompleted-previous" name="showCompleted" />
+              Tidigare event
+            </label>
+          </div>
+        </div>
+        <button open-modal class="add-button">+ Nytt event</button>
+      </section>
+
+      <section class="container-wrapper">
+        <article id="event-planner-todos">
+          <ul></ul>
+        </article>
+
+        <article class="todos-right">
+          <header>
+            <h2 id="todo-popup-h2">Titel från Js</h2>
+          </header>
+          <div id="todo-popup-info">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, esse? Architecto saepe ab est, accusamus
+              molestias corrupti libero cumque voluptates. Ut in provident quae distinctio veritatis iste. A, aliquam
+              facilis!
+            </p>
+          </div>
+          <div id="todo-popup-status">
+            <ul></ul>
+          </div>
+          <div id="todo-popup-btns">
+            <button open-modal class="edit-btn">Redigera</button>
+            <button open-modal class="delete-btn">Radera</button>
+          </div>
+        </article>
+      </section>
     </main>
-    
-  <dialog modal>
-    <span close-modal>X</span>
-    <header>
-      <h3></h3>
-    </header>
-    <article>
-    </article>
-  </dialog>
+
+    <dialog modal>
+      <span close-modal>X</span>
+      <header>
+        <h3></h3>
+      </header>
+      <article></article>
+    </dialog>
   </body>
 </html>
