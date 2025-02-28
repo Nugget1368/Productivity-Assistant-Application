@@ -466,7 +466,15 @@ dialog article > * > * > * {
   font-size: 20px;
   flex: 1;
 }
-dialog article > * > * input {
+dialog article > * > * input, dialog article > * > * select {
+  padding: 0;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2px solid rgb(211, 211, 211);
+  padding: 4px;
   font-size: 18px;
 }
 dialog header {

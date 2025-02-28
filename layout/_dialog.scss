@@ -17,7 +17,13 @@ dialog {
         font-size: 20px;
         flex: 1;
       }
-      input {
+      input, select {
+        padding: 0;
+        background: none;
+        border: none;
+        appearance: none;
+        border: 2px solid$marked-as-done-gray;
+        padding: 4px;
         font-size: 18px;
       }
     }
@@ -38,8 +44,8 @@ dialog {
   span {
     font-size: 20px;
     cursor: pointer;
-    &:hover{
-        color: #d32f2f;
+    &:hover {
+      color: #d32f2f;
     }
   }
   footer {
