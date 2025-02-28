@@ -24,8 +24,6 @@ import {
   sortList
 } from "../services/filterSortHandler.js";
 
-let todoFormIsBuilt = false;
-
 const renderTodoList = (storage) => {
   let list = document.querySelector("#todos ul");
   list.innerHTML = "";
@@ -53,25 +51,13 @@ const modal = document.querySelector("[modal]");
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Lägg till ny Aktivitet";
-  if (!todoFormIsBuilt) {
-    //Get categories
-    let categories = await loadFromJSONAsync(CATEGORIES_KEY);
-    //Build Form in popup
-    formBuilder("dialog[modal] article", "create-todo");
-    //Build Todo-form inputfields
-    buildTodosForm("form#create-todo", categories);
-    //On submit in form
-    let submitBtn = document.querySelector("form#create-todo");
-    submitBtn.addEventListener("submit", () => submitForm());
-    //Cancel submit
-    let cancelBtn = document.querySelector("#cancel-btn");
-    cancelBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      modal.close();
-    });
-    //Is form built, don't rebuild it!
-    todoFormIsBuilt = true;
-  }
+  let article = document.querySelector("dialog[modal] article");
+  article.innerHTML = "";
+  let categories = await loadFromJSONAsync(CATEGORIES_KEY);     //Get categories
+  formBuilder("dialog[modal] article", "create-todo");    //Build Form in popup
+  buildTodosForm("form#create-todo", categories);    //Build Todo-form inputfields
+  let submitBtn = document.querySelector("form#create-todo");    //On submit in form
+  submitBtn.addEventListener("submit", () => submitForm());
   modal.showModal();
 });
 

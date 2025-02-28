@@ -10,8 +10,6 @@ import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 
-let eventFormIsBuilt = false;
-
 const renderEventList = (storage) => {
   let list = document.querySelector("#event-planner-todos ul");
   list.innerHTML = "";
@@ -38,18 +36,12 @@ const modal = document.querySelector("[modal]");
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Lägg till nytt Event";
-  if (!eventFormIsBuilt) {
-    formBuilder("dialog[modal] article", "create-event");
-    buildEventForm("form#create-event");
-    let submitBtn = document.querySelector("form#create-event");
-    submitBtn.addEventListener("submit", () => submitForm());
-    let cancelBtn = document.querySelector("#cancel-btn");
-    cancelBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      modal.close();
-    });
-    eventFormIsBuilt = true;
-  }
+  let article = document.querySelector("dialog[modal] article");
+  article.innerHTML = "";
+  formBuilder("dialog[modal] article", "create-event");
+  buildEventForm("form#create-event");
+  let submitBtn = document.querySelector("form#create-event");
+  submitBtn.addEventListener("submit", () => submitForm());
   modal.showModal();
 });
 
