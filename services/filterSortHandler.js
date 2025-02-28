@@ -33,3 +33,5 @@ export const filterCategoryList = (destination, storageName) => {
     }
     return storage;
 }
+
+export const filterObjKeys = (obj = {}, allowedKeys = []) => Object.entries(obj).filter(([key, _]) => allowedKeys.includes(key));

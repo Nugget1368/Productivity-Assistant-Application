@@ -14,4 +14,4 @@ const createEvent = (
   return event;
 };
 
-export { createEvent, buildEventForm };
+export { createEvent };

@@ -1,4 +1,5 @@
 import { getStorageAsJSON, editStorage, ACTIVITIES_KEY } from "./localstorage.js";
+import { filterObjKeys } from "./filterSortHandler.js";
 
 const getInputValues = (destination) => {
   let inputs = document.querySelectorAll(`${destination} input, ${destination} select`);
@@ -41,22 +42,23 @@ const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
 
       let ul = document.querySelector("#todo-popup-status ul");
       ul.innerHTML = "";
-      Object.entries(newObj)
-        .filter(([key, _]) => allowedKeys.includes(key))
-        .forEach(([key, value]) => {
-          if (key == "description" && value != "") {
-            let div = document.querySelector("#todo-popup-info")
-            div.innerHTML = "";
-            let p = document.createElement("p");
-            p.textContent = value;
-            div.append(p);
-          }
-          else {
-            let li = document.createElement("li");
-            ul.append(li);
-            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> ${value}`
-          }
-        });
+
+      let keys = filterObjKeys(newObj, allowedKeys);
+      keys.forEach(([key, value]) => {
+        if (key == "description" && value != "") {
+          let div = document.querySelector("#todo-popup-info")
+          div.innerHTML = "";
+          let p = document.createElement("p");
+          p.textContent = value;
+          div.append(p);
+        }
+        else {
+          let li = document.createElement("li");
+          ul.append(li);
+          li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> ${value}`
+        }
+      });
+
     });
   });
 }
