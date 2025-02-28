@@ -1,7 +1,7 @@
 // When todo-list should build this is needed to get eventhandlers for each list-item
 const renderTodoList = (storage = []) => {};
 
-const buildTodos = (todos) => {
+export const buildTodos = (todos) => {
   let ul = document.querySelector("#todos ul");
 
   todos.forEach((todo) => {
@@ -34,7 +34,7 @@ const buildTodos = (todos) => {
   });
 };
 
-const buildTodosForm = (destination = "", categories = []) => {
+export const buildTodosForm = (destination = "", categories = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -88,7 +88,7 @@ const buildTodosForm = (destination = "", categories = []) => {
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
-const buildSortDropdown = (destination = "") => {
+export const buildSortDropdown = (destination = "") => {
   let sortOptions = [
     "Senast tillagda",
     "Datum",
@@ -108,7 +108,7 @@ const buildSortDropdown = (destination = "") => {
   });
 };
 
-const buildCategoriesDropdownAsync = async (destination = "", categories = []) => {
+export const buildCategoriesDropdownAsync = async (destination = "", categories = []) => {
   let categoriesDropdown = document.querySelector(`select${destination}`);
   categories.forEach((category) => {
     let option = document.createElement("option");
@@ -117,5 +117,3 @@ const buildCategoriesDropdownAsync = async (destination = "", categories = []) =
     categoriesDropdown.append(option);
   });
 };
-
-export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync, buildSortDropdown, renderTodoList };

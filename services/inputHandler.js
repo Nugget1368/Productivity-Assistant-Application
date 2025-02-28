@@ -1,7 +1,12 @@
 import { getStorageAsJSON, editStorage, ACTIVITIES_KEY } from "./localstorage.js";
 import { filterObjKeys } from "./filterSortHandler.js";
 
-const getInputValues = (destination) => {
+const updateTodoPopupInfo = (bool) => {
+  let status = document.querySelector("span#status");
+  status.textContent = bool ? "Slutförd" : "Ej Slutförd";
+}
+
+export const getInputValues = (destination) => {
   let inputs = document.querySelectorAll(`${destination} input, ${destination} select`);
   let values = [];
   inputs.forEach((input) => {
@@ -10,7 +15,7 @@ const getInputValues = (destination) => {
   return values;
 }
 
-const checkboxEventHandler = (storage = "", storagekey = "") => {
+export const checkboxEventHandler = (storage = "", storagekey = "") => {
   //If checkbox value is changed
   let checkboxes = document.querySelectorAll("article#todos ul input[type=checkbox]");
   checkboxes.forEach((checkbox) => {
@@ -31,12 +36,7 @@ const checkboxEventHandler = (storage = "", storagekey = "") => {
   });
 }
 
-const updateTodoPopupInfo = (bool) => {
-  let status = document.querySelector("span#status");
-  status.textContent = bool ? "Slutförd" : "Ej Slutförd";
-}
-
-const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
+export const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
   let list = document.querySelectorAll(`${destination} ul li`);
   list.forEach((item) => {
     item.addEventListener("click", (event) => {
@@ -74,5 +74,3 @@ const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
     });
   });
 }
-
-export { getInputValues, checkboxEventHandler, listItemHandler }

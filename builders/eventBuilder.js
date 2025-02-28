@@ -1,4 +1,4 @@
-const buildEvent = (events) => {
+export const buildEvent = (events) => {
   let ul = document.querySelector("article#event-planner-todos ul");
 
   events.forEach((event) => {
@@ -34,7 +34,7 @@ const buildEvent = (events) => {
   });
 };
 
-const buildEventForm = (destination = "") => {
+export const buildEventForm = (destination = "") => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -66,5 +66,3 @@ const buildEventForm = (destination = "") => {
   let form = document.querySelector(destination);
   form.prepend(titleDiv, startDiv, endDiv);
 };
-
-export { buildEvent, buildEventForm };

@@ -1,4 +1,4 @@
-const buildHabit = (habits) => {
+export const buildHabit = (habits) => {
   let section = document.querySelector("section.card-container");
   habits.forEach((habit) => {
     let card = document.createElement("article");
@@ -18,7 +18,7 @@ const buildHabit = (habits) => {
   });
 };
 
-const buildHabitForm = (destination = "", priorities = []) => {
+export const buildHabitForm = (destination = "", priorities = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -43,5 +43,3 @@ const buildHabitForm = (destination = "", priorities = []) => {
   let form = document.querySelector(destination);
   form.prepend(titleDiv, priorityDiv);
 };
-
-export { buildHabit, buildHabitForm };
