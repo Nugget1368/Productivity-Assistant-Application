@@ -11,4 +11,10 @@ export const formBuilder = (destination = "", formId = "") => {
     cancelBtn.customAttribute = "close-modal"
     cancelBtn.textContent = "Avbryt";
     form.append(cancelBtn, submitBtn);
+    //Cancel submit
+    cancelBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        let modal = document.querySelector("dialog[modal]");
+        modal.close();
+    });
 }

@@ -1,12 +1,13 @@
 import { HABITS_KEY, saveToStorage, getStorageAsJSON, editStorage, deleteFromStorage } from "../services/localstorage.js";
 import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
-import { createHabit } from "../services/habitsHandler.js";
+import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
-import {formBuilder} from "../builders/builder.js";
+import { formBuilder } from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
 
-
-let habitFormIsBuilt = false;
+const createBtn = document.querySelector("[open-modal]");
+const closeModalBtn = document.querySelector("[close-modal]");
+const modal = document.querySelector("[modal]");
 
 //Create Habits in DOM
 let storage = getStorageAsJSON(HABITS_KEY);
@@ -20,26 +21,14 @@ const submitForm = () => {
   saveToStorage(HABITS_KEY, habit);
 };
 
-const createBtn = document.querySelector("[open-modal]");
-const closeModalBtn = document.querySelector("[close-modal]");
-const modal = document.querySelector("[modal]");
-
-createBtn.addEventListener("click", async() => {
+createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Lägg till ny Rutin";
-  if(!habitFormIsBuilt){
-    let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
-    formBuilder("dialog[modal] article", "create-habit");
-    buildHabitForm("form#create-habit", priorities);
-    let submitBtn = document.querySelector("form#create-habit");
-    submitBtn.addEventListener("submit", () => submitForm());
-    let cancelBtn = document.querySelector("#cancel-btn");
-    cancelBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      modal.close();
-    });
-    habitFormIsBuilt = true;
-  }
+  let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
+  formBuilder("dialog[modal] article", "create-habit");
+  buildHabitForm("form#create-habit", priorities);
+  let submitBtn = document.querySelector("form#create-habit");
+  submitBtn.addEventListener("submit", () => submitForm());
   modal.showModal();
 });
 

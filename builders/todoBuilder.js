@@ -1,11 +1,9 @@
 // When todo-list should build this is needed to get eventhandlers for each list-item
-const renderTodoList = (storage = []) => {
+const renderTodoList = (storage = []) => {};
 
-  }
-
-const buildTodos = (todos) => {
+export const buildTodos = (todos) => {
   let ul = document.querySelector("#todos ul");
-  
+
   todos.forEach((todo) => {
     let wrapperDiv = document.createElement("div");
     wrapperDiv.classList.add("todo-wrapper");
@@ -36,7 +34,7 @@ const buildTodos = (todos) => {
   });
 };
 
-const buildTodosForm = (destionation = "", categories = []) => {
+export const buildTodosForm = (destination = "", categories = []) => {
   let titleDiv = document.createElement("div");
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
@@ -48,7 +46,7 @@ const buildTodosForm = (destionation = "", categories = []) => {
   let descriptionDiv = document.createElement("div");
   let descriptionLabel = document.createElement("label");
   descriptionLabel.textContent = "Beskrivning";
-  
+
   let description = document.createElement("input");
   description.setAttribute("id", "description");
   descriptionDiv.append(descriptionLabel, description);
@@ -72,7 +70,7 @@ const buildTodosForm = (destionation = "", categories = []) => {
     option.setAttribute("id", `category-${c.id}`);
     option.textContent = c.title;
     category.append(option);
-  })
+  });
   category.setAttribute("id", "category");
   categoryDiv.append(categoryLabel, category);
 
@@ -86,31 +84,36 @@ const buildTodosForm = (destionation = "", categories = []) => {
   deadline.setAttribute("id", "deadline");
   deadlineDiv.append(deadlineLabel, deadline);
 
-  let form = document.querySelector(destionation);
+  let form = document.querySelector(destination);
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
 
-const buildSortDropdown = (destination = "") =>{
-  let sortOptions = ["Senast tillagda", "Datum", "Tidsestimat (lägst)", "Tidsestimat (högst)", "Slutförda", "Ej Slutförda"];
+export const buildSortDropdown = (destination = "") => {
+  let sortOptions = [
+    "Senast tillagda",
+    "Datum",
+    "Tidsestimat (lägst)",
+    "Tidsestimat (högst)",
+    "Slutförda",
+    "Ej Slutförda",
+  ];
   let dropdown = document.querySelector(`select${destination}`);
   let index = 0;
-  sortOptions.forEach((sortOption) =>{
+  sortOptions.forEach((sortOption) => {
     let option = document.createElement("option");
     option.textContent = sortOption;
     option.setAttribute("id", `sort-option-${index}`);
     dropdown.append(option);
     index++;
-  })
-}
+  });
+};
 
-const buildCategoriesDropdownAsync = async(destination ="", categories = []) => {
+export const buildCategoriesDropdownAsync = async (destination = "", categories = []) => {
   let categoriesDropdown = document.querySelector(`select${destination}`);
-  categories.forEach(category => {
-    let option = document.createElement("option")
+  categories.forEach((category) => {
+    let option = document.createElement("option");
     option.textContent = category.title;
     option.setAttribute("id", `category-${category.id}`);
     categoriesDropdown.append(option);
   });
-}
-
-export { buildTodos, buildTodosForm, buildCategoriesDropdownAsync, buildSortDropdown, renderTodoList };
+};

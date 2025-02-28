@@ -5,76 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rubber Ducks - it's going down</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="/pages-js/todo.js" type="module"></script>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../pages-js/event.js" type="module"></script>
   </head>
-
   <body>
     <aside>
       <nav>
         <div class="wrap-nav">
           <h2 class="h2-sidebar">Project Name</h2>
-
           <ul>
             <li class="list-items-styling">
               <i class="fa-solid fa-house"></i>
-              <a href="/index.html">Hem</a>
+              <a href="/html-pages/index.html">Hem</a>
             </li>
             <li class="list-items-styling">
               <i class="fa-solid fa-pen"></i>
-              <a href="habits.html">Rutiner</a>
+              <a href="/html-pages/habits.html">Rutiner</a>
             </li>
             <li class="list-items-styling">
               <i class="fa-regular fa-calendar"></i>
-              <a href="todo.html">Aktiviteter</a>
+              <a href="/html-pages/activities.html">Aktiviteter</a>
             </li>
             <li class="list-items-styling">
               <i class="fa-solid fa-star"></i>
-              <a href="event-planner.html">Event Planner</a>
+              <a href="/html-pages/event-planner.html">Event Planner</a>
             </li>
           </ul>
         </div>
         <div class="log-out">
           <li class="list-items-styling">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <a href="/index.html">Logga ut</a>
+            <a href="/html-pages/index.html">Logga ut</a>
           </li>
         </div>
       </nav>
     </aside>
     <main>
       <header class="under-page-header">
-        <h1>Aktiviteter</h1>
-        <p>Hantera dina aktiviteter</p>
+        <h1>Event planerare</h1>
+        <p>Hantera dina event</p>
       </header>
       <section class="filter-container">
         <div class="filter-options">
-          <div class="filter-group">
-            <h3 class="filter-title">Sortering</h3>
-            <label for="sortering"></label>
-            <select id="sort-dropdown" class="dropdown">
-            </select>
+          <div class="radio-group">
+            <label for="showCompleted-all">
+              <input type="radio" id="showCompleted-all" name="showCompleted" />
+              Visa alla event
+            </label>
           </div>
-
-          <div class="filter-group">
-            <h3 class="filter-title">Kategorier</h3>
-            <label for="kategori"></label>
-            <select id="categories-dropdown" class="dropdown">
-            </select>
+          <div class="radio-group">
+            <label for="showCompleted-coming">
+              <input type="radio" id="showCompleted-coming" name="showCompleted" />
+              Kommande event
+            </label>
           </div>
-
-          <div class="checkbox-group">
-            <label for="showCompleted">
-              <input type="checkbox" id="showCompleted" name="showCompleted" />
-              Slutförda aktiviteter
+          <div class="radio-group">
+            <label for="showCompleted-previous">
+              <input type="radio" id="showCompleted-previous" name="showCompleted" />
+              Tidigare event
             </label>
           </div>
         </div>
-        <button open-modal class="add-button">+ Ny aktivitet</button>
+        <button open-modal class="add-button">+ Nytt event</button>
       </section>
 
       <section class="container-wrapper">
-        <article id="todos">
+        <article id="event-planner-todos">
           <ul></ul>
         </article>
 
@@ -82,8 +78,7 @@
           <header>
             <h2 id="todo-popup-h2">Titel från Js</h2>
           </header>
-          <div id="todo-popup-info">
-          </div>
+          <div id="todo-popup-info"></div>
           <div id="todo-popup-status">
             <ul></ul>
           </div>
@@ -94,6 +89,7 @@
         </article>
       </section>
     </main>
+
     <dialog modal>
       <span close-modal>X</span>
       <header>
