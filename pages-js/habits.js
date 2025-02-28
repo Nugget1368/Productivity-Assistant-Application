@@ -24,6 +24,8 @@ const submitForm = () => {
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Lägg till ny Rutin";
+  let article = document.querySelector("dialog[modal] article");
+  article.innerHTML = "";
   let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
   formBuilder("dialog[modal] article", "create-habit");
   buildHabitForm("form#create-habit", priorities);
