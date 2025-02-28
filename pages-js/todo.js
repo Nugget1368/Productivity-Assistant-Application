@@ -16,11 +16,13 @@ import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
 import { formBuilder } from "../builders/builder.js";
 import {
   getInputValues,
-  filterCategoryList,
-  sortList,
   listItemHandler,
   checkboxEventHandler,
 } from "../services/inputHandler.js";
+import {
+  filterCategoryList,
+  sortList
+} from "../services/filterSortHandler.js";
 
 let todoFormIsBuilt = false;
 
