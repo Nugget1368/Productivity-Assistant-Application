@@ -1,0 +1,71 @@
+@import "../partials-scss/_coloring.scss";
+@import "../partials-scss/_mixins.scss";
+
+section.container-wrapper {
+  width: 100%;
+
+  h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+
+      i {
+        margin-right: 8px;
+        font-size: 1.2em;
+        color: #ae6540;
+      }
+  }
+
+  #event-planner-todos {
+    flex: 1;
+
+    ul {
+      padding: 0;
+
+      li {
+        @include flex($direction: row, $justify: space-between, $align: center);
+        margin-bottom: 0.5rem;
+        padding: 1rem 2rem;
+        border: 0.5px solid rgb(218, 215, 215);
+        border-radius: 2px;
+        box-shadow: $shadow-container;
+        text-transform: capitalize;
+        height: 120px;
+        border-radius: 16px;
+                
+        &:hover {
+          background-color: plum;
+          cursor: pointer;
+        }
+        
+        &.selected {
+          background-color: plum;
+        }
+
+        &.done-todo {
+            text-decoration: line-through;
+            background-color: $marked-as-done-gray;
+        }        
+
+        article {
+            @include flex($direction: column, $justify: space-evenly);
+            height: 100%;
+
+            div label:first-of-type {
+                margin-right: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .todos-right {
+    @include flex($direction: column);
+    flex: 1;
+
+    #todo-popup-btns {
+      margin-bottom: 0;
+      align-self: flex-end;
+    }
+  }
+}
