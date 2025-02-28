@@ -15,8 +15,8 @@ const checkboxEventHandler = (storage = "", storagekey = "") => {
   let checkboxes = document.querySelectorAll("article#todos ul input[type=checkbox]");
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", (event) => {
-      let listItemId = event.currentTarget.parentElement.parentElement.id; //Reach grandparent (llist-item) id
-      let newObj = storage.find((element) => element.id == listItemId);
+      let listItemId = event.currentTarget.parentElement.parentElement.id; //Reach grandparent (list-item) id
+      let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
       newObj.status = event.currentTarget.checked;
       editStorage(storagekey, newObj);
 
@@ -26,8 +26,14 @@ const checkboxEventHandler = (storage = "", storagekey = "") => {
       } else {
         listItem.classList.remove("done-todo");
       }
+      updateTodoPopupInfo(newObj.status);
     });
   });
+}
+
+const updateTodoPopupInfo = (bool) => {
+  let status = document.querySelector("span#status");
+  status.textContent = bool ? "Slutförd" : "Ej Slutförd";
 }
 
 const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
@@ -55,7 +61,13 @@ const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
         else {
           let li = document.createElement("li");
           ul.append(li);
-          li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> ${value}`
+          if (key === "status") {
+            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> <span id="status"></span>`
+            updateTodoPopupInfo(value);
+          }
+          else {
+            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> <span>${value}</span>`
+          }
         }
       });
 

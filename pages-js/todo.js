@@ -30,8 +30,8 @@ const renderTodoList = (storage) => {
   let list = document.querySelector("#todos ul");
   list.innerHTML = "";
   buildTodos(storage);
-  checkboxEventHandler(storage, ACTIVITIES_KEY);
   listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+  checkboxEventHandler(storage, ACTIVITIES_KEY);
 };
 
 //Create Todos in DOM
