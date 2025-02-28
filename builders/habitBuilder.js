@@ -36,7 +36,6 @@ const buildHabitForm = (destination = "", priorities = []) => {
     option.textContent = priority.title;
     option.setAttribute("id", `priority-${priority.id}`);
     select.append(option);
-    console.log(option);
   });
   select.setAttribute("id", "priority");
   priorityDiv.append(priorityLabel, select);
