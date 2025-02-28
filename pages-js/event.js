@@ -10,6 +10,10 @@ import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 
+const createBtn = document.querySelector("[open-modal]");
+const closeModalBtn = document.querySelector("[close-modal]");
+const modal = document.querySelector("[modal]");
+
 const renderEventList = (storage) => {
   let list = document.querySelector("#event-planner-todos ul");
   list.innerHTML = "";
@@ -28,10 +32,6 @@ const submitForm = () => {
   let event = createEvent(values[0], values[1], values[2]);
   saveToStorage(EVENT_KEY, event);
 };
-
-const createBtn = document.querySelector("[open-modal]");
-const closeModalBtn = document.querySelector("[close-modal]");
-const modal = document.querySelector("[modal]");
 
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");

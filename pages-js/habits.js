@@ -5,6 +5,10 @@ import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
 
+const createBtn = document.querySelector("[open-modal]");
+const closeModalBtn = document.querySelector("[close-modal]");
+const modal = document.querySelector("[modal]");
+
 //Create Habits in DOM
 let storage = getStorageAsJSON(HABITS_KEY);
 if (storage) {
@@ -16,10 +20,6 @@ const submitForm = () => {
   let habit = createHabit(values[0], values[1]);
   saveToStorage(HABITS_KEY, habit);
 };
-
-const createBtn = document.querySelector("[open-modal]");
-const closeModalBtn = document.querySelector("[close-modal]");
-const modal = document.querySelector("[modal]");
 
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");

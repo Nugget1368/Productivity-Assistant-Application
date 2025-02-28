@@ -24,6 +24,10 @@ import {
   sortList
 } from "../services/filterSortHandler.js";
 
+const createBtn = document.querySelector("[open-modal]");
+const closeModalBtn = document.querySelector("[close-modal]");
+const modal = document.querySelector("[modal]");
+
 const renderTodoList = (storage) => {
   let list = document.querySelector("#todos ul");
   list.innerHTML = "";
@@ -43,10 +47,6 @@ const submitForm = () => {
   let todo = createTodo(values[0], values[1], values[2], values[3], values[4]);
   saveToStorage(ACTIVITIES_KEY, todo);
 };
-
-const createBtn = document.querySelector("[open-modal]");
-const closeModalBtn = document.querySelector("[close-modal]");
-const modal = document.querySelector("[modal]");
 
 createBtn.addEventListener("click", async () => {
   let h3 = document.querySelector("dialog[modal] h3");
