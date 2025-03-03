@@ -16,12 +16,7 @@ const renderPage = () => {
   if (storage) {
     buildHabit(storage);
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-    let inputs = document.querySelectorAll("section.card-container input");
-    let increaseBtns = document.querySelectorAll("section.card-container span.increase");
-    let decreaseBtns = document.querySelectorAll("section.card-container span.decrease");
-    for (let x = 0; x < inputs.length; x++) {
-      increaseDecreaseHandler(storage, inputs[x], increaseBtns[x], decreaseBtns[x]);
-    }
+    increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
   }
 
 }
