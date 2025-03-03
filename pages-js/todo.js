@@ -83,8 +83,11 @@ deleteBtn.addEventListener("click", (event) => {
   confirmBtn.textContent = "Ja, radera";
   confirmBtn.classList.add("confirm-delete");
   confirmBtn.addEventListener("click", (event) => {
-    deleteFromStorage(ACTIVITIES_KEY, event.currentTarget.id);
+    let article = document.querySelector(".container-wrapper .todos-right");
+    let todoId = article.getAttribute("selected-item");
+    deleteFromStorage(ACTIVITIES_KEY, Number(todoId));
     modal.close();
+    location.reload();
   });
 
   // Skapa "Avbryt"-knappen
@@ -120,3 +123,20 @@ sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);
   renderTodoList(storage);
 });
+
+
+/// THIS IS FOR HIDE AND SHOW .todos-right on content change
+function toggleTodoRightVisibility() {
+  let todoList = document.querySelector("#todos ul");
+  let todosRight = document.querySelector(".todos-right");
+
+  if (todoList.children.length === 0) {
+      todosRight.style.visibility = "hidden";
+  } else {
+      todosRight.style.visibility = "visible";
+  }
+}
+
+toggleTodoRightVisibility();
+
+document.addEventListener("todoListUpdated", toggleTodoRightVisibility);

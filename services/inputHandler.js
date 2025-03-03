@@ -54,11 +54,9 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
         if (key == "description" && value != "") {
           let div = document.querySelector("#todo-popup-info");
           div.innerHTML = "";
-          /// WE ARE HERE
           let article = document.querySelector(".container-wrapper .todos-right");
           let todoId = event.target.closest("li").id;
           article.setAttribute("selected-item", todoId);
-
           let p = document.createElement("p");
           p.textContent = value;
           div.append(p);
