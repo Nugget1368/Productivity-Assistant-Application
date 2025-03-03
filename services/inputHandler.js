@@ -48,15 +48,16 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
 
       let ul = document.querySelector("#todo-popup-status ul");
       ul.innerHTML = "";
+      
+      let div = document.querySelector("#todo-popup-info");
+      div.innerHTML = "";
+      let article = document.querySelector(".container-wrapper .todos-right");
+      let todoId = event.target.closest("li").id;
+      article.setAttribute("selected-item", todoId);
 
       let keys = filterObjKeys(newObj, allowedKeys);
       keys.forEach(([key, value]) => {
         if (key == "description" && value != "") {
-          let div = document.querySelector("#todo-popup-info");
-          div.innerHTML = "";
-          let article = document.querySelector(".container-wrapper .todos-right");
-          let todoId = event.target.closest("li").id;
-          article.setAttribute("selected-item", todoId);
           let p = document.createElement("p");
           p.textContent = value;
           div.append(p);

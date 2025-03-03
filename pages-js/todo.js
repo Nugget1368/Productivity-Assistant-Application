@@ -123,20 +123,3 @@ sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);
   renderTodoList(storage);
 });
-
-
-/// THIS IS FOR HIDE AND SHOW .todos-right on content change
-function toggleTodoRightVisibility() {
-  let todoList = document.querySelector("#todos ul");
-  let todosRight = document.querySelector(".todos-right");
-
-  if (todoList.children.length === 0) {
-      todosRight.style.visibility = "hidden";
-  } else {
-      todosRight.style.visibility = "visible";
-  }
-}
-
-toggleTodoRightVisibility();
-
-document.addEventListener("todoListUpdated", toggleTodoRightVisibility);
