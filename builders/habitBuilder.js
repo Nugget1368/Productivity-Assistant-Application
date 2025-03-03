@@ -11,10 +11,9 @@ export const buildHabit = (habits) => {
     let div = document.createElement("div");
     let repetitionTitle = document.createElement("label");
     repetitionTitle.textContent = "Repitition:";
-    // let repetition = document.createElement("label");
-    // repetition.textContent = habit.repetition;
     let repetition = document.createElement("input");
     repetition.type = "number";
+    repetition.min = 0;
     repetition.value = habit.repetition;
     let plus = document.createElement("span");
     plus.textContent = "+";

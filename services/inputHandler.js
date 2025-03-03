@@ -54,7 +54,12 @@ export const increaseDecreaseHandler = (destination = "", storage = [], storageN
     });
     minus[x].addEventListener("click", () => {
       let value = parseInt(input[x].value);
-      value -= 1;
+      if(value > 0){
+        value -= 1;
+      }
+      else{
+        value = 0;
+      }
       inputSetValue(input[x], value);
     });
     input[x].addEventListener("input", (event) => {
@@ -62,6 +67,9 @@ export const increaseDecreaseHandler = (destination = "", storage = [], storageN
       let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id; //Reach grandparent (list-item) id
       let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
       let value = parseInt(input[x].value);
+      if(value < 0){
+        value = 0;
+      }
       newObj.repetition = value;
       editStorage(storageName, newObj);
     });
