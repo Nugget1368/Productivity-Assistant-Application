@@ -17,12 +17,10 @@ const renderPage = () => {
     buildHabit(storage);
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
     increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
-  }
-
+  } 
 }
-
-renderPage();
 //Create Habits in DOM
+renderPage();
 
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
