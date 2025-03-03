@@ -36,6 +36,29 @@ export const checkboxEventHandler = (storage = "", storagekey = "") => {
   });
 }
 
+const inputSetValue = (element, value = 0) => {
+  element.value = value;
+  //Trigger Eventlistener of type 'Input'
+  element.dispatchEvent(new InputEvent("input"));
+}
+
+export const increaseDecreaseHandler = (input, plus, minus) => {
+  plus.addEventListener("click", () => {
+    let value = parseInt(input.value);
+    value += 1;
+    inputSetValue(input, value);
+  });
+  minus.addEventListener("click", () => {
+    let value = parseInt(input.value);
+    value -= 1;
+    inputSetValue(input, value);
+  });
+  input.addEventListener("input", () => {
+    //When input change - Update local-storage
+    console.log(input.value);
+  });
+}
+
 export const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
   let list = document.querySelectorAll(`${destination} ul li`);
   list.forEach((item) => {
@@ -70,7 +93,6 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
           }
         }
       });
-
     });
   });
 }

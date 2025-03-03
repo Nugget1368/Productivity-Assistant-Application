@@ -1,8 +1,3 @@
-const inputSetValue = (element, value = 0) => {
-  element.value = value;
-  element.dispatchEvent(new InputEvent("input"));
-}
-
 export const buildHabit = (habits) => {
   let section = document.querySelector("section.card-container");
   habits.forEach((habit) => {
@@ -26,20 +21,6 @@ export const buildHabit = (habits) => {
     let minus = document.createElement("span");
     minus.textContent = "-";
     minus.classList.add("decrease");
-    plus.addEventListener("click", () => {
-      let value = parseInt(repetition.value);
-      value += 1;
-      inputSetValue(repetition, value);
-    });
-    minus.addEventListener("click", () => {
-      let value = parseInt(repetition.value);
-      value -= 1;
-      inputSetValue(repetition, value);
-    });
-    repetition.addEventListener("input", () => {
-      //When input change - Update local-storage
-      console.log(repetition.value);
-    })
     let repetitionContainer = document.createElement("section");
     repetitionContainer.classList.add("repetitions");
     repetitionContainer.append(minus, repetition, plus);

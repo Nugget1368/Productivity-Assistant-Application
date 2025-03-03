@@ -3,17 +3,31 @@ import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
+import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-//Create Habits in DOM
-let storage = getStorageAsJSON(HABITS_KEY);
-if (storage) {
-  buildHabit(storage);
+const renderPage = () => {
+  let list = document.querySelector("section.card-container");
+  list.innerHTML = "";
+  let storage = getStorageAsJSON(HABITS_KEY);
+  if (storage) {
+    buildHabit(storage);
+    // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+    let inputs = document.querySelectorAll("section.card-container input");
+    let increaseBtns = document.querySelectorAll("section.card-container span.increase");
+    let decreaseBtns = document.querySelectorAll("section.card-container span.decrease");
+    for (let x = 0; x < inputs.length; x++) {
+      increaseDecreaseHandler(inputs[x], increaseBtns[x], decreaseBtns[x]);
+    }
+  }
+
 }
+
+renderPage();
+//Create Habits in DOM
 
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
