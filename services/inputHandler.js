@@ -61,6 +61,7 @@ export const increaseDecreaseHandler = (storage, input, plus, minus) => {
     console.log(newObj);
     let value = parseInt(input.value);
     newObj.repetition = value;
+    //YOU ARE HERE - IMPROVE THIS!
     editStorage("habits", newObj);
     // editStorage
   });
