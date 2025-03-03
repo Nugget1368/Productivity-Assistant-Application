@@ -42,7 +42,7 @@ const inputSetValue = (element, value = 0) => {
   element.dispatchEvent(new InputEvent("input"));
 }
 
-export const increaseDecreaseHandler = (input, plus, minus) => {
+export const increaseDecreaseHandler = (storage, input, plus, minus) => {
   plus.addEventListener("click", () => {
     let value = parseInt(input.value);
     value += 1;
@@ -53,9 +53,16 @@ export const increaseDecreaseHandler = (input, plus, minus) => {
     value -= 1;
     inputSetValue(input, value);
   });
-  input.addEventListener("input", () => {
+  input.addEventListener("input", (event) => {
     //When input change - Update local-storage
     console.log(input.value);
+    let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id; //Reach grandparent (list-item) id
+    let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
+    console.log(newObj);
+    let value = parseInt(input.value);
+    newObj.repetition = value;
+    editStorage("habits", newObj);
+    // editStorage
   });
 }
 

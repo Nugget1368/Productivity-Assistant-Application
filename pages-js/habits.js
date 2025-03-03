@@ -20,7 +20,7 @@ const renderPage = () => {
     let increaseBtns = document.querySelectorAll("section.card-container span.increase");
     let decreaseBtns = document.querySelectorAll("section.card-container span.decrease");
     for (let x = 0; x < inputs.length; x++) {
-      increaseDecreaseHandler(inputs[x], increaseBtns[x], decreaseBtns[x]);
+      increaseDecreaseHandler(storage, inputs[x], increaseBtns[x], decreaseBtns[x]);
     }
   }
 

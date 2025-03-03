@@ -3,6 +3,7 @@ export const buildHabit = (habits) => {
   habits.forEach((habit) => {
     let card = document.createElement("article");
     card.classList.add("card");
+    card.id = habit.id;
     let title = document.createElement("h3");
     title.textContent = habit.title;
     let priority = document.createElement("label");
