@@ -4,7 +4,7 @@ import { filterObjKeys } from "./filterSortHandler.js";
 const updateTodoPopupInfo = (bool) => {
   let status = document.querySelector("span#status");
   status.textContent = bool ? "Slutförd" : "Ej Slutförd";
-}
+};
 
 export const getInputValues = (destination) => {
   let inputs = document.querySelectorAll(`${destination} input, ${destination} select`);
@@ -13,7 +13,7 @@ export const getInputValues = (destination) => {
     values.push(input.value);
   });
   return values;
-}
+};
 
 export const checkboxEventHandler = (storage = "", storagekey = "") => {
   //If checkbox value is changed
@@ -34,7 +34,7 @@ export const checkboxEventHandler = (storage = "", storagekey = "") => {
       updateTodoPopupInfo(newObj.status);
     });
   });
-}
+};
 
 export const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
   let list = document.querySelectorAll(`${destination} ul li`);
@@ -52,25 +52,30 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
       let keys = filterObjKeys(newObj, allowedKeys);
       keys.forEach(([key, value]) => {
         if (key == "description" && value != "") {
-          let div = document.querySelector("#todo-popup-info")
+          let div = document.querySelector("#todo-popup-info");
           div.innerHTML = "";
+          let article = document.querySelector(".container-wrapper .todos-right");
+          let todoId = event.target.closest("li").id;
+
+          article.setAttribute("selected-item", todoId);
           let p = document.createElement("p");
           p.textContent = value;
           div.append(p);
-        }
-        else {
+        } else {
           let li = document.createElement("li");
           ul.append(li);
           if (key === "status") {
-            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> <span id="status"></span>`
+            li.innerHTML = `<strong><span>${
+              key.charAt(0).toUpperCase() + key.slice(1)
+            }:</span></strong> <span id="status"></span>`;
             updateTodoPopupInfo(value);
-          }
-          else {
-            li.innerHTML = `<strong><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span></strong> <span>${value}</span>`
+          } else {
+            li.innerHTML = `<strong><span>${
+              key.charAt(0).toUpperCase() + key.slice(1)
+            }:</span></strong> <span>${value}</span>`;
           }
         }
       });
-
     });
   });
-}
+};

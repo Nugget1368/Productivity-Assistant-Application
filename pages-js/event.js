@@ -19,7 +19,7 @@ const renderEventList = (storage) => {
   list.innerHTML = "";
   buildEvent(storage);
   listItemHandler("article#event-planner-todos", storage, ["start", "end"]);
-}
+};
 
 //Create Habits in DOM
 let storage = getStorageAsJSON(EVENT_KEY);
