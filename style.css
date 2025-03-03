@@ -438,9 +438,88 @@ section.container-wrapper .todos-right #todo-popup-btns {
   align-self: flex-end;
 }
 
+dialog {
+  width: 40%;
+  min-width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 10px;
+}
+dialog article > * {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 1;
+}
+dialog article > * > * {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin: 5px;
+  flex: 1;
+}
+dialog article > * > * > * {
+  font-size: 20px;
+  flex: 1;
+}
+dialog article > * > * input, dialog article > * > * select {
+  padding: 0;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2px solid rgb(211, 211, 211);
+  padding: 4px;
+  font-size: 18px;
+}
+dialog header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-shadow: none;
+  border-radius: none;
+  background-color: transparent;
+  border: 0px;
+  padding: 0px;
+  margin: 0;
+}
+dialog header h3 {
+  font-size: 24px;
+}
+dialog span {
+  font-size: 20px;
+  cursor: pointer;
+}
+dialog span:hover {
+  color: #d32f2f;
+}
+dialog footer button {
+  margin-top: 5px;
+  font-size: 16px !important;
+  padding: 0.5rem 0.5rem !important;
+}
+dialog footer .delete-btn {
+  border: 1.5px solid #d43333;
+  color: #d32f2f;
+  border-radius: 8px;
+}
+dialog footer .delete-btn:hover {
+  background-color: #d43333;
+  color: #ffffff;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
+  transition: 0.2s;
 }
 
 body,
@@ -461,30 +540,4 @@ main {
   justify-content: flex-start;
   width: 100%;
   padding: 1rem 2rem;
-}
-
-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-dialog article > * {
-  display: flex;
-  flex-flow: column;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-dialog header {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  background-color: transparent;
-  border: none;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-dialog span {
-  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

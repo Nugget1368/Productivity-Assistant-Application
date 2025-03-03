@@ -6,10 +6,12 @@
 @import "./layout/_header-underpages.scss";
 @import "./layout/_section-underpages.scss";
 @import "./layout/_cards-section-event-planner.scss";
+@import "./layout/dialog.scss";
 
 * {
   margin: 0;
   box-sizing: border-box;
+  transition: .2s;
 }
 
 body,
@@ -27,24 +29,4 @@ main {
   @include flex($direction: column);
   width: 100%;
   padding: 1rem 2rem;
-}
-
-dialog {
-  // @include flex(column);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  article > * {
-    @include flex(column);
-  }
-  header {
-    @include flex();
-    background-color: transparent;
-    border: none;
-    height: fit-content;
-  }
-  span {
-    cursor: pointer;
-  }
 }
