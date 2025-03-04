@@ -4,6 +4,7 @@ export const buildHabit = (habits) => {
   habits.forEach((habit) => {
     let card = document.createElement("article");
     card.classList.add("card");
+    card.id = habit.id;
     let title = document.createElement("h3");
     title.textContent = habit.title;
     let priority = document.createElement("label");
@@ -11,13 +12,26 @@ export const buildHabit = (habits) => {
     let div = document.createElement("div");
     let repetitionTitle = document.createElement("label");
     repetitionTitle.textContent = "Repitition:";
-    let repetition = document.createElement("label");
-    repetition.textContent = habit.repetition;
-    div.append(repetitionTitle, repetition);
+    let repetition = document.createElement("input");
+    repetition.type = "number";
+    repetition.min = 0;
+    repetition.value = habit.repetition;
+    let plus = document.createElement("span");
+    plus.textContent = "+";
+    plus.classList.add("increase");
+    let minus = document.createElement("span");
+    minus.textContent = "-";
+    minus.classList.add("decrease");
+    let repetitionContainer = document.createElement("section");
+    repetitionContainer.classList.add("repetitions");
+    repetitionContainer.append(minus, repetition, plus);
+    div.classList.add("repetitions");
+    div.append(repetitionTitle, repetitionContainer);
     card.append(title, priority, div);
     section.append(card);
   });
 };
+
 
 export const buildHabitForm = (destination = "", priorities = []) => {
   let titleDiv = document.createElement("div");

@@ -36,6 +36,46 @@ export const checkboxEventHandler = (storage = "", storagekey = "") => {
   });
 }
 
+const inputSetValue = (element, value = 0) => {
+  element.value = value;
+  //Trigger Eventlistener of type 'Input'
+  element.dispatchEvent(new InputEvent("input"));
+}
+
+export const increaseDecreaseHandler = (destination = "", storage = [], storageName = "") => {
+  let input = document.querySelectorAll(`${destination} input`);
+  let plus = document.querySelectorAll(`${destination} span.increase`);
+  let minus = document.querySelectorAll(`${destination} span.decrease`);
+  for (let x = 0; x < input.length; x++) {
+    plus[x].addEventListener("click", () => {
+      let value = parseInt(input[x].value);
+      value += 1;
+      inputSetValue(input[x], value);
+    });
+    minus[x].addEventListener("click", () => {
+      let value = parseInt(input[x].value);
+      if(value > 0){
+        value -= 1;
+      }
+      else{
+        value = 0;
+      }
+      inputSetValue(input[x], value);
+    });
+    input[x].addEventListener("input", (event) => {
+      //When input change - Update local-storage
+      let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id; //Reach grandparent (list-item) id
+      let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
+      let value = parseInt(input[x].value);
+      if(value < 0){
+        value = 0;
+      }
+      newObj.repetition = value;
+      editStorage(storageName, newObj);
+    });
+  }
+}
+
 export const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
   let list = document.querySelectorAll(`${destination} ul li`);
   list.forEach((item) => {
@@ -70,7 +110,6 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
           }
         }
       });
-
     });
   });
 }

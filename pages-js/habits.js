@@ -3,24 +3,24 @@ import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
 import { buildCategoriesDropdownAsync } from "../builders/builder.js";
 import { filterCategoryList } from "../services/filterSortHandler.js";
+import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 
+let storage = getStorageAsJSON(HABITS_KEY);
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-const renderHabitList = (storage) => {
-  buildHabit(storage);
-  // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-};
-
-//Create Habits in DOM
-let storage = getStorageAsJSON(HABITS_KEY);
-if (storage) {
-  renderHabitList(storage);
+const renderPage = () => {
+  if (storage) {
+    buildHabit(storage);
+    // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+    increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
+  } 
 }
+//Create Habits in DOM
+renderPage();
 
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
@@ -52,5 +52,5 @@ buildCategoriesDropdownAsync("#priorities-dropdown", priorities);
 let categoryDrop = document.querySelector("select#priorities-dropdown");
 categoryDrop.addEventListener("change", () => {
   storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
-  renderHabitList(storage);
+  renderPage(storage);
 });
