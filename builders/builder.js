@@ -24,15 +24,7 @@ export const formBuilder = (destination = "", formId = "") => {
 }
 
 
-export const buildSortDropdown = (destination = "") => {
-    let sortOptions = [
-      "Senast tillagda",
-      "Datum",
-      "Tidsestimat (lägst)",
-      "Tidsestimat (högst)",
-      "Slutförda",
-      "Ej Slutförda",
-    ];
+export const buildSortDropdown = (destination = "", sortOptions = []) => {
     let dropdown = document.querySelector(`select${destination}`);
     let index = 0;
     sortOptions.forEach((sortOption) => {

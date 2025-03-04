@@ -1,5 +1,6 @@
 export const CATEGORIES_KEY = "../JSON-storage/categories.json";
 export const PRIORITIES_KEY = "../JSON-storage/priorities.json";
+export const SORT_OPTIONS_KEY = "../JSON-storage/sortOptions.json";
 
 export const loadFromJSONAsync = async (key) => {
   try {
