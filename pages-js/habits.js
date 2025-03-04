@@ -3,17 +3,24 @@ import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
-import { getInputValues } from "../services/inputHandler.js";
+import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
-//Create Habits in DOM
-let storage = getStorageAsJSON(HABITS_KEY);
-if (storage) {
-  buildHabit(storage);
+const renderPage = () => {
+  let list = document.querySelector("section.card-container");
+  list.innerHTML = "";
+  let storage = getStorageAsJSON(HABITS_KEY);
+  if (storage) {
+    buildHabit(storage);
+    // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+    increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
+  } 
 }
+//Create Habits in DOM
+renderPage();
 
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
