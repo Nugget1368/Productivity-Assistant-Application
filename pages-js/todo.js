@@ -114,7 +114,15 @@ categoryDrop.addEventListener("change", () => {
 
 //Sort Dropdown
 buildSortDropdown("#sort-dropdown");
-let sortDropdown = document.querySelector("select#sort-dropdown");
+let sortOptions = [
+  "Senast tillagda",
+  "Datum",
+  "Tidsestimat (lägst)",
+  "Tidsestimat (högst)",
+  "Slutförda",
+  "Ej Slutförda",
+];
+let sortDropdown = document.querySelector("select#sort-dropdown", sortOptions);
 sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);
   renderTodoList(storage);

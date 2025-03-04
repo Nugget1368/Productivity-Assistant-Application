@@ -3,8 +3,8 @@ import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
-import { buildCategoriesDropdownAsync } from "../builders/builder.js";
-import { filterCategoryList } from "../services/filterSortHandler.js";
+import { buildCategoriesDropdownAsync, buildSortDropdown } from "../builders/builder.js";
+import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 
 let storage = getStorageAsJSON(HABITS_KEY);
@@ -52,5 +52,18 @@ buildCategoriesDropdownAsync("#priorities-dropdown", priorities);
 let categoryDrop = document.querySelector("select#priorities-dropdown");
 categoryDrop.addEventListener("change", () => {
   storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
+  renderPage(storage);
+});
+let sortOptions = [
+  "Senast tillagda",
+  "Repetitioner (lägst)",
+  "Repetitioner (högst)",
+  "Prioritet (lägst)",
+  "Prioritet (högst)"
+  ];
+buildSortDropdown("#sort-dropdown", sortOptions);
+let sortDropdown = document.querySelector("select#sort-dropdown");
+sortDropdown.addEventListener("change", async () => {
+  storage = sortList(sortDropdown.value, storage);
   renderPage(storage);
 });
