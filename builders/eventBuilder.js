@@ -13,11 +13,19 @@ export const buildEvent = (events) => {
     title.textContent = event.title;
     title.prepend(icon);
     let div = document.createElement("div");
-    let startDate = document.createElement("label");
 
+    let startDate = document.createElement("label");
     startDate.textContent = "Startdatum: " + event.start;
+
     let endDate = document.createElement("label");
     endDate.textContent = "Slutdatum: " + event.end;
+    
+    if (event.start < new Date().toLocaleDateString() && event.end < new Date().toLocaleDateString()) {
+      li.classList.add("done-todo");
+    }
+    if (event.start <= new Date().toLocaleDateString() && event.end >= new Date().toLocaleDateString()) {
+      li.classList.add("active")
+    }
 
     div.append(startDate, endDate);
     card.append(title, div);

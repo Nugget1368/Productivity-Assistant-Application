@@ -47,6 +47,14 @@ section.container-wrapper {
           background-color: $marked-as-done-gray;
         }
 
+        &.active{
+          border-color: purple;
+          label{
+            color: purple;
+            font-weight: 700;
+          }
+        }
+
         article {
           @include flex($direction: column, $justify: space-evenly);
           height: 100%;
@@ -89,7 +97,7 @@ dialog[modal] button {
 
 
 .confirm-delete {
-  background-color: $add-btn
+  background-color: $add-btn;
   color: white;
   font-weight: bold;
 }
