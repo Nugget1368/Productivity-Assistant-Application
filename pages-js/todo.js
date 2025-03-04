@@ -7,13 +7,13 @@ import {
 } from "../services/localstorage.js";
 import { createTodo } from "../helpers/todoHelper.js";
 import {
-  buildCategoriesDropdownAsync,
   buildTodos,
-  buildTodosForm,
-  buildSortDropdown,
+  buildTodosForm
 } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import { formBuilder } from "../builders/builder.js";
+import {
+  formBuilder, buildSortDropdown, buildCategoriesDropdownAsync,
+} from "../builders/builder.js";
 import {
   getInputValues,
   listItemHandler,

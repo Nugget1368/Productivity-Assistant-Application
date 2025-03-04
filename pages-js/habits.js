@@ -4,7 +4,7 @@ import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
-import { buildCategoriesDropdownAsync } from "../builders/todoBuilder.js";
+import { buildCategoriesDropdownAsync } from "../builders/builder.js";
 import { filterCategoryList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
