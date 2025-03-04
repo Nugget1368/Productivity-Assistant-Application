@@ -11,10 +11,15 @@ const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
+const renderHabitList = (storage) => {
+  buildHabit(storage);
+  // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+};
+
 //Create Habits in DOM
 let storage = getStorageAsJSON(HABITS_KEY);
 if (storage) {
-  buildHabit(storage);
+  renderHabitList(storage);
 }
 
 const submitForm = () => {
@@ -47,5 +52,5 @@ buildCategoriesDropdownAsync("#priorities-dropdown", priorities);
 let categoryDrop = document.querySelector("select#priorities-dropdown");
 categoryDrop.addEventListener("change", () => {
   storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
-  buildHabit(storage);
+  renderHabitList(storage);
 });
