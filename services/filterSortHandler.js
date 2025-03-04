@@ -20,7 +20,7 @@ export const sortList = (option = "", arr = []) => {
         return arr.sort((a, b) => a.toString().localeCompare(b.toString()));
 }
 
-export const filterCategoryList = (destination, storageName) => {
+export const filterCategoryList = (destination = "", storageName = "", allowedKeys = []) => {
     let categoryDrop = document.querySelector(`select${destination}`);  //Get selected value
     let storage = [];
     if (categoryDrop.value === "Ingen vald...") { //If no chosen
@@ -29,7 +29,7 @@ export const filterCategoryList = (destination, storageName) => {
     else { //Filter
         let value = categoryDrop.value;
         storage = getStorageAsJSON(storageName);
-        storage = storage.filter((element) => element.category === value);
+        storage = storage.filter((element) => filterObjKeys(element, allowedKeys)[0][1] === value);
     }
     return storage;
 }

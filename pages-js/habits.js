@@ -4,6 +4,8 @@ import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues } from "../services/inputHandler.js";
+import { buildCategoriesDropdownAsync } from "../builders/todoBuilder.js";
+import { filterCategoryList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
@@ -36,4 +38,14 @@ createBtn.addEventListener("click", async () => {
 
 closeModalBtn.addEventListener("click", () => {
   modal.close();
+});
+
+//Categories Dropdown
+let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
+buildCategoriesDropdownAsync("#priorities-dropdown", priorities);
+//Event-handling
+let categoryDrop = document.querySelector("select#priorities-dropdown");
+categoryDrop.addEventListener("change", () => {
+  storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
+  buildHabit(storage);
 });

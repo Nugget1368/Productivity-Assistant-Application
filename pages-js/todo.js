@@ -72,7 +72,7 @@ buildCategoriesDropdownAsync("#categories-dropdown", categories);
 let categoryDrop = document.querySelector("select#categories-dropdown");
 categoryDrop.addEventListener("change", () => {
   //When category is changed
-  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY);
+  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY, ["category"]);
   renderTodoList(storage);
 });
 
