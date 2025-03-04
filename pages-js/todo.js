@@ -7,15 +7,22 @@ import {
 } from "../services/localstorage.js";
 import { createTodo } from "../helpers/todoHelper.js";
 import {
-  buildCategoriesDropdownAsync,
   buildTodos,
-  buildTodosForm,
-  buildSortDropdown,
+  buildTodosForm
 } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import { formBuilder } from "../builders/builder.js";
-import { getInputValues, listItemHandler, checkboxEventHandler } from "../services/inputHandler.js";
-import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
+import {
+  formBuilder, buildSortDropdown, buildCategoriesDropdownAsync,
+} from "../builders/builder.js";
+import {
+  getInputValues,
+  listItemHandler,
+  checkboxEventHandler,
+} from "../services/inputHandler.js";
+import {
+  filterCategoryList,
+  sortList
+} from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
@@ -101,7 +108,7 @@ buildCategoriesDropdownAsync("#categories-dropdown", categories);
 let categoryDrop = document.querySelector("select#categories-dropdown");
 categoryDrop.addEventListener("change", () => {
   //When category is changed
-  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY);
+  storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY, ["category"]);
   renderTodoList(storage);
 });
 

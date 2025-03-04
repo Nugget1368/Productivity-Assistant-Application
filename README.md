@@ -150,6 +150,38 @@ För att få en stabil mall när man ska spara ett aóbjekt som Todo, Habit elle
 >- **createTodo**, Finns i todoHandler.js
 >- **createHabit**, Finns i habitHandler.js
 >- **createEvent**, finns i eventHandler.js
+
+### filterSortHandler.js
+Denna fil har som syfte att samla alla metoder som har med kategorisering och sortering att göra.
+
+#### filterCategoryList
+Filtrerar en lista utefter det värde som användaren angett.
+
+```js
+const filterCategoryList = (destination = "", storageName = "", allowedKeys = []) => {
+    let categoryDrop = document.querySelector(`select${destination}`);  //Get selected value
+    let storage = [];
+    if (categoryDrop.value === "Ingen vald...") { //If no chosen
+        storage = getStorageAsJSON(storageName);
+    }
+    else { //Filter
+        let value = categoryDrop.value;
+        storage = getStorageAsJSON(storageName);
+        storage = storage.filter((element) => filterObjKeys(element, allowedKeys)[0][1] === value);
+    }
+    return storage;
+}
+```
+Denna metod använder sig av en extern metod, **filterObjKeys**, som är nödvändig för att få denna metod generisk. Med hjälp av denna metod kan vi filtrera värden utefter olika typer av nycklar som använts. För att göra detta krävs att vi anger en nyckel i _parametern allowedKeys_.
+
+```js
+//Exempel
+  storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
+```
+I exemplet vill vi med hjälp av dropdown-värdet som användaren angett i **_#priorities-dropdown_**, filtrera localstorage-listan vars namn är **_HABITS_KEY_**, och propertyn (eller nyckeln) i habits-objektet som vi filtrerar efter **_heter priority_**.
+
+**Resultatet**: Om användaren angett i Dropdownen att hen vill se alla rutiner (Habits) vars prioritet är **Hög**, så kommer _variabeln storage_ vara en **lista** (array) **med rutiner** vars **Prioritet är Hög**.
+
 ****
 
 ## Builders

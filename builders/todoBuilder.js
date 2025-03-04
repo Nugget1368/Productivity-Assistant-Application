@@ -87,33 +87,3 @@ export const buildTodosForm = (destination = "", categories = []) => {
   let form = document.querySelector(destination);
   form.prepend(titleDiv, descriptionDiv, timeDiv, categoryDiv, deadlineDiv);
 };
-
-export const buildSortDropdown = (destination = "") => {
-  let sortOptions = [
-    "Senast tillagda",
-    "Datum",
-    "Tidsestimat (lägst)",
-    "Tidsestimat (högst)",
-    "Slutförda",
-    "Ej Slutförda",
-  ];
-  let dropdown = document.querySelector(`select${destination}`);
-  let index = 0;
-  sortOptions.forEach((sortOption) => {
-    let option = document.createElement("option");
-    option.textContent = sortOption;
-    option.setAttribute("id", `sort-option-${index}`);
-    dropdown.append(option);
-    index++;
-  });
-};
-
-export const buildCategoriesDropdownAsync = async (destination = "", categories = []) => {
-  let categoriesDropdown = document.querySelector(`select${destination}`);
-  categories.forEach((category) => {
-    let option = document.createElement("option");
-    option.textContent = category.title;
-    option.setAttribute("id", `category-${category.id}`);
-    categoriesDropdown.append(option);
-  });
-};

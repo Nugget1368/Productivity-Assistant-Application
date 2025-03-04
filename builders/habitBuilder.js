@@ -1,5 +1,6 @@
 export const buildHabit = (habits) => {
   let section = document.querySelector("section.card-container");
+  section.innerHTML = "";
   habits.forEach((habit) => {
     let card = document.createElement("article");
     card.classList.add("card");
