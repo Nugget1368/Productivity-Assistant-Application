@@ -1,3 +1,4 @@
+@charset "UTF-8";
 aside {
   height: 100vh;
   min-width: 270px;
@@ -380,7 +381,6 @@ h1 {
   border: 0.5px solid rgb(218, 215, 215);
   border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
-  text-transform: capitalize;
 }
 #todos li.done-todo {
   text-decoration: line-through;
@@ -468,6 +468,45 @@ section.container-wrapper .todos-right {
 section.container-wrapper .todos-right #todo-popup-btns {
   margin-bottom: 0;
   align-self: flex-end;
+}
+
+/* Styla modalens knappar */
+dialog[modal] article {
+  display: flex; /* Använder Flexbox */
+  justify-content: center; /* Centrera horisontellt */
+  gap: 10px; /* Mellanrum mellan knapparna */
+  margin-top: 15px; /* Lägger till lite utrymme ovanför */
+}
+
+/* Styla alla knappar i modalen */
+dialog[modal] button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Styla "Ja, radera"-knappen */
+.confirm-delete {
+  background-color: plum;
+  color: white;
+  font-weight: bold;
+}
+
+.confirm-delete:hover {
+  background-color: darkred;
+}
+
+/* Styla "Avbryt"-knappen */
+.cancel-delete {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+.cancel-delete:hover {
+  background-color: darkgray;
 }
 
 dialog {
