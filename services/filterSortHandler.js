@@ -10,6 +10,30 @@ export const sortList = (option = "", arr = []) => {
     else if (option === "Tidsestimat (högst)")
         return arr.sort((a, b) => parseInt(b.time) - parseInt(a.time));
 
+    else if (option === "Repetitioner (lägst)")
+        return arr.sort((a, b) => parseInt(a.repetition) - parseInt(b.repetition));
+
+    else if (option === "Repetitioner (högst)")
+        return arr.sort((a, b) => parseInt(b.repetition) - parseInt(a.repetition));
+
+    else if (option === "Prioritet (lägst)") {
+        let priorityOrder = {
+            "Låg": 1,
+            "Mellan": 2,
+            "Hög": 3
+        }
+        return arr.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    }
+
+    else if (option === "Prioritet (högst)") {
+        let priorityOrder = {
+            "Låg": 1,
+            "Mellan": 2,
+            "Hög": 3
+        }
+        return arr.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
+    }
+
     else if (option === "Slutförda")
         return arr.sort((a, b) => b.status - a.status);
 
