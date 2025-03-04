@@ -1,5 +1,5 @@
 import { HABITS_KEY, saveToStorage, getStorageAsJSON, editStorage, deleteFromStorage } from "../services/localstorage.js";
-import { PRIORITIES_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
+import { PRIORITIES_KEY, SORT_OPTIONS_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
 import { formBuilder } from "../builders/builder.js";
@@ -54,14 +54,9 @@ categoryDrop.addEventListener("change", () => {
   storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
   renderPage(storage);
 });
-let sortOptions = [
-  "Senast tillagda",
-  "Repetitioner (lägst)",
-  "Repetitioner (högst)",
-  "Prioritet (lägst)",
-  "Prioritet (högst)"
-  ];
-buildSortDropdown("#sort-dropdown", sortOptions);
+
+let options = await loadFromJSONAsync(SORT_OPTIONS_KEY);
+buildSortDropdown("#sort-dropdown", options.habit);
 let sortDropdown = document.querySelector("select#sort-dropdown");
 sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);
