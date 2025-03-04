@@ -60,7 +60,7 @@ closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
 
-deleteBtn.addEventListener("click", (event) => {
+deleteBtn.addEventListener("click", () => {
   let modal = document.querySelector("dialog[modal]");
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Bekräfta radering";
@@ -71,7 +71,7 @@ deleteBtn.addEventListener("click", (event) => {
   let confirmBtn = document.createElement("button");
   confirmBtn.textContent = "Ja, radera";
   confirmBtn.classList.add("confirm-delete");
-  confirmBtn.addEventListener("click", (event) => {
+  confirmBtn.addEventListener("click", () => {
     let article = document.querySelector(".container-wrapper .todos-right");
     let todoId = article.getAttribute("selected-item");
     deleteFromStorage(ACTIVITIES_KEY, Number(todoId));
@@ -88,8 +88,8 @@ deleteBtn.addEventListener("click", (event) => {
   });
 
   // Lägg till knapparna i modalen
-  article.appendChild(confirmBtn);
-  article.appendChild(cancelBtn);
+  article.append(confirmBtn);
+  article.append(cancelBtn);
 
   modal.showModal();
 });
