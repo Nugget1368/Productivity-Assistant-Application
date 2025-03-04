@@ -42,6 +42,7 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
     item.addEventListener("click", (event) => {
       let listItemId = event.currentTarget.id;
       let newObj = storage.find((element) => element.id == listItemId);
+      
 
       let h2 = document.querySelector("#todo-popup-h2");
       h2.textContent = newObj.title;

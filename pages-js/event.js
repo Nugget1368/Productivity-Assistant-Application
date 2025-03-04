@@ -48,3 +48,42 @@ createBtn.addEventListener("click", async () => {
 closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
+
+
+/// El bajo es solo pruebo
+
+let deleteBtn = document.querySelector("[open-modal].delete-btn");
+
+deleteBtn.addEventListener("click", (event) => {
+  let modal = document.querySelector("dialog[modal]");
+  let h3 = document.querySelector("dialog[modal] h3");
+  h3.textContent = "Bekräfta radering";
+  let article = document.querySelector("dialog[modal] article");
+  article.innerHTML = ""; // Rensa tidigare innehåll
+
+  // Skapar "Ja, radera"-knappen
+  let confirmBtn = document.createElement("button");
+  confirmBtn.textContent = "Ja, radera";
+  confirmBtn.classList.add("confirm-delete");
+  confirmBtn.addEventListener("click", (event) => {
+    let article = document.querySelector(".container-wrapper .todos-right");
+    let todoId = article.getAttribute("selected-item");
+    deleteFromStorage(EVENT_KEY, Number(todoId));
+    modal.close();
+    location.reload();
+  });
+
+  // Skapar "Avbryt"-knappen
+  let cancelBtn = document.createElement("button");
+  cancelBtn.textContent = "Avbryt";
+  cancelBtn.classList.add("cancel-delete");
+  cancelBtn.addEventListener("click", () => {
+    modal.close(); // Stäng modalen utan att radera
+  });
+
+  // Lägger till knapparna i modalen
+  article.appendChild(confirmBtn);
+  article.appendChild(cancelBtn);
+
+  modal.showModal();
+});

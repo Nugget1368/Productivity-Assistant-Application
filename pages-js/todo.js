@@ -60,17 +60,6 @@ closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
 
-// deleteBtn.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   let modal = document.querySelector("dialog[modal]");
-//   let h3 = document.querySelector("dialog[modal] h3");
-//   h3.textContent = "Bekräfta radering";
-//   let article = document.querySelector("dialog[modal] article");
-//   article.innerHTML = "";
-
-//   modal.showModal();
-// });
-
 deleteBtn.addEventListener("click", (event) => {
   let modal = document.querySelector("dialog[modal]");
   let h3 = document.querySelector("dialog[modal] h3");
