@@ -6,29 +6,19 @@ import {
   editStorage,
 } from "../services/localstorage.js";
 import { createTodo } from "../helpers/todoHelper.js";
-import {
-  buildTodos,
-  buildTodosForm
-} from "../builders/todoBuilder.js";
+import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
 import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
-import {
-  formBuilder, buildSortDropdown, buildCategoriesDropdownAsync,
-} from "../builders/builder.js";
-import {
-  getInputValues,
-  listItemHandler,
-  checkboxEventHandler,
-} from "../services/inputHandler.js";
-import {
-  filterCategoryList,
-  sortList
-} from "../services/filterSortHandler.js";
+import { formBuilder, buildSortDropdown, buildCategoriesDropdownAsync } from "../builders/builder.js";
+import { getInputValues, listItemHandler, checkboxEventHandler } from "../services/inputHandler.js";
+import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
 let deleteBtn = document.querySelector("[open-modal].delete-btn");
+
+let editBtn = document.querySelector("[open-modal].edit-btn");
 
 const renderTodoList = (storage) => {
   let list = document.querySelector("#todos ul");
@@ -97,6 +87,51 @@ deleteBtn.addEventListener("click", () => {
   // Lägg till knapparna i modalen
   article.append(confirmBtn);
   article.append(cancelBtn);
+
+  modal.showModal();
+});
+
+editBtn.addEventListener("click", async () => {
+  let modal = document.querySelector("dialog[modal]");
+  let modalHeader = document.querySelector("dialog[modal] h3");
+  let modalArticle = document.querySelector("dialog[modal] article");
+
+  modalHeader.textContent = "Redigera din aktivitet";
+  modalArticle.innerHTML = "";
+
+  let selectedTodoId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
+
+  let storage = getStorageAsJSON(ACTIVITIES_KEY);
+  let selectedTodo = storage.find((todo) => todo.id == selectedTodoId);
+
+  let { form, submitBtn } = formBuilder("dialog[modal] article", "edit-todo", "edit");
+
+  buildTodosForm("form#edit-todo", categories);
+
+  document.querySelector("#title").value = selectedTodo.title;
+  document.querySelector("#description").value = selectedTodo.description;
+  document.querySelector("#time").value = selectedTodo.time;
+  document.querySelector("#category").value = selectedTodo.category;
+  document.querySelector("#deadline").value = selectedTodo.deadline;
+
+  submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    let updatedTodo = {
+      id: selectedTodo.id,
+      title: document.querySelector("#title").value,
+      description: document.querySelector("#description").value,
+      time: document.querySelector("#time").value,
+      category: document.querySelector("#category").value,
+      deadline: document.querySelector("#deadline").value,
+      status: selectedTodo.status,
+    };
+
+    editStorage(ACTIVITIES_KEY, updatedTodo);
+
+    modal.close();
+    location.reload();
+  });
 
   modal.showModal();
 });

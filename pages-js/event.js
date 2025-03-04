@@ -49,11 +49,7 @@ closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
 
-
-/// El bajo es solo pruebo
-
 let deleteBtn = document.querySelector("[open-modal].delete-btn");
-
 deleteBtn.addEventListener("click", (event) => {
   let modal = document.querySelector("dialog[modal]");
   let h3 = document.querySelector("dialog[modal] h3");
@@ -84,6 +80,45 @@ deleteBtn.addEventListener("click", (event) => {
   // Lägger till knapparna i modalen
   article.appendChild(confirmBtn);
   article.appendChild(cancelBtn);
+
+  modal.showModal();
+});
+
+let editBtn = document.querySelector("[open-modal].edit-btn");
+editBtn.addEventListener("click", () => {
+  let modal = document.querySelector("dialog[modal]");
+  let modalHeader = document.querySelector("dialog[modal] h3");
+  let modalArticle = document.querySelector("dialog[modal] article");
+
+  modalHeader.textContent = "Redigera ditt event";
+  modalArticle.innerHTML = "";
+
+  let selectedEventId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
+
+  let storage = getStorageAsJSON(EVENT_KEY);
+  let selectedEvent = storage.find((event) => event.id == selectedEventId);
+
+  let { submitBtn } = formBuilder("dialog[modal] article", "edit-event", "edit");
+  buildEventForm("form#edit-event");
+
+  document.querySelector("#title").value = selectedEvent.title;
+  document.querySelector("#start").value = selectedEvent.start;
+  document.querySelector("#end").value = selectedEvent.end;
+
+  submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    let updatedEvent = {
+      id: selectedEvent.id,
+      title: document.querySelector("#title").value,
+      start: document.querySelector("#start").value,
+      end: document.querySelector("#end").value,
+    };
+
+    editStorage(EVENT_KEY, updatedEvent);
+    modal.close();
+    location.reload();
+  });
 
   modal.showModal();
 });
