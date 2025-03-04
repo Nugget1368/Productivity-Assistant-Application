@@ -28,6 +28,8 @@ const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
 
+let deleteBtn = document.querySelector("[open-modal].delete-btn");
+
 const renderTodoList = (storage) => {
   let list = document.querySelector("#todos ul");
   list.innerHTML = "";
@@ -53,16 +55,50 @@ createBtn.addEventListener("click", async () => {
   h3.textContent = "Lägg till ny Aktivitet";
   let article = document.querySelector("dialog[modal] article");
   article.innerHTML = "";
-  let categories = await loadFromJSONAsync(CATEGORIES_KEY);     //Get categories
-  formBuilder("dialog[modal] article", "create-todo");    //Build Form in popup
-  buildTodosForm("form#create-todo", categories);    //Build Todo-form inputfields
-  let submitBtn = document.querySelector("form#create-todo");    //On submit in form
+  let categories = await loadFromJSONAsync(CATEGORIES_KEY); //Get categories
+  formBuilder("dialog[modal] article", "create-todo"); //Build Form in popup
+  buildTodosForm("form#create-todo", categories); //Build Todo-form inputfields
+  let submitBtn = document.querySelector("form#create-todo"); //On submit in form
   submitBtn.addEventListener("submit", () => submitForm());
   modal.showModal();
 });
 
 closeModalBtn.addEventListener("click", () => {
   modal.close();
+});
+
+deleteBtn.addEventListener("click", () => {
+  let modal = document.querySelector("dialog[modal]");
+  let h3 = document.querySelector("dialog[modal] h3");
+  h3.textContent = "Bekräfta radering";
+  let article = document.querySelector("dialog[modal] article");
+  article.innerHTML = ""; // Rensa tidigare innehåll
+
+  // Skapa "Ja, radera"-knappen
+  let confirmBtn = document.createElement("button");
+  confirmBtn.textContent = "Ja, radera";
+  confirmBtn.classList.add("confirm-delete");
+  confirmBtn.addEventListener("click", () => {
+    let article = document.querySelector(".container-wrapper .todos-right");
+    let todoId = article.getAttribute("selected-item");
+    deleteFromStorage(ACTIVITIES_KEY, Number(todoId));
+    modal.close();
+    location.reload();
+  });
+
+  // Skapa "Avbryt"-knappen
+  let cancelBtn = document.createElement("button");
+  cancelBtn.textContent = "Avbryt";
+  cancelBtn.classList.add("cancel-delete");
+  cancelBtn.addEventListener("click", () => {
+    modal.close(); // Stäng modalen utan att radera
+  });
+
+  // Lägg till knapparna i modalen
+  article.append(confirmBtn);
+  article.append(cancelBtn);
+
+  modal.showModal();
 });
 
 //Categories Dropdown
