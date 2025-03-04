@@ -1,37 +1,61 @@
 export const buildHabit = (habits) => {
   let section = document.querySelector("section.card-container");
   section.innerHTML = "";
+
   habits.forEach((habit) => {
     let card = document.createElement("article");
     card.classList.add("card");
     card.id = habit.id;
+
     let title = document.createElement("h3");
     title.textContent = habit.title;
+
     let priority = document.createElement("label");
     priority.textContent = `Prioritet: ${habit.priority}`;
+
     let div = document.createElement("div");
+
     let repetitionTitle = document.createElement("label");
     repetitionTitle.textContent = "Repitition:";
+
     let repetition = document.createElement("input");
     repetition.type = "number";
     repetition.min = 0;
     repetition.value = habit.repetition;
+
     let plus = document.createElement("span");
     plus.textContent = "+";
     plus.classList.add("increase");
+
     let minus = document.createElement("span");
     minus.textContent = "-";
     minus.classList.add("decrease");
+
     let repetitionContainer = document.createElement("section");
     repetitionContainer.classList.add("repetitions");
     repetitionContainer.append(minus, repetition, plus);
     div.classList.add("repetitions");
     div.append(repetitionTitle, repetitionContainer);
     card.append(title, priority, div);
+
+    //THIS IS JOB IN PROGRESS
+    // card.addEventListener("click", (event) => {
+    //   document.querySelector(".card-container").setAttribute("selected-item", habit.id);
+    //   card.classList.add("selected");
+    // });
+
+    // card.addEventListener("click", function () {
+    //   let selected = document.querySelector(".card-container .card.selected");
+    //   if (selected && selected !== card) {
+    //     selected.classList.remove("selected");
+    //   }
+    //   card.classList.toggle("selected");
+    // });
+    //THIS IS JOB IN PROGRESS
+
     section.append(card);
   });
 };
-
 
 export const buildHabitForm = (destination = "", priorities = []) => {
   let titleDiv = document.createElement("div");

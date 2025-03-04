@@ -1,0 +1,29 @@
+.card-container {
+  .card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: plum;
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: plum;
+    }
+
+    h3,
+    label {
+      color: #333;
+    }
+
+    &.selected h3,
+    &.selected label {
+      color: #fff;
+    }
+  }
+}
