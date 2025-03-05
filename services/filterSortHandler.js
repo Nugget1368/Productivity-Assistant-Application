@@ -4,6 +4,9 @@ export const sortList = (option = "", arr = []) => {
     if (option === "Datum")
         return arr.sort((a, b) => a.deadline.localeCompare(b.deadline));
 
+    else if (option === "Start")
+        return arr.sort((a, b) => a.start.localeCompare(b.start));
+
     else if (option === "Tidsestimat (lägst)")
         return arr.sort((a, b) => parseInt(a.time) - parseInt(b.time));
 
