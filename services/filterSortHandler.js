@@ -58,4 +58,13 @@ export const filterCategoryList = (destination = "", storageName = "", allowedKe
     return storage;
 }
 
+export const filterDateList = (storageName = "", value = "") => {
+    let storage = getStorageAsJSON(storageName);
+    if (value === "show-upcoming")
+        storage = storage.filter((element) => element.end > new Date().toLocaleDateString());
+    else if (value === "show-previous")
+        storage = storage.filter((element) => element.end <= new Date().toLocaleDateString());
+    return storage;
+}
+
 export const filterObjKeys = (obj = {}, allowedKeys = []) => Object.entries(obj).filter(([key, _]) => allowedKeys.includes(key));

@@ -9,6 +9,7 @@ import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
+import { filterDateList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
@@ -88,5 +89,6 @@ deleteBtn.addEventListener("click", (event) => {
 let radioGroup = document.querySelector("div.filter-options");
 radioGroup.addEventListener("change", (event) =>{
   let radioValue = event.target.value;
-  console.log(radioValue);
-})
+  storage = filterDateList(EVENT_KEY, radioValue);
+  renderEventList(storage);
+});
