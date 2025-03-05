@@ -12,13 +12,20 @@ import { formBuilder, buildSortDropdown, buildCategoriesDropdownAsync } from "..
 import { getInputValues, listItemHandler, checkboxEventHandler } from "../services/inputHandler.js";
 import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 
+// Ny import för användarspecifik nyckel
+import { getUserSpecificKey } from "../services/auth.js";
+
+/*
+// Ursprunglig kod (utkommenterad):
 let storage = getStorageAsJSON(ACTIVITIES_KEY);
+*/
+const userSpecificActivitiesKey = getUserSpecificKey(ACTIVITIES_KEY);
+let storage = getStorageAsJSON(userSpecificActivitiesKey) || [];
+
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
-
 let deleteBtn = document.querySelector("[open-modal].delete-btn");
-
 let editBtn = document.querySelector("[open-modal].edit-btn");
 
 const renderTodoList = (storage) => {
@@ -26,10 +33,15 @@ const renderTodoList = (storage) => {
   list.innerHTML = "";
   buildTodos(storage);
   listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
+
+  /*
+  // Ursprunglig kod (utkommenterad):
   checkboxEventHandler(storage, ACTIVITIES_KEY);
+  */
+  checkboxEventHandler(storage, userSpecificActivitiesKey);
 };
 
-//Create Todos in DOM
+// Skapa Todos i DOM
 if (storage) {
   renderTodoList(storage);
 }
@@ -37,7 +49,12 @@ if (storage) {
 const submitForm = () => {
   let values = getInputValues("form#create-todo");
   let todo = createTodo(values[0], values[1], values[2], values[3], values[4]);
+
+  /*
+  // Ursprunglig kod (utkommenterad):
   saveToStorage(ACTIVITIES_KEY, todo);
+  */
+  saveToStorage(userSpecificActivitiesKey, todo);
 };
 
 createBtn.addEventListener("click", async () => {
@@ -45,10 +62,12 @@ createBtn.addEventListener("click", async () => {
   h3.textContent = "Lägg till ny Aktivitet";
   let article = document.querySelector("dialog[modal] article");
   article.innerHTML = "";
+
   let categories = await loadFromJSONAsync(CATEGORIES_KEY); //Get categories
   formBuilder("dialog[modal] article", "create-todo"); //Build Form in popup
   buildTodosForm("form#create-todo", categories); //Build Todo-form inputfields
-  let submitBtn = document.querySelector("form#create-todo"); //On submit in form
+
+  let submitBtn = document.querySelector("form#create-todo");
   submitBtn.addEventListener("submit", () => submitForm());
   modal.showModal();
 });
@@ -71,7 +90,13 @@ deleteBtn.addEventListener("click", () => {
   confirmBtn.addEventListener("click", () => {
     let article = document.querySelector(".container-wrapper .todos-right");
     let todoId = article.getAttribute("selected-item");
+
+    /*
+    // Ursprunglig kod (utkommenterad):
     deleteFromStorage(ACTIVITIES_KEY, Number(todoId));
+    */
+    deleteFromStorage(userSpecificActivitiesKey, Number(todoId));
+
     modal.close();
     location.reload();
   });
@@ -101,11 +126,19 @@ editBtn.addEventListener("click", async () => {
 
   let selectedTodoId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
+  /*
+  // Ursprunglig kod (utkommenterad):
   let storage = getStorageAsJSON(ACTIVITIES_KEY);
+  */
+  let storage = getStorageAsJSON(userSpecificActivitiesKey) || [];
   let selectedTodo = storage.find((todo) => todo.id == selectedTodoId);
 
   let { form, submitBtn } = formBuilder("dialog[modal] article", "edit-todo", "edit");
 
+  // Notera: Se till att 'categories' är tillgänglig här. 
+  // Antingen definiera den före, eller ladda om du behöver.
+  // Ex.:
+  let categories = await loadFromJSONAsync(CATEGORIES_KEY);
   buildTodosForm("form#edit-todo", categories);
 
   document.querySelector("#title").value = selectedTodo.title;
@@ -124,7 +157,11 @@ editBtn.addEventListener("click", async () => {
     );
     updatedTodo.id = selectedTodo.id;
 
+    /*
+    // Ursprunglig kod (utkommenterad):
     editStorage(ACTIVITIES_KEY, updatedTodo);
+    */
+    editStorage(userSpecificActivitiesKey, updatedTodo);
 
     modal.close();
   });
@@ -135,11 +172,16 @@ editBtn.addEventListener("click", async () => {
 //Categories Dropdown
 let categories = await loadFromJSONAsync(CATEGORIES_KEY);
 buildCategoriesDropdownAsync("#categories-dropdown", categories);
+
 //Event-handling
 let categoryDrop = document.querySelector("select#categories-dropdown");
 categoryDrop.addEventListener("change", () => {
   //When category is changed
+  /*
+  // Ursprunglig kod (utkommenterad):
   storage = filterCategoryList("#categories-dropdown", ACTIVITIES_KEY, ["category"]);
+  */
+  storage = filterCategoryList("#categories-dropdown", userSpecificActivitiesKey, ["category"]);
   renderTodoList(storage);
 });
 

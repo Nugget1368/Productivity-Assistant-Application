@@ -13,7 +13,16 @@ import { buildCategoriesDropdownAsync, buildSortDropdown } from "../builders/bui
 import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 
+// Ny import för användarspecifik nyckel
+import { getUserSpecificKey } from "../services/auth.js";
+
+/*
+// Ursprunglig kod (utkommenterad):
 let storage = getStorageAsJSON(HABITS_KEY);
+*/
+const userSpecificHabitsKey = getUserSpecificKey(HABITS_KEY);
+let storage = getStorageAsJSON(userSpecificHabitsKey) || [];
+
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
@@ -27,16 +36,21 @@ const renderPage = () => {
       section.append(element);
     });
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-    increaseDecreaseHandler("section.container-wrapper article", storage, HABITS_KEY);
+    increaseDecreaseHandler("section.container-wrapper article", storage, userSpecificHabitsKey);
   }
-}
+};
 //Create Habits in DOM
 renderPage();
 
 const submitForm = () => {
   let values = getInputValues("form#create-habit");
   let habit = createHabit(values[0], values[1]);
+
+  /*
+  // Ursprunglig kod (utkommenterad):
   saveToStorage(HABITS_KEY, habit);
+  */
+  saveToStorage(userSpecificHabitsKey, habit);
 };
 
 createBtn.addEventListener("click", async () => {
@@ -72,7 +86,11 @@ deleteBtn.addEventListener("click", () => {
   let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
   submitBtn.addEventListener("click", () => {
+    /*
+    // Ursprunglig kod (utkommenterad):
     deleteFromStorage(HABITS_KEY, Number(selectedHabitId));
+    */
+    deleteFromStorage(userSpecificHabitsKey, Number(selectedHabitId));
     modal.close();
   });
 
@@ -91,13 +109,16 @@ editBtn.addEventListener("click", async () => {
 
   let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
+  /*
+  // Ursprunglig kod (utkommenterad):
   let storage = getStorageAsJSON(HABITS_KEY);
+  */
+  let storage = getStorageAsJSON(userSpecificHabitsKey) || [];
   let selectedHabit = storage.find((habit) => habit.id == selectedHabitId);
 
   let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
 
   let { submitBtn } = formBuilder("dialog[modal] article", "edit-habit-form", "edit");
-
   buildHabitForm("form#edit-habit-form", priorities);
 
   document.querySelector("#title").value = selectedHabit.title;
@@ -108,7 +129,11 @@ editBtn.addEventListener("click", async () => {
     updatedHabit.id = selectedHabit.id;
     updatedHabit.repetition = selectedHabit.repetition;
 
+    /*
+    // Ursprunglig kod (utkommenterad):
     editStorage(HABITS_KEY, updatedHabit);
+    */
+    editStorage(userSpecificHabitsKey, updatedHabit);
     modal.close();
   });
 
@@ -118,10 +143,15 @@ editBtn.addEventListener("click", async () => {
 //Categories Dropdown
 let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
 buildCategoriesDropdownAsync("#priorities-dropdown", priorities);
+
 //Event-handling
 let categoryDrop = document.querySelector("select#priorities-dropdown");
 categoryDrop.addEventListener("change", () => {
+  /*
+  // Ursprunglig kod (utkommenterad):
   storage = filterCategoryList("#priorities-dropdown", HABITS_KEY, ["priority"]);
+  */
+  storage = filterCategoryList("#priorities-dropdown", userSpecificHabitsKey, ["priority"]);
   renderPage(storage);
 });
 

@@ -4,22 +4,33 @@ import { checkboxEventHandler } from "../services/inputHandler.js";
 import { buildHabit } from "../builders/habitBuilder.js";
 import { buildEvent } from "../builders/eventBuilder.js";
 import { filterDateList } from "../services/filterSortHandler.js";
+import { getUserSpecificKey, getCurrentUser } from "../services/auth.js";
 
-let todoStorage = getStorageAsJSON(ACTIVITIES_KEY);
+// Bestäm vilken nyckel som ska användas:
+// Om någon är inloggad används den användarspecifika nyckeln, annars används den globala nyckeln.
+const currentUser = getCurrentUser();
+const activitiesKeyToUse = currentUser ? getUserSpecificKey(ACTIVITIES_KEY) : ACTIVITIES_KEY;
+const habitsKeyToUse = currentUser ? getUserSpecificKey(HABITS_KEY) : HABITS_KEY;
+const eventKeyToUse = currentUser ? getUserSpecificKey(EVENT_KEY) : EVENT_KEY;
+
+// --------- Aktiviteter (Todos) ---------
+let todoStorage = getStorageAsJSON(activitiesKeyToUse) || [];
 todoStorage = todoStorage.filter((element) => element.status === false);
 todoStorage = todoStorage.slice(-3);
 buildTodos(todoStorage);
-checkboxEventHandler(todoStorage, ACTIVITIES_KEY);
+checkboxEventHandler(todoStorage, activitiesKeyToUse);
 
-let habitStorage = getStorageAsJSON(HABITS_KEY);
+// --------- Rutiner (Habits) ---------
+let habitStorage = getStorageAsJSON(habitsKeyToUse) || [];
 habitStorage = habitStorage.sort((a, b) => b.repetition - a.repetition);
 habitStorage = habitStorage.slice(0, 3);
-let cards = buildHabit(habitStorage);
-let section = document.querySelector("#habit ul");
-cards.forEach(element => section.append(element));
+let habitCards = buildHabit(habitStorage);
+let habitSection = document.querySelector("#habit ul");
+habitCards.forEach(element => habitSection.append(element));
 
-let eventStorage = getStorageAsJSON(EVENT_KEY);
-eventStorage = filterDateList(EVENT_KEY, "show-upcoming");
+// --------- Event ---------
+let eventStorage = getStorageAsJSON(eventKeyToUse) || [];
+eventStorage = filterDateList(eventKeyToUse, "show-upcoming");
 eventStorage = eventStorage.sort((a, b) => a.start.localeCompare(b.start));
 eventStorage = eventStorage.slice(0, 3);
 let eventCards = buildEvent(eventStorage);
