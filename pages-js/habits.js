@@ -20,11 +20,16 @@ const modal = document.querySelector("[modal]");
 
 const renderPage = () => {
   if (storage) {
-    buildHabit(storage);
+    let section = document.querySelector("section.container-wrapper article ul");
+    section.innerHTML = "";
+    let cards = buildHabit(storage);
+    cards.forEach(element => {
+      section.append(element);
+    });
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-    increaseDecreaseHandler("article.card-container", storage, HABITS_KEY);
+    increaseDecreaseHandler("section.container-wrapper article", storage, HABITS_KEY);
   }
-};
+}
 //Create Habits in DOM
 renderPage();
 
