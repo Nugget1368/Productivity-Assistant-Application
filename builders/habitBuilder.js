@@ -1,42 +1,31 @@
 export const buildHabit = (habits) => {
-  let section = document.querySelector("article.card-container");
-  section.innerHTML = "";
-
+  let cards = [];
   habits.forEach((habit) => {
-    let card = document.createElement("li");
+    let card = document.createElement("article");
     card.classList.add("habit-card");
     card.id = habit.id;
-
     let title = document.createElement("h3");
     title.textContent = habit.title;
-
     let priority = document.createElement("label");
     priority.textContent = `Prioritet: ${habit.priority}`;
-
     let div = document.createElement("div");
-
     let repetitionTitle = document.createElement("label");
     repetitionTitle.textContent = "Repitition:";
-
     let repetition = document.createElement("input");
     repetition.type = "number";
     repetition.min = 0;
     repetition.value = habit.repetition;
-
     let plus = document.createElement("span");
     plus.textContent = "+";
     plus.classList.add("increase");
-
     let minus = document.createElement("span");
     minus.textContent = "-";
     minus.classList.add("decrease");
-
     let repetitionContainer = document.createElement("section");
     repetitionContainer.classList.add("repetitions");
     repetitionContainer.append(minus, repetition, plus);
     div.classList.add("repetitions");
-    div.append(repetitionTitle, repetitionContainer);
-    card.append(title, priority, div);
+
 
     card.addEventListener("click", () => {
       document.querySelector(".container-wrapper .todos-right").setAttribute("selected-item", habit.id);
@@ -49,7 +38,8 @@ export const buildHabit = (habits) => {
       card.classList.toggle("selected");
 
       let panelHeader = document.querySelector(".todos-right h2");
-      panelHeader.textContent = habit.title;
+      if (panelHeader)
+        panelHeader.textContent = habit.title;
 
       // Uppdatera todo-right info med prioritet och repitition
       let infoDiv = document.querySelector(".todos-right #todo-popup-info");
@@ -63,8 +53,11 @@ export const buildHabit = (habits) => {
       }
     });
 
-    section.append(card);
+    div.append(repetitionTitle, repetitionContainer);
+    card.append(title, priority, div);
+    cards.push(card);
   });
+  return cards;
 };
 
 export const buildHabitForm = (destination = "", priorities = []) => {
@@ -75,6 +68,7 @@ export const buildHabitForm = (destination = "", priorities = []) => {
   title.setAttribute("id", "title");
   title.required = true;
   titleDiv.append(titleLabel, title);
+
 
   let priorityDiv = document.createElement("div");
   let priorityLabel = document.createElement("label");
