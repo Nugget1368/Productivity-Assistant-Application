@@ -448,6 +448,13 @@ section.container-wrapper #event-planner-todos ul li.done-todo {
   text-decoration: line-through;
   background-color: rgb(211, 211, 211);
 }
+section.container-wrapper #event-planner-todos ul li.active {
+  border-color: purple;
+}
+section.container-wrapper #event-planner-todos ul li.active label {
+  color: purple;
+  font-weight: 700;
+}
 section.container-wrapper #event-planner-todos ul li article {
   display: flex;
   flex-flow: column;

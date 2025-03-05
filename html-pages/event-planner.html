@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style.css" />
     <script src="../pages-js/event.js" type="module"></script>
   </head>
+
   <body>
     <aside>
       <nav>
@@ -49,19 +50,19 @@
         <div class="filter-options">
           <div class="radio-group">
             <label for="showCompleted-all">
-              <input type="radio" id="showCompleted-all" name="showCompleted" />
+              <input type="radio" id="showCompleted-all" name="showCompleted" value="show-all" checked />
               Visa alla event
             </label>
           </div>
           <div class="radio-group">
             <label for="showCompleted-coming">
-              <input type="radio" id="showCompleted-coming" name="showCompleted" />
+              <input type="radio" id="showCompleted-coming" name="showCompleted" value="show-upcoming" />
               Kommande event
             </label>
           </div>
           <div class="radio-group">
             <label for="showCompleted-previous">
-              <input type="radio" id="showCompleted-previous" name="showCompleted" />
+              <input type="radio" id="showCompleted-previous" name="showCompleted" value="show-previous" />
               Tidigare event
             </label>
           </div>
@@ -89,7 +90,6 @@
         </article>
       </section>
     </main>
-
     <dialog modal>
       <span close-modal>X</span>
       <header>

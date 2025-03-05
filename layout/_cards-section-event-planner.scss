@@ -47,6 +47,14 @@ section.container-wrapper {
           background-color: $marked-as-done-gray;
         }
 
+        &.active{
+          border-color: purple;
+          label{
+            color: purple;
+            font-weight: 700;
+          }
+        }
+
         article {
           @include flex($direction: column, $justify: space-evenly);
           height: 100%;

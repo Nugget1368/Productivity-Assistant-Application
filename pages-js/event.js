@@ -9,6 +9,7 @@ import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
+import { filterDateList, sortList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
@@ -17,6 +18,7 @@ const modal = document.querySelector("[modal]");
 const renderEventList = (storage) => {
   let list = document.querySelector("#event-planner-todos ul");
   list.innerHTML = "";
+  storage = sortList("Start", storage);
   buildEvent(storage);
   listItemHandler("article#event-planner-todos", storage, ["start", "end"]);
 };
@@ -78,8 +80,8 @@ deleteBtn.addEventListener("click", (event) => {
   });
 
   // Lägger till knapparna i modalen
-  article.appendChild(confirmBtn);
-  article.appendChild(cancelBtn);
+  article.append(confirmBtn);
+  article.append(cancelBtn);
 
   modal.showModal();
 });
@@ -121,4 +123,10 @@ editBtn.addEventListener("click", () => {
   });
 
   modal.showModal();
+});
+let radioGroup = document.querySelector("div.filter-options");
+radioGroup.addEventListener("change", (event) => {
+  let radioValue = event.target.value;
+  storage = filterDateList(EVENT_KEY, radioValue);
+  renderEventList(storage);
 });

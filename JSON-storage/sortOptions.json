@@ -1,0 +1,17 @@
+{
+    "todo": [
+        "Senast tillagda",
+        "Datum",
+        "Tidsestimat (lägst)",
+        "Tidsestimat (högst)",
+        "Slutförda",
+        "Ej Slutförda"
+    ],
+    "habit": [
+        "Senast tillagda",
+        "Repetitioner (lägst)",
+        "Repetitioner (högst)",
+        "Prioritet (lägst)",
+        "Prioritet (högst)"
+    ]
+}

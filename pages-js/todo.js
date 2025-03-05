@@ -7,11 +7,12 @@ import {
 } from "../services/localstorage.js";
 import { createTodo } from "../helpers/todoHelper.js";
 import { buildTodos, buildTodosForm } from "../builders/todoBuilder.js";
-import { loadFromJSONAsync, CATEGORIES_KEY } from "../services/jsonHandler.js";
+import { loadFromJSONAsync, CATEGORIES_KEY, SORT_OPTIONS_KEY } from "../services/jsonHandler.js";
 import { formBuilder, buildSortDropdown, buildCategoriesDropdownAsync } from "../builders/builder.js";
 import { getInputValues, listItemHandler, checkboxEventHandler } from "../services/inputHandler.js";
 import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 
+let storage = getStorageAsJSON(ACTIVITIES_KEY);
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
@@ -29,7 +30,6 @@ const renderTodoList = (storage) => {
 };
 
 //Create Todos in DOM
-let storage = getStorageAsJSON(ACTIVITIES_KEY);
 if (storage) {
   renderTodoList(storage);
 }
@@ -148,7 +148,8 @@ categoryDrop.addEventListener("change", () => {
 });
 
 //Sort Dropdown
-buildSortDropdown("#sort-dropdown");
+let options = await loadFromJSONAsync(SORT_OPTIONS_KEY);
+buildSortDropdown("#sort-dropdown", options.todo);
 let sortDropdown = document.querySelector("select#sort-dropdown");
 sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);

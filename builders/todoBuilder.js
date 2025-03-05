@@ -58,6 +58,8 @@ export const buildTodosForm = (destination = "", categories = []) => {
   let time = document.createElement("input");
   time.setAttribute("type", "number");
   time.setAttribute("id", "time");
+  time.min = 0;
+  time.defaultValue = 0;
   timeDiv.append(timeLabel, time);
 
   let categoryDiv = document.createElement("div");
