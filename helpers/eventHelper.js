@@ -5,7 +5,7 @@ const createEvent = (title = "Title", start = new Date().toLocaleDateString(), e
     id: Date.now(),
     title,
     start,
-    end,
+    end
   };
   return event;
 };

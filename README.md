@@ -182,6 +182,22 @@ I exemplet vill vi med hjälp av dropdown-värdet som användaren angett i **_#p
 
 **Resultatet**: Om användaren angett i Dropdownen att hen vill se alla rutiner (Habits) vars prioritet är **Hög**, så kommer _variabeln storage_ vara en **lista** (array) **med rutiner** vars **Prioritet är Hög**.
 
+#### filterDateList
+Filtrering för datum som som jämför ett datum med dagens datum, och returnerar en lista med antingen de datum som passerat eller de datum som kommer härnäst.
+
+```js
+export const filterDateList = (storageName = "", value = "") => {
+    let storage = getStorageAsJSON(storageName);
+    if (value === "show-upcoming")
+    //Filtrera på datum som kommer
+        storage = storage.filter((element) => element.end >= new Date().toLocaleDateString());
+    else if (value === "show-previous")
+    //Filtrera på datum som passerat
+        storage = storage.filter((element) => element.end < new Date().toLocaleDateString());
+    return storage;
+}
+```
+
 ****
 
 ## Builders

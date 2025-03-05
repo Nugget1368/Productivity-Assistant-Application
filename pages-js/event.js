@@ -9,7 +9,7 @@ import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
-import { sortList } from "../services/filterSortHandler.js";
+import { filterDateList, sortList } from "../services/filterSortHandler.js";
 
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
@@ -85,4 +85,11 @@ deleteBtn.addEventListener("click", (event) => {
   article.append(cancelBtn);
 
   modal.showModal();
+});
+
+let radioGroup = document.querySelector("div.filter-options");
+radioGroup.addEventListener("change", (event) =>{
+  let radioValue = event.target.value;
+  storage = filterDateList(EVENT_KEY, radioValue);
+  renderEventList(storage);
 });
