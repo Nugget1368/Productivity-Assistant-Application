@@ -61,7 +61,8 @@ header {
   flex-flow: column;
   align-items: flex-start;
   justify-content: flex-start;
-  height: 200px;
+  min-height: auto;
+  margin-bottom: 40px;
 }
 .index-page-header .h2-startpage {
   font-size: 2rem;
@@ -78,7 +79,7 @@ header {
   flex: 2;
 }
 .index-page-header .wrapper .welcome-box p {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .index-page-header .wrapper .welcome-box #user-name {
   font-style: italic;
@@ -87,8 +88,9 @@ header {
   flex: 1;
   text-align: right;
 }
-.index-page-header .wrapper .quote-box p {
+.index-page-header .wrapper .quote-box #quote {
   font-size: 1rem;
+  letter-spacing: 2px;
   font-style: italic;
 }
 
@@ -96,6 +98,7 @@ h1 {
   font-size: 2rem;
   font-style: normal;
   margin: 20px 0px 10px 0px;
+  color: #44536d;
 }
 
 .card-container {
@@ -642,6 +645,7 @@ dialog footer .delete-btn:hover {
   margin: 0;
   box-sizing: border-box;
   transition: 0.2s;
+  font-family: "Roboto", sans-serif;
 }
 
 body,

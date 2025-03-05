@@ -22,6 +22,7 @@ const monthNames = [
   "december",
 ];
 
+// DATUM
 const d = new Date();
 let day = weekday[d.getDay()];
 let date = d.getDate();
@@ -30,3 +31,20 @@ let month = monthNames[d.getMonth()];
 let fullDate = `${day} ${date} ${month}`;
 
 document.querySelector(".h2-startpage").textContent = fullDate;
+
+//API
+
+import { loadFromJSONAsync } from "../services/jsonHandler.js";
+
+(async () => {
+  try {
+    let quoteData = await loadFromJSONAsync("https://dummyjson.com/quotes/random");
+    console.log("Citat från API:", quoteData);
+    let quoteElement = document.querySelector("#quote");
+    if (quoteElement && quoteData && quoteData.quote) {
+      quoteElement.textContent = quoteData.quote;
+    }
+  } catch (error) {
+    console.error("Kunde inte hämta citatet just nu:", error);
+  }
+})();
