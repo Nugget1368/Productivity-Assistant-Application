@@ -21,7 +21,6 @@ cards.forEach(element => section.append(element));
 let eventStorage = getStorageAsJSON(EVENT_KEY);
 eventStorage = filterDateList(EVENT_KEY, "show-upcoming");
 eventStorage = eventStorage.sort((a, b) => a.start.localeCompare(b.start));
-console.log(eventStorage);
 eventStorage = eventStorage.slice(0, 3);
 let eventCards = buildEvent(eventStorage);
 let eventSection = document.querySelector("#event ul");
