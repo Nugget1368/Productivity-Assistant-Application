@@ -1,4 +1,3 @@
-@charset "UTF-8";
 aside {
   height: 100vh;
   min-width: 270px;
@@ -448,6 +447,13 @@ section.container-wrapper #event-planner-todos ul li.done-todo {
   text-decoration: line-through;
   background-color: rgb(211, 211, 211);
 }
+section.container-wrapper #event-planner-todos ul li.active {
+  border-color: purple;
+}
+section.container-wrapper #event-planner-todos ul li.active label {
+  color: purple;
+  font-weight: 700;
+}
 section.container-wrapper #event-planner-todos ul li article {
   display: flex;
   flex-flow: column;
@@ -470,15 +476,13 @@ section.container-wrapper .todos-right #todo-popup-btns {
   align-self: flex-end;
 }
 
-/* Styla modalens knappar */
 dialog[modal] article {
-  display: flex; /* Använder Flexbox */
-  justify-content: center; /* Centrera horisontellt */
-  gap: 10px; /* Mellanrum mellan knapparna */
-  margin-top: 15px; /* Lägger till lite utrymme ovanför */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-/* Styla alla knappar i modalen */
 dialog[modal] button {
   padding: 10px 15px;
   border: none;
@@ -487,18 +491,16 @@ dialog[modal] button {
   cursor: pointer;
 }
 
-/* Styla "Ja, radera"-knappen */
 .confirm-delete {
-  background-color: plum;
+  background-color: #a685e2;
   color: white;
   font-weight: bold;
 }
 
 .confirm-delete:hover {
-  background-color: darkred;
+  background-color: #8b5cf6;
 }
 
-/* Styla "Avbryt"-knappen */
 .cancel-delete {
   background-color: gray;
   color: white;
