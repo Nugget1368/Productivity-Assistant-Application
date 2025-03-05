@@ -104,12 +104,13 @@ h1 {
   align-items: stretch;
   justify-content: space-between;
   gap: 20px;
+  flex: 1;
 }
 .card-container .card {
   min-width: 250px;
   background-color: #bee7d9;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
-  border: 0.5px solid black;
+  border: 0.5px solid rgb(155, 150, 150);
   border-radius: 5px;
   padding: 20px;
   flex: 1;
@@ -587,6 +588,54 @@ dialog footer .delete-btn {
 dialog footer .delete-btn:hover {
   background-color: #d43333;
   color: #ffffff;
+}
+
+.container-wrapper {
+  flex: 1;
+}
+.container-wrapper .card-container {
+  all: revert;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+.container-wrapper .card-container input::-webkit-outer-spin-button,
+.container-wrapper .card-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container-wrapper .card-container .habit-card {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  margin-bottom: 1rem;
+  list-style: none;
+  min-width: 300px;
+  min-height: 150px;
+}
+.container-wrapper .card-container .habit-card:hover {
+  background-color: plum;
+  cursor: pointer;
+}
+.container-wrapper .card-container .habit-card.selected {
+  background-color: plum;
+}
+.container-wrapper .card-container .habit-card h3,
+.container-wrapper .card-container .habit-card label {
+  color: #333;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+.container-wrapper .card-container .habit-card h3 {
+  font-size: 1.5rem;
+}
+.container-wrapper .card-container .habit-card.selected h3, .container-wrapper .card-container .habit-card.selected label {
+  color: #fff;
 }
 
 * {

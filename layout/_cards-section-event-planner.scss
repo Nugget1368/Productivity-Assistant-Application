@@ -78,14 +78,12 @@ section.container-wrapper {
   }
 }
 
-
 dialog[modal] article {
-  display: flex; 
-  justify-content: center; 
-  gap: 10px; 
-  margin-top: 15px; 
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
 }
-
 
 dialog[modal] button {
   padding: 10px 15px;
@@ -94,7 +92,6 @@ dialog[modal] button {
   font-size: 16px;
   cursor: pointer;
 }
-
 
 .confirm-delete {
   background-color: $add-btn;
@@ -105,7 +102,6 @@ dialog[modal] button {
 .confirm-delete:hover {
   background-color: $add-btn-hover;
 }
-
 
 .cancel-delete {
   background-color: gray;

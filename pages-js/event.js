@@ -52,7 +52,6 @@ closeModalBtn.addEventListener("click", () => {
 });
 
 let deleteBtn = document.querySelector("[open-modal].delete-btn");
-
 deleteBtn.addEventListener("click", (event) => {
   let modal = document.querySelector("dialog[modal]");
   let h3 = document.querySelector("dialog[modal] h3");
@@ -87,8 +86,41 @@ deleteBtn.addEventListener("click", (event) => {
   modal.showModal();
 });
 
+let editBtn = document.querySelector("[open-modal].edit-btn");
+editBtn.addEventListener("click", () => {
+  let modal = document.querySelector("dialog[modal]");
+  let modalHeader = document.querySelector("dialog[modal] h3");
+  let modalArticle = document.querySelector("dialog[modal] article");
+
+  modalHeader.textContent = "Redigera ditt event";
+  modalArticle.innerHTML = "";
+
+  let selectedEventId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
+
+  let storage = getStorageAsJSON(EVENT_KEY);
+  let selectedEvent = storage.find((event) => event.id == selectedEventId);
+
+  let { submitBtn } = formBuilder("dialog[modal] article", "edit-event", "edit");
+  buildEventForm("form#edit-event");
+  document.querySelector("#title").value = selectedEvent.title;
+  document.querySelector("#start").value = selectedEvent.start;
+  document.querySelector("#end").value = selectedEvent.end;
+
+  submitBtn.addEventListener("click", () => {
+    let updatedEvent = createEvent(
+      document.querySelector("#title").value,
+      document.querySelector("#start").value,
+      document.querySelector("#end").value
+    );
+    updatedEvent.id = selectedEvent.id;
+
+    editStorage(EVENT_KEY, updatedEvent);
+  });
+
+  modal.showModal();
+});
 let radioGroup = document.querySelector("div.filter-options");
-radioGroup.addEventListener("change", (event) =>{
+radioGroup.addEventListener("change", (event) => {
   let radioValue = event.target.value;
   storage = filterDateList(EVENT_KEY, radioValue);
   renderEventList(storage);

@@ -7,11 +7,12 @@
 @import "./layout/_section-underpages.scss";
 @import "./layout/_cards-section-event-planner.scss";
 @import "./layout/dialog.scss";
+@import "./layout/habits";
 
 * {
   margin: 0;
   box-sizing: border-box;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 body,

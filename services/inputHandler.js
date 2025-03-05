@@ -40,7 +40,7 @@ const inputSetValue = (element, value = 0) => {
   element.value = value;
   //Trigger Eventlistener of type 'Input'
   element.dispatchEvent(new InputEvent("input"));
-}
+};
 
 export const increaseDecreaseHandler = (destination = "", storage = [], storageName = "") => {
   let input = document.querySelectorAll(`${destination} input`);
@@ -54,10 +54,9 @@ export const increaseDecreaseHandler = (destination = "", storage = [], storageN
     });
     minus[x].addEventListener("click", () => {
       let value = parseInt(input[x].value);
-      if(value > 0){
+      if (value > 0) {
         value -= 1;
-      }
-      else{
+      } else {
         value = 0;
       }
       inputSetValue(input[x], value);
@@ -67,14 +66,14 @@ export const increaseDecreaseHandler = (destination = "", storage = [], storageN
       let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id; //Reach grandparent (list-item) id
       let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
       let value = parseInt(input[x].value);
-      if(value < 0){
+      if (value < 0) {
         value = 0;
       }
       newObj.repetition = value;
       editStorage(storageName, newObj);
     });
   }
-}
+};
 
 export const listItemHandler = (destination = "", storage = [], allowedKeys = []) => {
   let list = document.querySelectorAll(`${destination} ul li`);
@@ -82,14 +81,13 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
     item.addEventListener("click", (event) => {
       let listItemId = event.currentTarget.id;
       let newObj = storage.find((element) => element.id == listItemId);
-      
 
       let h2 = document.querySelector("#todo-popup-h2");
       h2.textContent = newObj.title;
 
       let ul = document.querySelector("#todo-popup-status ul");
       ul.innerHTML = "";
-      
+
       let div = document.querySelector("#todo-popup-info");
       div.innerHTML = "";
       let article = document.querySelector(".container-wrapper .todos-right");
@@ -98,10 +96,12 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
 
       let keys = filterObjKeys(newObj, allowedKeys);
       keys.forEach(([key, value]) => {
-        if (key == "description" && value != "") {
-          let p = document.createElement("p");
-          p.textContent = value;
-          div.append(p);
+        if (key === "description") {
+          if (value !== "") {
+            let p = document.createElement("p");
+            p.textContent = value;
+            div.append(p);
+          }
         } else {
           let li = document.createElement("li");
           ul.append(li);

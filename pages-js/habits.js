@@ -1,4 +1,10 @@
-import { HABITS_KEY, saveToStorage, getStorageAsJSON, editStorage, deleteFromStorage } from "../services/localstorage.js";
+import {
+  HABITS_KEY,
+  saveToStorage,
+  getStorageAsJSON,
+  editStorage,
+  deleteFromStorage,
+} from "../services/localstorage.js";
 import { PRIORITIES_KEY, SORT_OPTIONS_KEY, loadFromJSONAsync } from "../services/jsonHandler.js";
 import { createHabit } from "../helpers/habitsHelper.js";
 import { buildHabit, buildHabitForm } from "../builders/habitBuilder.js";
@@ -16,9 +22,9 @@ const renderPage = () => {
   if (storage) {
     buildHabit(storage);
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-    increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
-  } 
-}
+    increaseDecreaseHandler("article.card-container", storage, HABITS_KEY);
+  }
+};
 //Create Habits in DOM
 renderPage();
 
@@ -43,6 +49,65 @@ createBtn.addEventListener("click", async () => {
 
 closeModalBtn.addEventListener("click", () => {
   modal.close();
+});
+
+const deleteBtn = document.querySelector("[open-modal].delete-btn");
+
+deleteBtn.addEventListener("click", () => {
+  let modal = document.querySelector("dialog[modal]");
+  let modalHeader = document.querySelector("dialog[modal] h3");
+  let modalArticle = document.querySelector("dialog[modal] article");
+
+  modalHeader.textContent = "Bekräfta radering";
+  modalArticle.innerHTML = ""; // Rensa tidigare innehåll
+
+  // Använd formBuilder för att skapa raderingsformuläret (med "delete"-läge)
+  let { submitBtn } = formBuilder("dialog[modal] article", "delete-habit-form", "delete");
+
+  let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
+
+  submitBtn.addEventListener("click", () => {
+    deleteFromStorage(HABITS_KEY, Number(selectedHabitId));
+    modal.close();
+  });
+
+  modal.showModal();
+});
+
+const editBtn = document.querySelector("[open-modal].edit-btn");
+
+editBtn.addEventListener("click", async () => {
+  let modal = document.querySelector("dialog[modal]");
+  let modalHeader = document.querySelector("dialog[modal] h3");
+  let modalArticle = document.querySelector("dialog[modal] article");
+
+  modalHeader.textContent = "Redigera Rutin";
+  modalArticle.innerHTML = "";
+
+  let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
+
+  let storage = getStorageAsJSON(HABITS_KEY);
+  let selectedHabit = storage.find((habit) => habit.id == selectedHabitId);
+
+  let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
+
+  let { submitBtn } = formBuilder("dialog[modal] article", "edit-habit-form", "edit");
+
+  buildHabitForm("form#edit-habit-form", priorities);
+
+  document.querySelector("#title").value = selectedHabit.title;
+  document.querySelector("#priority").value = selectedHabit.priority;
+
+  submitBtn.addEventListener("click", () => {
+    let updatedHabit = createHabit(document.querySelector("#title").value, document.querySelector("#priority").value);
+    updatedHabit.id = selectedHabit.id;
+    updatedHabit.repetition = selectedHabit.repetition;
+
+    editStorage(HABITS_KEY, updatedHabit);
+    modal.close();
+  });
+
+  modal.showModal();
 });
 
 //Categories Dropdown
