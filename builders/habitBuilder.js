@@ -38,20 +38,30 @@ export const buildHabit = (habits) => {
     div.append(repetitionTitle, repetitionContainer);
     card.append(title, priority, div);
 
-    //THIS IS JOB IN PROGRESS
-    // card.addEventListener("click", (event) => {
-    //   document.querySelector(".card-container").setAttribute("selected-item", habit.id);
-    //   card.classList.add("selected");
-    // });
+    card.addEventListener("click", () => {
+      document.querySelector(".container-wrapper .todos-right").setAttribute("selected-item", habit.id);
 
-    // card.addEventListener("click", function () {
-    //   let selected = document.querySelector(".card-container .card.selected");
-    //   if (selected && selected !== card) {
-    //     selected.classList.remove("selected");
-    //   }
-    //   card.classList.toggle("selected");
-    // });
-    //THIS IS JOB IN PROGRESS
+      let selected = document.querySelector(".card-container .card.selected");
+      if (selected && selected !== card) {
+        selected.classList.remove("selected");
+      }
+
+      card.classList.toggle("selected");
+
+      let panelHeader = document.querySelector(".todos-right h2");
+      panelHeader.textContent = habit.title;
+
+      // Uppdatera todo-right info med prioritet och repitition
+      let infoDiv = document.querySelector(".todos-right #todo-popup-info");
+      if (infoDiv) {
+        infoDiv.innerHTML = ""; // Rensar tidigare innehåll
+        let priorityP = document.createElement("p");
+        priorityP.textContent = `Prioritet: ${habit.priority}`;
+        let repetitionP = document.createElement("p");
+        repetitionP.textContent = `Repitition: ${habit.repetition}`;
+        infoDiv.append(priorityP, repetitionP);
+      }
+    });
 
     section.append(card);
   });

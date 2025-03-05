@@ -64,7 +64,7 @@ deleteBtn.addEventListener("click", (event) => {
   // Använd formBuilder för att skapa raderingsformuläret (med "delete"-läge)
   let { submitBtn } = formBuilder("dialog[modal] article", "delete-habit-form", "delete");
 
-  let selectedHabitId = document.querySelector(".card-container").getAttribute("selected-item");
+  let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -86,38 +86,27 @@ editBtn.addEventListener("click", async () => {
   modalHeader.textContent = "Redigera Rutin";
   modalArticle.innerHTML = "";
 
-  // Hämta valt habit-id, t.ex. sparat i .card-container
-  let selectedHabitId = document.querySelector(".card-container").getAttribute("selected-item");
-  if (!selectedHabitId) {
-    return;
-  }
+  let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
-  // Hämta den lagrade vanan från localStorage
   let storage = getStorageAsJSON(HABITS_KEY);
   let selectedHabit = storage.find((habit) => habit.id == selectedHabitId);
-  if (!selectedHabit) return;
 
-  // Hämta prioriteringar (för att bygga formuläret) – precis som du gör vid skapande
   let priorities = await loadFromJSONAsync(PRIORITIES_KEY);
 
-  // Använd formBuilder för att bygga upp redigeringsformuläret
   let { submitBtn } = formBuilder("dialog[modal] article", "edit-habit-form", "edit");
 
-  // Bygg Habit-formuläret med de befintliga fälten (använd din befintliga buildHabitForm)
   buildHabitForm("form#edit-habit-form", priorities);
 
-  // Fyll i input-fälten med data från det valda habit‑objektet
   document.querySelector("#title").value = selectedHabit.title;
   document.querySelector("#priority").value = selectedHabit.priority;
 
-  // Lägg till händelsehanterare för submit – uppdatera vanan i localStorage
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
     let updatedHabit = {
       id: selectedHabit.id,
       title: document.querySelector("#title").value,
       priority: document.querySelector("#priority").value,
-      repetition: selectedHabit.repetition, // Behåller repetitionsvärdet
+      repetition: selectedHabit.repetition,
     };
 
     editStorage(HABITS_KEY, updatedHabit);
