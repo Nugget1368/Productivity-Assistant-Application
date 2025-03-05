@@ -1,10 +1,10 @@
 export const buildHabit = (habits) => {
-  let section = document.querySelector("section.card-container");
+  let section = document.querySelector("article.card-container");
   section.innerHTML = "";
 
   habits.forEach((habit) => {
-    let card = document.createElement("article");
-    card.classList.add("card");
+    let card = document.createElement("li");
+    card.classList.add("habit-card");
     card.id = habit.id;
 
     let title = document.createElement("h3");
@@ -41,7 +41,7 @@ export const buildHabit = (habits) => {
     card.addEventListener("click", () => {
       document.querySelector(".container-wrapper .todos-right").setAttribute("selected-item", habit.id);
 
-      let selected = document.querySelector(".card-container .card.selected");
+      let selected = document.querySelector(".card-container .habit-card.selected");
       if (selected && selected !== card) {
         selected.classList.remove("selected");
       }

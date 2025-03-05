@@ -22,7 +22,7 @@ const renderPage = () => {
   if (storage) {
     buildHabit(storage);
     // listItemHandler("article#todos", storage, ["description", "status", "time", "category", "deadline"]);
-    increaseDecreaseHandler("section.card-container", storage, HABITS_KEY);
+    increaseDecreaseHandler("article.card-container", storage, HABITS_KEY);
   }
 };
 //Create Habits in DOM
