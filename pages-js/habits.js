@@ -102,12 +102,9 @@ editBtn.addEventListener("click", async () => {
 
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    let updatedHabit = {
-      id: selectedHabit.id,
-      title: document.querySelector("#title").value,
-      priority: document.querySelector("#priority").value,
-      repetition: selectedHabit.repetition,
-    };
+    let updatedHabit = createHabit(document.querySelector("#title").value, document.querySelector("#priority").value);
+    updatedHabit.id = selectedHabit.id;
+    updatedHabit.repetition = selectedHabit.repetition;
 
     editStorage(HABITS_KEY, updatedHabit);
     modal.close();

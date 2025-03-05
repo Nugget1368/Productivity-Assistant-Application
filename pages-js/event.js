@@ -110,12 +110,12 @@ editBtn.addEventListener("click", () => {
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
-    let updatedEvent = {
-      id: selectedEvent.id,
-      title: document.querySelector("#title").value,
-      start: document.querySelector("#start").value,
-      end: document.querySelector("#end").value,
-    };
+    let updatedEvent = createEvent(
+      document.querySelector("#title").value,
+      document.querySelector("#start").value,
+      document.querySelector("#end").value
+    );
+    updatedEvent.id = selectedEvent.id;
 
     editStorage(EVENT_KEY, updatedEvent);
     modal.close();

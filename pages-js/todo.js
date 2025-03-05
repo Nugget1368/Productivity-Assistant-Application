@@ -116,16 +116,14 @@ editBtn.addEventListener("click", async () => {
 
   submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
-
-    let updatedTodo = {
-      id: selectedTodo.id,
-      title: document.querySelector("#title").value,
-      description: document.querySelector("#description").value,
-      time: document.querySelector("#time").value,
-      category: document.querySelector("#category").value,
-      deadline: document.querySelector("#deadline").value,
-      status: selectedTodo.status,
-    };
+    let updatedTodo = createTodo(
+      document.querySelector("#title").value,
+      document.querySelector("#description").value,
+      document.querySelector("#time").value,
+      document.querySelector("#category").value,
+      document.querySelector("#deadline").value
+    );
+    updatedTodo.id = selectedTodo.id;
 
     editStorage(ACTIVITIES_KEY, updatedTodo);
 
