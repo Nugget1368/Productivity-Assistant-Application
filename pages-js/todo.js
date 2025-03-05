@@ -114,8 +114,7 @@ editBtn.addEventListener("click", async () => {
   document.querySelector("#category").value = selectedTodo.category;
   document.querySelector("#deadline").value = selectedTodo.deadline;
 
-  submitBtn.addEventListener("click", (event) => {
-    event.preventDefault();
+  submitBtn.addEventListener("click", () => {
     let updatedTodo = createTodo(
       document.querySelector("#title").value,
       document.querySelector("#description").value,
@@ -128,7 +127,6 @@ editBtn.addEventListener("click", async () => {
     editStorage(ACTIVITIES_KEY, updatedTodo);
 
     modal.close();
-    location.reload();
   });
 
   modal.showModal();

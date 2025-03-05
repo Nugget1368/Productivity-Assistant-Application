@@ -53,7 +53,7 @@ closeModalBtn.addEventListener("click", () => {
 
 const deleteBtn = document.querySelector("[open-modal].delete-btn");
 
-deleteBtn.addEventListener("click", (event) => {
+deleteBtn.addEventListener("click", () => {
   let modal = document.querySelector("dialog[modal]");
   let modalHeader = document.querySelector("dialog[modal] h3");
   let modalArticle = document.querySelector("dialog[modal] article");
@@ -66,11 +66,9 @@ deleteBtn.addEventListener("click", (event) => {
 
   let selectedHabitId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
 
-  submitBtn.addEventListener("click", (event) => {
-    event.preventDefault();
+  submitBtn.addEventListener("click", () => {
     deleteFromStorage(HABITS_KEY, Number(selectedHabitId));
     modal.close();
-    location.reload();
   });
 
   modal.showModal();
@@ -100,15 +98,13 @@ editBtn.addEventListener("click", async () => {
   document.querySelector("#title").value = selectedHabit.title;
   document.querySelector("#priority").value = selectedHabit.priority;
 
-  submitBtn.addEventListener("click", (event) => {
-    event.preventDefault();
+  submitBtn.addEventListener("click", () => {
     let updatedHabit = createHabit(document.querySelector("#title").value, document.querySelector("#priority").value);
     updatedHabit.id = selectedHabit.id;
     updatedHabit.repetition = selectedHabit.repetition;
 
     editStorage(HABITS_KEY, updatedHabit);
     modal.close();
-    location.reload();
   });
 
   modal.showModal();

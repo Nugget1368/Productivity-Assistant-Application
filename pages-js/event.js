@@ -102,14 +102,11 @@ editBtn.addEventListener("click", () => {
 
   let { submitBtn } = formBuilder("dialog[modal] article", "edit-event", "edit");
   buildEventForm("form#edit-event");
-
   document.querySelector("#title").value = selectedEvent.title;
   document.querySelector("#start").value = selectedEvent.start;
   document.querySelector("#end").value = selectedEvent.end;
 
-  submitBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-
+  submitBtn.addEventListener("click", () => {
     let updatedEvent = createEvent(
       document.querySelector("#title").value,
       document.querySelector("#start").value,
@@ -118,8 +115,6 @@ editBtn.addEventListener("click", () => {
     updatedEvent.id = selectedEvent.id;
 
     editStorage(EVENT_KEY, updatedEvent);
-    modal.close();
-    location.reload();
   });
 
   modal.showModal();

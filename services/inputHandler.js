@@ -96,10 +96,12 @@ export const listItemHandler = (destination = "", storage = [], allowedKeys = []
 
       let keys = filterObjKeys(newObj, allowedKeys);
       keys.forEach(([key, value]) => {
-        if (key == "description" && value != "") {
-          let p = document.createElement("p");
-          p.textContent = value;
-          div.append(p);
+        if (key === "description") {
+          if (value !== "") {
+            let p = document.createElement("p");
+            p.textContent = value;
+            div.append(p);
+          }
         } else {
           let li = document.createElement("li");
           ul.append(li);
