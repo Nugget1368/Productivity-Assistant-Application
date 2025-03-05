@@ -49,9 +49,6 @@ closeModalBtn.addEventListener("click", () => {
   modal.close();
 });
 
-
-/// El bajo es solo pruebo
-
 let deleteBtn = document.querySelector("[open-modal].delete-btn");
 
 deleteBtn.addEventListener("click", (event) => {
@@ -87,3 +84,9 @@ deleteBtn.addEventListener("click", (event) => {
 
   modal.showModal();
 });
+
+let radioGroup = document.querySelector("div.filter-options");
+radioGroup.addEventListener("change", (event) =>{
+  let radioValue = event.target.value;
+  console.log(radioValue);
+})
