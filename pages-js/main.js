@@ -3,6 +3,7 @@ import { buildTodos } from "../builders/todoBuilder.js";
 import { checkboxEventHandler } from "../services/inputHandler.js";
 import { buildHabit } from "../builders/habitBuilder.js";
 import { buildEvent } from "../builders/eventBuilder.js";
+import { filterDateList } from "../services/filterSortHandler.js";
 
 let todoStorage = getStorageAsJSON(ACTIVITIES_KEY);
 todoStorage = todoStorage.filter((element) => element.status === false);
@@ -18,7 +19,8 @@ let section = document.querySelector("#habit ul");
 cards.forEach(element => section.append(element));
 
 let eventStorage = getStorageAsJSON(EVENT_KEY);
-eventStorage = eventStorage.sort((a, b) => b.start - a.start);
+eventStorage = filterDateList(EVENT_KEY, "show-upcoming");
+eventStorage = eventStorage.sort((a, b) => a.start.localeCompare(b.start));
 console.log(eventStorage);
 eventStorage = eventStorage.slice(0, 3);
 let eventCards = buildEvent(eventStorage);
