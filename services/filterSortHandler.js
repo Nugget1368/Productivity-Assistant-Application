@@ -40,12 +40,12 @@ export const sortList = (option = "", arr = []) => {
 };
 
 export const filterCategoryList = (destination = "", storageName = "", allowedKeys = []) => {
-    let categoryDrop = document.querySelector(`select${destination}`);  // Hämtar dropdown-elementet
+    let categoryDrop = document.querySelector(`select${destination}`);
     let storage = [];
-    if (categoryDrop.value === "Ingen vald...") { // Om inget är valt
+    if (categoryDrop.value === "Ingen vald...") {
         storage = getStorageAsJSON(storageName);
     }
-    else { // Om ett värde är valt
+    else {
         let value = categoryDrop.value;
         storage = getStorageAsJSON(storageName);
         storage = storage.filter((element) => filterObjKeys(element, allowedKeys)[0][1] === value);

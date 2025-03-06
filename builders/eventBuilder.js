@@ -1,5 +1,5 @@
 export const buildEvent = (events) => {
-  // let ul = document.querySelector("article#event-planner-todos ul");
+
   let cards = [];
   events.forEach((event) => {
     let li = document.createElement("li");
@@ -42,26 +42,28 @@ export const buildEvent = (events) => {
       }
       li.classList.toggle("selected");
     });
-    // ul.append(li);
+
     cards.push(li);
   });
   return cards;
 };
 
-
 export const buildEventForm = (destination = "") => {
   let titleDiv = document.createElement("div");
+
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
+
   let title = document.createElement("input");
   title.setAttribute("id", "title");
   title.required = true;
   titleDiv.append(titleLabel, title);
 
-
   let startDiv = document.createElement("div");
+
   let startLabel = document.createElement("label");
   startLabel.textContent = "Startdatum";
+
   let start = document.createElement("input");
   start.setAttribute("type", "date");
   start.setAttribute("value", new Date().toLocaleDateString());
@@ -69,17 +71,17 @@ export const buildEventForm = (destination = "") => {
   start.setAttribute("id", "start");
   startDiv.append(startLabel, start);
 
-
   let endDiv = document.createElement("div");
+
   let endLabel = document.createElement("label");
   endLabel.textContent = "Slutdatum";
+  
   let end = document.createElement("input");
   end.setAttribute("type", "date");
   end.setAttribute("value", new Date().toLocaleDateString());
   end.setAttribute("min", new Date().toLocaleDateString());
   end.setAttribute("id", "end");
   endDiv.append(endLabel, end);
-
 
   let form = document.querySelector(destination);
   form.prepend(titleDiv, startDiv, endDiv);

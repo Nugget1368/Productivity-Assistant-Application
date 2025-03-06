@@ -6,21 +6,20 @@ import { buildEvent } from "../builders/eventBuilder.js";
 import { filterDateList } from "../services/filterSortHandler.js";
 import { getUserSpecificKey, logoutUser, getCurrentUser } from "../services/auth.js";
 
-// Bestäm vilken nyckel som ska användas:
-// Om någon är inloggad används den användarspecifika nyckeln, annars används den globala nyckeln.
+// If user is logged in, the user specific key will be used. If not, the global key will be used
 const currentUser = getCurrentUser();
 const activitiesKeyToUse = currentUser ? getUserSpecificKey(ACTIVITIES_KEY) : ACTIVITIES_KEY;
 const habitsKeyToUse = currentUser ? getUserSpecificKey(HABITS_KEY) : HABITS_KEY;
 const eventKeyToUse = currentUser ? getUserSpecificKey(EVENT_KEY) : EVENT_KEY;
 
-// --------- Aktiviteter (Todos) ---------
+// --------- Activities (todos) ---------
 let todoStorage = getStorageAsJSON(activitiesKeyToUse) || [];
 todoStorage = todoStorage.filter((element) => element.status === false);
 todoStorage = todoStorage.slice(-3);
 buildTodos(todoStorage);
 checkboxEventHandler(todoStorage, activitiesKeyToUse);
 
-// --------- Rutiner (Habits) ---------
+// --------- Habits ---------
 let habitStorage = getStorageAsJSON(habitsKeyToUse) || [];
 habitStorage = habitStorage.sort((a, b) => b.repetition - a.repetition);
 habitStorage = habitStorage.slice(0, 3);
@@ -28,7 +27,7 @@ let habitCards = buildHabit(habitStorage);
 let habitSection = document.querySelector("#habit ul");
 habitCards.forEach(element => habitSection.append(element));
 
-// --------- Event ---------
+// --------- Event-planner ---------
 let eventStorage = getStorageAsJSON(eventKeyToUse) || [];
 eventStorage = filterDateList(eventKeyToUse, "show-upcoming");
 eventStorage = eventStorage.sort((a, b) => a.start.localeCompare(b.start));
