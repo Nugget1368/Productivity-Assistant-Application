@@ -1,6 +1,6 @@
 import { getStorageAsJSON, saveToStorage } from "./localstorage.js"
 import { setSessionStorage, getSessionStorage } from "./sessionStorage.js";
-// auth.js
+
 export const USERS_KEY = "users";
 export const CURRENT_USER_KEY = "currentUser";
 
@@ -29,7 +29,7 @@ export const loginUser = (username, password) => {
   const user = users.find(user => user.username === username && user.password === password);
   if (user) {
     //Session storage
-    sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    setSessionStorage(CURRENT_USER_KEY, user);
     return true;
   }
   return false;
