@@ -691,10 +691,6 @@ dialog footer .delete-btn:hover {
 .container-wrapper .card-container .habit-card h3 {
   font-size: 1.5rem;
 }
-.container-wrapper .card-container .habit-card.selected h3, .container-wrapper .card-container .habit-card.selected label {
-  color: #fff;
-}
-
 .login-container {
   background: #fff;
   padding: 2rem;
