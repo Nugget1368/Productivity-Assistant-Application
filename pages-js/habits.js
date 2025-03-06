@@ -7,6 +7,7 @@ import { buildCategoriesDropdownAsync, buildSortDropdown } from "../builders/bui
 import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 import { getInputValues, increaseDecreaseHandler } from "../services/inputHandler.js";
 import { getUserSpecificKey } from "../services/auth.js";
+import { logoutUser } from "../services/auth.js";
 
 const userSpecificHabitsKey = getUserSpecificKey(HABITS_KEY);
 

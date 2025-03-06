@@ -6,6 +6,7 @@ import { formBuilder, buildSortDropdown, buildCategoriesDropdownAsync } from "..
 import { getInputValues, listItemHandler, checkboxEventHandler } from "../services/inputHandler.js";
 import { filterCategoryList, sortList } from "../services/filterSortHandler.js";
 import { getUserSpecificKey } from "../services/auth.js";
+import { logoutUser } from "../services/auth.js";
 
 const userSpecificActivitiesKey = getUserSpecificKey(ACTIVITIES_KEY);
 

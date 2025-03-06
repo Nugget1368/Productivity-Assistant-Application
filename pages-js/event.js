@@ -5,6 +5,7 @@ import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 import { filterDateList, sortList } from "../services/filterSortHandler.js";
 import { getUserSpecificKey } from "../services/auth.js";
+import { logoutUser } from "../services/auth.js";
 
 const userSpecificEventKey = getUserSpecificKey(EVENT_KEY);
 
