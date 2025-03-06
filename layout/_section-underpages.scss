@@ -36,14 +36,14 @@
   cursor: pointer;
 }
 
-// Det här är checkboxar för todo-sidan
+// Checkboxes for todo
 .checkbox-group {
   @include flex($direction: column, $justify: space-between, $align: center);
   padding-top: 30px;
   gap: 5px;
 }
 
-// Det här radio-btns för event-planner-sidan
+// Radio-btns for event-planner
 .radio-group {
   @include flex($direction: column, $justify: space-between, $align: center);
   gap: 75px;
@@ -74,7 +74,6 @@
   }
 }
 
-//pop-up höger del
 .container-wrapper {
   @include flex($direction: row, $justify: space-between, $align: flex-start);
   gap: 20px;
