@@ -1,6 +1,6 @@
 export const buildEvent = (events) => {
-  let ul = document.querySelector("article#event-planner-todos ul");
-
+  // let ul = document.querySelector("article#event-planner-todos ul");
+  let cards = [];
   events.forEach((event) => {
     let li = document.createElement("li");
     li.setAttribute("id", event.id);
@@ -14,12 +14,14 @@ export const buildEvent = (events) => {
     title.prepend(icon);
     let div = document.createElement("div");
 
+
     let startDate = document.createElement("label");
     startDate.textContent = "Startdatum: " + event.start;
 
+
     let endDate = document.createElement("label");
     endDate.textContent = "Slutdatum: " + event.end;
-    
+   
     if (event.start < new Date().toLocaleDateString() && event.end < new Date().toLocaleDateString()) {
       li.classList.add("done-todo");
     }
@@ -27,9 +29,11 @@ export const buildEvent = (events) => {
       li.classList.add("active")
     }
 
+
     div.append(startDate, endDate);
     card.append(title, div);
     li.append(card);
+
 
     li.addEventListener("click", function () {
       let selected = document.querySelector("#event-planner-todos ul li.selected");
@@ -38,9 +42,12 @@ export const buildEvent = (events) => {
       }
       li.classList.toggle("selected");
     });
-    ul.append(li);
+    // ul.append(li);
+    cards.push(li);
   });
+  return cards;
 };
+
 
 export const buildEventForm = (destination = "") => {
   let titleDiv = document.createElement("div");
@@ -50,6 +57,7 @@ export const buildEventForm = (destination = "") => {
   title.setAttribute("id", "title");
   title.required = true;
   titleDiv.append(titleLabel, title);
+
 
   let startDiv = document.createElement("div");
   let startLabel = document.createElement("label");
@@ -61,6 +69,7 @@ export const buildEventForm = (destination = "") => {
   start.setAttribute("id", "start");
   startDiv.append(startLabel, start);
 
+
   let endDiv = document.createElement("div");
   let endLabel = document.createElement("label");
   endLabel.textContent = "Slutdatum";
@@ -70,6 +79,7 @@ export const buildEventForm = (destination = "") => {
   end.setAttribute("min", new Date().toLocaleDateString());
   end.setAttribute("id", "end");
   endDiv.append(endLabel, end);
+
 
   let form = document.querySelector(destination);
   form.prepend(titleDiv, startDiv, endDiv);

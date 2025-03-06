@@ -19,7 +19,10 @@ const renderEventList = (storage) => {
   let list = document.querySelector("#event-planner-todos ul");
   list.innerHTML = "";
   storage = sortList("Start", storage);
-  buildEvent(storage);
+  let cards = buildEvent(storage);
+  cards.forEach(element => {
+    list.append(element);
+  });
   listItemHandler("article#event-planner-todos", storage, ["start", "end"]);
 };
 

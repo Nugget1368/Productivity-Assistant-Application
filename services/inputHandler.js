@@ -17,7 +17,7 @@ export const getInputValues = (destination) => {
 
 export const checkboxEventHandler = (storage = "", storagekey = "") => {
   //If checkbox value is changed
-  let checkboxes = document.querySelectorAll("article#todos ul input[type=checkbox]");
+  let checkboxes = document.querySelectorAll("#todos ul input[type=checkbox]");
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", (event) => {
       let listItemId = event.currentTarget.parentElement.parentElement.id; //Reach grandparent (list-item) id
