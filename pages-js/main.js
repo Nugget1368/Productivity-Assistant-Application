@@ -39,13 +39,13 @@ eventCards.forEach(element => eventSection.append(element));
 
 // --------- Greets the user/guest ---------
 if (currentUser && currentUser.firstName) {
-  document.getElementById("user-name").textContent = currentUser.firstName;
+  document.querySelector("#user-name").textContent = currentUser.firstName;
 } else {
-  document.getElementById("user-name").textContent = "gäst";
+  document.querySelector("#user-name").textContent = "gäst";
 }
 
 // --------- Logs out the user, redirecting to login-page ---------
-const logoutLink = document.getElementById("logoutLink");
+const logoutLink = document.querySelector("#logoutLink");
 logoutLink.addEventListener("click", (event) => {
   event.preventDefault();
   logoutUser();

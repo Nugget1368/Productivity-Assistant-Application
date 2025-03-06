@@ -166,3 +166,10 @@ radioGroup.addEventListener("change", (event) => {
 
   renderEventList(storage);
 });
+
+const logoutLink = document.querySelector("#logoutLink");
+logoutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  logoutUser();
+  window.location.href = "../html-pages/login.html";
+});

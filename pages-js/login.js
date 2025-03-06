@@ -1,11 +1,11 @@
 import { loginUser, registerUser, logoutUser } from "../services/auth.js";
 
-const loginButton = document.getElementById("loginButton");
-const registerButton = document.getElementById("registerButton");
-const guestLoginButton = document.getElementById("guestLoginButton");
-const firstNameInput = document.getElementById("firstName");
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
+const loginButton = document.querySelector("#loginButton");
+const registerButton = document.querySelector("#registerButton");
+const guestLoginButton = document.querySelector("#guestLoginButton");
+const firstNameInput = document.querySelector("#firstName");
+const usernameInput = document.querySelector("#username");
+const passwordInput = document.querySelector("#password");
 
 loginButton.addEventListener("click", () => {
     const username = usernameInput.value.trim();

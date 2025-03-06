@@ -193,3 +193,10 @@ sortDropdown.addEventListener("change", async () => {
   storage = sortList(sortDropdown.value, storage);
   renderTodoList(storage);
 });
+
+const logoutLink = document.querySelector("#logoutLink");
+logoutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  logoutUser();
+  window.location.href = "../html-pages/login.html";
+});
