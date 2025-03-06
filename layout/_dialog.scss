@@ -28,6 +28,7 @@ dialog {
       }
     }
   }
+
   header {
     @include flex(row, center, center);
     height: fit-content;
