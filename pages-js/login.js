@@ -26,11 +26,10 @@ registerButton.addEventListener("click", () => {
         alert("Ange ditt förnamn vid registrering!");
         return;
     }
-    if (registerUser(firstName, username, password)) {
+    if (registerUser(firstName, username, password))
         alert("Användare registrerad! Du kan nu logga in.");
-    } else {
+    else
         alert("Användarnamnet finns redan. Försök logga in istället.");
-    }
 });
 
 guestLoginButton.addEventListener("click", () => {

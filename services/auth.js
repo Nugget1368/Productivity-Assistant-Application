@@ -1,3 +1,5 @@
+import { getStorageAsJSON, saveToStorage } from "./localstorage.js"
+import { setSessionStorage, getSessionStorage } from "./sessionStorage.js";
 // auth.js
 export const USERS_KEY = "users";
 export const CURRENT_USER_KEY = "currentUser";
@@ -8,14 +10,13 @@ export const CURRENT_USER_KEY = "currentUser";
  * Returnerar false om användarnamnet redan finns.
  */
 export const registerUser = (firstName, username, password) => {
-  const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+  const users = getStorageAsJSON(USERS_KEY) || [];
   const userExists = users.find(user => user.username === username);
   if (userExists) {
     return false; // Användaren finns redan
   }
   const newUser = { firstName, username, password };
-  users.push(newUser);
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  saveToStorage(USERS_KEY, newUser);
   return true;
 };
 
@@ -24,10 +25,11 @@ export const registerUser = (firstName, username, password) => {
  * Om inloggningen lyckas sparas användardata under CURRENT_USER_KEY.
  */
 export const loginUser = (username, password) => {
-  const users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+  const users = getStorageAsJSON(USERS_KEY) || [];
   const user = users.find(user => user.username === username && user.password === password);
   if (user) {
-    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    //Session storage
+    sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
     return true;
   }
   return false;
@@ -35,16 +37,16 @@ export const loginUser = (username, password) => {
 
 /**
  * Loggar ut den aktuella användaren.
- */
+*/
 export const logoutUser = () => {
-  localStorage.removeItem(CURRENT_USER_KEY);
+  setSessionStorage(CURRENT_USER_KEY);
 };
 
 /**
  * Hämtar den aktuella inloggade användaren.
  */
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
+  return getSessionStorage(CURRENT_USER_KEY);
 };
 
 /**
