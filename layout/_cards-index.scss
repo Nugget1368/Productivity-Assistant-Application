@@ -5,16 +5,19 @@ h1 {
   font-size: 2rem;
   font-style: normal;
   margin: 20px 0px 10px 0px;
+  color: #44536d;
 }
 
 .card-container {
-  @include flex(space-between);
+  @include flex($justify: space-between);
   gap: 20px;
+  flex: 1;
 
   .card {
+    min-width: 250px;
     background-color: $startpage-cards;
     box-shadow: $shadow-container;
-    border: 0.5px solid black;
+    border: 0.5px solid rgb(155, 150, 150);
     border-radius: 5px;
     padding: 20px;
     flex: 1;
@@ -55,5 +58,30 @@ h1 {
         }
       }
     }
+  }
+}
+
+.repetitions {
+  @include flex(row nowrap, $justify: space-between);
+  span {
+    @include flex(row, center, center);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 900;
+    border-bottom: 2px solid $white;
+    text-align: center;
+    padding: 0px 10px;
+    &:active {
+      background-color: $background;
+    }
+  }
+  input {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid $white;
+    padding: 0px;
+    background: transparent;
+    text-align: center;
+    width: 50px;
   }
 }

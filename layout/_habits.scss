@@ -1,0 +1,53 @@
+.container-wrapper {
+  flex: 1;
+
+  .card-container {
+    all: revert;
+    @include flex();
+    gap: 10px;
+    flex: 1;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .habit-card {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      border: 1px solid #dadada;
+      border-radius: 5px;
+      transition: background-color 0.2s;
+      margin-bottom: 1rem;
+      list-style: none;
+      min-width: 300px;
+      min-height: 150px;
+
+      &:hover {
+        background-color: plum;
+        cursor: pointer;
+      }
+
+      &.selected {
+        background-color: plum;
+      }
+
+      h3,
+      label {
+        color: #333;
+        margin-bottom: 25px;
+        margin-top: 10px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      &.selected h3,
+      &.selected label {
+        color: #fff;
+      }
+    }
+  }
+}

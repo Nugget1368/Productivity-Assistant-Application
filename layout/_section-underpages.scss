@@ -122,7 +122,7 @@
 }
 
 #todo-popup-btns {
-  @include flex($direction: row wrap, $justify: space-between, $align:stretch);
+  @include flex($direction: row wrap, $justify: space-between, $align: stretch);
   gap: 8px;
   margin-top: 3rem;
   width: 100%;
@@ -146,7 +146,6 @@
         background-color: $add-btn-hover;
       }
     }
-
     &.delete-btn {
       border: 1.5px solid #d43333;
       color: #d32f2f;
@@ -175,7 +174,6 @@
   border: 0.5px solid rgb(218, 215, 215);
   border-radius: 2px;
   box-shadow: $shadow-container;
-  text-transform: capitalize;
 
   &.done-todo {
     text-decoration: line-through;

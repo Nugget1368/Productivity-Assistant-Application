@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rubber Ducks - it's going down</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../style.css" />
     <script type="module" src="../pages-js/habits.js"></script>
@@ -52,23 +57,37 @@
           <div class="filter-group">
             <h3 class="filter-title">Sortera</h3>
             <label for="sortering"></label>
-            <select class="dropdown">
-              <option value="">Välj sortering</option>
-            </select>
+            <select id="sort-dropdown" class="dropdown"></select>
           </div>
 
           <div class="filter-group">
             <h3 class="filter-title">Prioritera</h3>
             <label for="kategori"></label>
-            <select class="dropdown">
-              <option value="">Välj prioritering</option>
-            </select>
+            <select id="priorities-dropdown" class="dropdown"></select>
           </div>
         </div>
         <button open-modal class="add-button">+ Lägg till rutin</button>
       </section>
 
-      <section class="card-container"></section>
+      <section class="container-wrapper">
+        <article class="card-container">
+          <ul></ul>
+        </article>
+
+        <article class="todos-right">
+          <header>
+            <h2 id="todo-popup-h2">Min rutin</h2>
+          </header>
+          <div id="todo-popup-info"></div>
+          <div id="todo-popup-status">
+            <ul></ul>
+          </div>
+          <div id="todo-popup-btns">
+            <button open-modal class="edit-btn">Redigera</button>
+            <button open-modal class="delete-btn">Radera</button>
+          </div>
+        </article>
+      </section>
     </main>
     <dialog modal>
       <span close-modal>X</span>
