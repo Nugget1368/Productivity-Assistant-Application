@@ -1,5 +1,3 @@
-// Shortcut for generating habit-object with all needed parameters
-// Dummy Data: "Go to the gym", 0, "Mellan"
 const createHabit = (title = "Title", priority = "Låg") => {
     const habit = {
         id: Date.now(),
@@ -9,7 +7,5 @@ const createHabit = (title = "Title", priority = "Låg") => {
     };
     return habit;
 }
-
-
 
 export {createHabit}

@@ -7,32 +7,28 @@ export const getStorageAsJSON = (storageName) =>
   JSON.parse(localStorage.getItem(storageName));
 
 export const saveToStorage = (storageName, obj) => {
-  if (localStorage.getItem(storageName)) { // If there is localstorage with key-string 'storageName'
-    let storage = getStorageAsJSON(storageName); // Get value from localstorage and convert from JSON to array-object
+  if (localStorage.getItem(storageName)) {
+    let storage = getStorageAsJSON(storageName);
     storage.push(obj);
     localStorage.setItem(storageName, JSON.stringify(storage));
   }
-// If there is no localstorage with the key-string
   else {
     let arr = [];
     arr.push(obj);
-    localStorage.setItem(storageName, JSON.stringify(arr)); //Convert object to JSON and save in localstorage
+    localStorage.setItem(storageName, JSON.stringify(arr));
   }
 };
 
 export const editStorage = (storageName, obj) => {
     if(localStorage.getItem(storageName)){
         let storage = getStorageAsJSON(storageName);
-        storage = storage.map((element) => (element.id === obj.id ? obj : element));     // Search for similiar id, in that case EDIT that object
+        storage = storage.map((element) => (element.id === obj.id ? obj : element));
         localStorage.setItem(storageName, JSON.stringify(storage));
     }
 }
 
 export const deleteFromStorage = (storageName, id) => {
-  //Get from localstorage
   let storage = getStorageAsJSON(storageName);
-  //Filter out the values that don't have the id we'd like to delete
   storage = storage.filter((element) => element.id !== id);
-  //save the new storage-array
   localStorage.setItem(storageName, JSON.stringify(storage));
 };

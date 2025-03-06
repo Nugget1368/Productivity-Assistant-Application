@@ -1,4 +1,3 @@
-// When todo-list should build this is needed to get eventhandlers for each list-item
 const renderTodoList = (storage = []) => {};
 
 export const buildTodos = (todos) => {
@@ -10,8 +9,11 @@ export const buildTodos = (todos) => {
 
     let li = document.createElement("li");
     li.setAttribute("id", todo.id);
+
     let checkbox = document.createElement("input");
+
     let title = document.createElement("label");
+
     let deadline = document.createElement("label");
     checkbox.type = "checkbox";
     checkbox.value = todo.status;
@@ -36,8 +38,10 @@ export const buildTodos = (todos) => {
 
 export const buildTodosForm = (destination = "", categories = []) => {
   let titleDiv = document.createElement("div");
+
   let titleLabel = document.createElement("label");
   titleLabel.textContent = "Titel";
+
   let title = document.createElement("input");
   title.setAttribute("id", "title");
   title.required = true;
@@ -77,8 +81,10 @@ export const buildTodosForm = (destination = "", categories = []) => {
   categoryDiv.append(categoryLabel, category);
 
   let deadlineDiv = document.createElement("div");
+  
   let deadlineLabel = document.createElement("label");
   deadlineLabel.textContent = "Deadline";
+
   let deadline = document.createElement("input");
   deadline.setAttribute("type", "date");
   deadline.setAttribute("value", new Date().toLocaleDateString());

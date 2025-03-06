@@ -1,16 +1,14 @@
-import {
-  EVENT_KEY,
-  saveToStorage,
-  getStorageAsJSON,
-  editStorage,
-  deleteFromStorage,
-} from "../services/localstorage.js";
+import { EVENT_KEY, saveToStorage, getStorageAsJSON, editStorage, deleteFromStorage } from "../services/localstorage.js";
 import { buildEvent, buildEventForm } from "../builders/eventBuilder.js";
 import { createEvent } from "../helpers/eventHelper.js";
 import { formBuilder } from "../builders/builder.js";
 import { getInputValues, listItemHandler } from "../services/inputHandler.js";
 import { filterDateList, sortList } from "../services/filterSortHandler.js";
+import { getUserSpecificKey } from "../services/auth.js";
 
+const userSpecificEventKey = getUserSpecificKey(EVENT_KEY);
+
+let storage = getStorageAsJSON(userSpecificEventKey) || [];
 const createBtn = document.querySelector("[open-modal]");
 const closeModalBtn = document.querySelector("[close-modal]");
 const modal = document.querySelector("[modal]");
@@ -18,6 +16,7 @@ const modal = document.querySelector("[modal]");
 const renderEventList = (storage) => {
   let list = document.querySelector("#event-planner-todos ul");
   list.innerHTML = "";
+  
   storage = sortList("Start", storage);
   let cards = buildEvent(storage);
   cards.forEach(element => {
@@ -26,8 +25,6 @@ const renderEventList = (storage) => {
   listItemHandler("article#event-planner-todos", storage, ["start", "end"]);
 };
 
-//Create Habits in DOM
-let storage = getStorageAsJSON(EVENT_KEY);
 if (storage) {
   renderEventList(storage);
 }
@@ -35,7 +32,8 @@ if (storage) {
 const submitForm = () => {
   let values = getInputValues("form#create-event");
   let event = createEvent(values[0], values[1], values[2]);
-  saveToStorage(EVENT_KEY, event);
+
+  saveToStorage(userSpecificEventKey, event);
 };
 
 createBtn.addEventListener("click", async () => {
@@ -60,29 +58,31 @@ deleteBtn.addEventListener("click", (event) => {
   let h3 = document.querySelector("dialog[modal] h3");
   h3.textContent = "Bekräfta radering";
   let article = document.querySelector("dialog[modal] article");
-  article.innerHTML = ""; // Rensa tidigare innehåll
+  article.innerHTML = "";
 
-  // Skapar "Ja, radera"-knappen
+  // Creates "Ja, radera"-btn
   let confirmBtn = document.createElement("button");
   confirmBtn.textContent = "Ja, radera";
   confirmBtn.classList.add("confirm-delete");
   confirmBtn.addEventListener("click", (event) => {
     let article = document.querySelector(".container-wrapper .todos-right");
     let todoId = article.getAttribute("selected-item");
-    deleteFromStorage(EVENT_KEY, Number(todoId));
+
+    deleteFromStorage(userSpecificEventKey, Number(todoId));
+
     modal.close();
     location.reload();
   });
 
-  // Skapar "Avbryt"-knappen
+  // Creates "Avbryt"-btn
   let cancelBtn = document.createElement("button");
   cancelBtn.textContent = "Avbryt";
   cancelBtn.classList.add("cancel-delete");
   cancelBtn.addEventListener("click", () => {
-    modal.close(); // Stäng modalen utan att radera
+    modal.close();
   });
 
-  // Lägger till knapparna i modalen
+  // Add btns to modal
   article.append(confirmBtn);
   article.append(cancelBtn);
 
@@ -99,12 +99,12 @@ editBtn.addEventListener("click", () => {
   modalArticle.innerHTML = "";
 
   let selectedEventId = document.querySelector(".container-wrapper .todos-right").getAttribute("selected-item");
-
-  let storage = getStorageAsJSON(EVENT_KEY);
+  let storage = getStorageAsJSON(userSpecificEventKey) || [];
   let selectedEvent = storage.find((event) => event.id == selectedEventId);
 
   let { submitBtn } = formBuilder("dialog[modal] article", "edit-event", "edit");
   buildEventForm("form#edit-event");
+
   document.querySelector("#title").value = selectedEvent.title;
   document.querySelector("#start").value = selectedEvent.start;
   document.querySelector("#end").value = selectedEvent.end;
@@ -117,14 +117,25 @@ editBtn.addEventListener("click", () => {
     );
     updatedEvent.id = selectedEvent.id;
 
-    editStorage(EVENT_KEY, updatedEvent);
+    editStorage(userSpecificEventKey, updatedEvent);
   });
 
   modal.showModal();
 });
+
+// Filtering-function with radio-btns
 let radioGroup = document.querySelector("div.filter-options");
 radioGroup.addEventListener("change", (event) => {
   let radioValue = event.target.value;
-  storage = filterDateList(EVENT_KEY, radioValue);
+
+  storage = filterDateList(userSpecificEventKey, radioValue);
+
   renderEventList(storage);
+});
+
+const logoutLink = document.querySelector("#logoutLink");
+logoutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  logoutUser();
+  window.location.href = "../html-pages/login.html";
 });

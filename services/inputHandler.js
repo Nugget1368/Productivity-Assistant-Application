@@ -1,4 +1,4 @@
-import { getStorageAsJSON, editStorage, ACTIVITIES_KEY } from "./localstorage.js";
+import { editStorage } from "./localstorage.js";
 import { filterObjKeys } from "./filterSortHandler.js";
 
 const updateTodoPopupInfo = (bool) => {
@@ -16,12 +16,12 @@ export const getInputValues = (destination) => {
 };
 
 export const checkboxEventHandler = (storage = "", storagekey = "") => {
-  //If checkbox value is changed
+
   let checkboxes = document.querySelectorAll("#todos ul input[type=checkbox]");
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", (event) => {
-      let listItemId = event.currentTarget.parentElement.parentElement.id; //Reach grandparent (list-item) id
-      let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
+      let listItemId = event.currentTarget.parentElement.parentElement.id;
+      let newObj = storage.find((element) => element.id == listItemId);
       newObj.status = event.currentTarget.checked;
       editStorage(storagekey, newObj);
 
@@ -38,7 +38,6 @@ export const checkboxEventHandler = (storage = "", storagekey = "") => {
 
 const inputSetValue = (element, value = 0) => {
   element.value = value;
-  //Trigger Eventlistener of type 'Input'
   element.dispatchEvent(new InputEvent("input"));
 };
 
@@ -61,10 +60,10 @@ export const increaseDecreaseHandler = (destination = "", storage = [], storageN
       }
       inputSetValue(input[x], value);
     });
+
     input[x].addEventListener("input", (event) => {
-      //When input change - Update local-storage
-      let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id; //Reach grandparent (list-item) id
-      let newObj = storage.find((element) => element.id == listItemId); //Find mathcing element in localstorage
+      let listItemId = event.currentTarget.parentElement.parentElement.parentElement.id;
+      let newObj = storage.find((element) => element.id == listItemId);
       let value = parseInt(input[x].value);
       if (value < 0) {
         value = 0;
