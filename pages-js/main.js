@@ -4,7 +4,7 @@ import { checkboxEventHandler } from "../services/inputHandler.js";
 import { buildHabit } from "../builders/habitBuilder.js";
 import { buildEvent } from "../builders/eventBuilder.js";
 import { filterDateList } from "../services/filterSortHandler.js";
-import { getUserSpecificKey, getCurrentUser } from "../services/auth.js";
+import { getUserSpecificKey, logoutUser, getCurrentUser } from "../services/auth.js";
 
 // Bestäm vilken nyckel som ska användas:
 // Om någon är inloggad används den användarspecifika nyckeln, annars används den globala nyckeln.
@@ -36,3 +36,18 @@ eventStorage = eventStorage.slice(0, 3);
 let eventCards = buildEvent(eventStorage);
 let eventSection = document.querySelector("#event ul");
 eventCards.forEach(element => eventSection.append(element));
+
+// --------- Greets the user/guest ---------
+if (currentUser && currentUser.firstName) {
+  document.getElementById("user-name").textContent = currentUser.firstName;
+} else {
+  document.getElementById("user-name").textContent = "gäst";
+}
+
+// --------- Logs out the user, redirecting to login-page ---------
+const logoutLink = document.getElementById("logoutLink");
+logoutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  logoutUser();
+  window.location.href = "../html-pages/login.html";
+});

@@ -80,21 +80,5 @@
       </div>
     </section>
   </main>
-  <script type="module">
-    import { getCurrentUser, logoutUser } from "../services/auth.js";
-    const currentUser = getCurrentUser();
-    if (currentUser && currentUser.firstName) {
-      document.getElementById("user-name").textContent = currentUser.firstName;
-    } else {
-      document.getElementById("user-name").textContent = "gäst";
-    }
-
-    const logoutLink = document.getElementById("logoutLink");
-    logoutLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      logoutUser();
-      window.location.href = "../html-pages/login.html";
-    });
-  </script>
 </body>
 </html>
