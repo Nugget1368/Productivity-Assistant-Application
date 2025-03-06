@@ -101,6 +101,56 @@ h1 {
   color: #44536d;
 }
 
+#habit {
+  background-color: #fff;
+}
+#habit article {
+  padding: 5px;
+}
+#habit article * {
+  margin-bottom: 3px;
+}
+#habit article h3 {
+  font-weight: 500;
+}
+#habit span {
+  display: none;
+}
+#habit article > label {
+  display: none;
+}
+#habit article > .repetitions {
+  border-bottom: 2px solid #44536d;
+}
+
+#todos li > label:last-child {
+  display: none;
+}
+#todos label {
+  font-weight: 500;
+}
+
+#event li.active article {
+  border-color: purple;
+}
+#event li.active article label {
+  color: purple;
+  font-weight: 700;
+}
+#event article h3 {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+#event article div {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+#event article div > label:last-child {
+  display: none;
+}
+
 .card-container {
   display: flex;
   flex-flow: row wrap;
@@ -110,8 +160,12 @@ h1 {
   flex: 1;
 }
 .card-container .card {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: space-between;
   min-width: 250px;
-  background-color: #bee7d9;
+  background-color: #fff;
   box-shadow: 2px 2px 5px rgba(60, 57, 57, 0.1);
   border: 0.5px solid rgb(155, 150, 150);
   border-radius: 5px;

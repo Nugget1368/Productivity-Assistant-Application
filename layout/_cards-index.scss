@@ -8,14 +8,71 @@ h1 {
   color: #44536d;
 }
 
+#habit {
+  background-color: #fff;
+  article {
+    padding: 5px;
+    * {
+      margin-bottom: 3px;
+    }
+    h3 {
+      font-weight: 500;
+    }
+  }
+  span {
+    display: none;
+  }
+  article > label {
+    display: none;
+  }
+  article > .repetitions {
+    border-bottom: 2px solid #44536d;
+  }
+}
+
+#todos {
+  li > label:last-child {
+    display: none;
+  }
+  label{
+    font-weight: 500;
+  }
+}
+
+#event {
+  li.active {
+    article {
+      border-color: purple;
+      label {
+        color: purple;
+        font-weight: 700;
+      }
+    }
+  }
+  article {
+    h3 {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    div {
+      @include flex(column);
+      > label:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
 .card-container {
   @include flex($justify: space-between);
   gap: 20px;
   flex: 1;
 
   .card {
+    @include flex(column, $justify: space-between);
     min-width: 250px;
-    background-color: $startpage-cards;
+    // background-color: $startpage-cards;
+    background-color: #fff;
     box-shadow: $shadow-container;
     border: 0.5px solid rgb(155, 150, 150);
     border-radius: 5px;
